@@ -1,0 +1,66 @@
+Chapix TODO File.
+
+
+Architecture.
+* Hocks definition.
+* Define base template architecture.
+* Define custom modules architecture.
+
+
+#############################################################################
+
+Backend
+* General
+    * Validate password complexity.
+    * Time zones catalog.
+    
+
+* User accounts
+    ** Create the Your account page.
+
+
+* Email
+    * While configuring Email Settings send a test message.
+
+
+* Pages Admin.
+    * Create a drag and drop interfase.
+    * Create a module interfase for the drag and drop widgets.
+
+
+* Modules Admin.
+    * Admin to install, unistall, configure each module.
+
+
+#############################################################################
+
+Front End
+* Template Architecture.
+
+
+#############################################################################
+
+Install script
+* Create a install script
+
+Modules
+* Menus
+* Blog
+* Gallery
+* Polls
+* Dashboard
+
+
+#############################################################################
+
+Documentation
+* Module HowTo
+* Architecture
+
+
+#############################################################################
+
+Functions
+* Lists order and page memory.
+* RSS.
+* Sitemap generator.

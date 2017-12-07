@@ -1,0 +1,141 @@
+<div class="row">
+	<input type="hidden" id="categoria" name="categoria" value="[% categoria %]">
+	<div class="row no-margin-bottom">
+		<div class="col s12">
+			<label class="special-label" for="video">Video muestra</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">Agrega un link (youtube) de un video con las obras más representativas de tu producción (duración 20 minutos)</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<input id="video" name="video" type="text" value="[% current_qty.videomuestra %]" [% IF current_qty.videomuestra %]optional[% ELSE %]required[% END %]>
+	</div>
+	<div class="row no-marign-bottom">
+		<div class="col s12">
+			<label class="special-label" for="sitioweb">Sitio web</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">[% sitio.label %]</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<input id="sitioweb" name="sitioweb" type="text" value="[% current_qty.sitioweb %]" [% IF sitio.optional || current_qty.sitioweb %]optional[% ELSE %]required[% END %]>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">
+				Carta de autorización del autor de la obra, o quien tenga el registro o derechos de autor.
+			</span>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Carta[% IF current_qty.carta_de_autorizacion %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="carta_de_autorizacion_file" name="carta_de_autorizacion_file" [% IF current_qty.carta_de_autorizacion %]optional[% ELSE %]required[% END %]>
+	   		</div>
+		    <div class="file-path-wrapper">
+		        <input id="carta_de_autorizacion" name="carta_de_autorizacion" placeholder="Carta de autorización del autor" class="file-path validate" type="text" value="">
+		    </div>
+	    </div>
+    </div>
+    <!--<div class="row">
+    	<div class="col s12">
+    		<span class="field-description">
+    			[% guion.label %]
+    		</span>
+    	</div>
+    </div>-->
+    <div class="row">
+    	<div class="col s12">
+    		<span class="field-description">
+    			[% dramaturgia.label %]
+    		</span>
+    	</div>
+    </div>
+    <div class="col s12">
+    	<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Texto[% IF current_qty.texto %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="dramaturgia_file" name="dramaturgia_file" [% IF dramaturgia.optional || current_qty.texto %]optional[% ELSE %]required[% END %]>
+	      	</div>
+	      	<div class="file-path-wrapper">
+	        	<input id="gramaturgia" name="dramaturgia" placeholder="Texto de muestra" class="file-path validate" type="text" value="">
+	      	</div>
+	    </div>	
+		<!--<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Guion[% IF current_qty.guion %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="guion_file" name="guion_file" required>
+	      	</div>
+	      	<div class="file-path-wrapper">
+	        	<input id="guion" name="guion" placeholder="Sinopsis del guion" class="file-path validate" type="text" value="">
+	      	</div>
+	    </div>-->
+    </div>
+    [% IF categoria == 'Desarrollo artístico individual' %]
+    <div class="row">
+		<div class="col s12">
+			<span class="field-description">Kardex o boleta de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Kardex[% IF current_qty.boleta_kardex %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="boleta_kardex_file" id="boleta_kardex_file" type="file" [% IF current_qty.boleta_kardex %]optional[% ELSE %]required[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="boleta_kardex" placeholder="Boleta o Kardex" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">Carta de aceptación de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Carta de aceptación[% IF current_qty.carta_aceptacion %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="carta_aceptacion_file" id="carta_aceptacion_file" type="file" [% IF current_qty.carta_aceptacion %]optional[% ELSE %]required[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="carta_aceptacion" placeholder="Carta de aceptación de la institución educativa" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	[% END %]
+	<div class="col s12">
+		<label class="special-label" for="documentos">Invitaciones, programas de mano, constancias y/o reconocimientos</label><br>
+		<span  class="field-description">[% documents.label %]</span>
+		<div class="dropzone dropable" id="documentos" min-qty="[% documents.min %]" max-qty="[% documents.max %]" current-qty="[% current_qty.documentos %]" [% IF documents.optional %]optional[% END %]></div>
+		
+	</div>
+	<div class="col s12">
+		<label class="special-label" for="imagenes">Imágenes de obras realizadas</label><br>
+		<span class="field-description">[% images.label %]</span>
+		<div class="dropzone dropable" id="imagenes" min-qty="[% images.min %]" max-qty="[% images.max %]" current-qty="[% current_qty.imagenes %]" [% IF images.optional %]optional[% END %]></div>
+		
+	</div>
+	[% IF categoria != 'Jóvenes creadores' %]
+	<div class="col s12">
+    	<label class="special-label" for="notas">Notas de prensa</label><br>
+    	<span class="field-description">[% notes.label %]</span>
+    	<div class="dropable dropzone" id="notas" min-qty="[% notes.min %]" max-qty="[% notes.max %]" current-qty="[% current_qty.notas %]"  [% IF notes.optional %]optional="1"[% END %]></div>
+	</div>
+	[% END %]
+</div>	
+    	

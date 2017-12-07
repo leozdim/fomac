@@ -1,0 +1,126 @@
+<section class="section">
+    [% msg %]
+    <div class="container">
+        [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+        <div class="row">
+        	<div class="row no-bottom-margin">
+                <div id="title" class="col s12 m12 l12">
+                    <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                </div>
+            </div>
+    		<div id="description" class="row">
+            	<span class="description">[% conf.Page.Description %]</span>
+            </div>
+            [% FOREACH participant IN participants %]
+            <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+            	<div class="card-title">
+            		[% participant.nombre %]
+            	</div>
+            	<div class="card-content">
+					[% IF participant.uploaded %]
+					<div class="col s12">
+						<h5>Todos los documentos de este participante ya fueron agregados</h5>
+					</div>
+					[% ELSE %]
+	            	<form class="upload_form" id="participant_[% participant.participant_id %]" action="/Form" method="POST" name="participant_[% participant.participant_id %]">
+	            		<input name="documents_id" value="[% participant.documents_id %]" type="text" type="hidden">
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Carta solicitud</span>
+							        <input name="carta_solicitud" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Acta de nacimento</span>
+							        <input name="acta_de_nacimiento" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Comprobante de domicilio</span>
+							        <input name="comprobante_de_domicilio" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Identificacion oficial</span>
+							        <input name="identificacion_oficial" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>CURP</span>
+							        <input name="curp" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Curriculum</span>
+							        <input name="curriculum" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s6">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Carta compromiso</span>
+							        <input name="carta_compromiso" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<button id="cargar_archivos" class="btn waves-effect waves-light blue darken-2" type="button" value="[% submit %]">Subir Archivos
+            			</button>
+	            	</form>
+	            	[% END %]
+            	</div>
+        	</div>
+        	[% END %]
+        </div>
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

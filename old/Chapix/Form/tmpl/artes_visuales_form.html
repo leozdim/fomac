@@ -1,0 +1,65 @@
+<div class="row">
+	<input type="hidden" id="categoria" name="categoria" value="[% categoria %]">
+	[% IF categoria == 'Desarrollo artístico individual' %]
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">Kardex o boleta de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Kardex[% IF current_qty.boleta_kardex %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="boleta_kardex_file" id="boleta_kardex_file" type="file" [% IF current_qty.boleta_kardex %]optional[% ELSE %]required[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="boleta_kardex" placeholder="Boleta o Kardex" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">Carta de aceptación de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Carta de aceptación[% IF current_qty.carta_aceptacion %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="carta_aceptacion_file" id="carta_aceptacion_file" type="file" [% IF current_qty.carta_aceptacion %]optional[% ELSE %]required[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="carta_aceptacion" placeholder="Carta de aceptación de la institución educativa" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	[% END %]
+	<div class="row">
+		<div class="col s12 m6">
+		    <label class="special-label" for="imagenes">Imágenes de obras realizadas</label><br>
+		    <span class="field-description">[% images.label %]</span>
+		    <div class="dropable dropzone" id="imagenes" min-qty="[% images.min %]" max-qty="[% images.max %]" current-qty="[% current_qty.imagenes %]" [% IF images.optional %]optional="1"[% END %]></div>
+		</div>
+		<div class="col s12 m6">
+		    <label class="special-label" for="catalogo">Catálogo</label><br>
+		    <span class="field-description">[% catalog.label %]</span>
+		    <div class="dropable dropzone" id="catalogo" min-qty="[% catalog.min %]" max-qty="[% catalog.max %]" current-qty="[% current_qty.catalogo %]" [% IF catalog.optional %]optional="1"[% END %]></div>
+		</div>
+  	</div>
+  	<div class="row">
+	  	<div class="col s12">
+	    	<label class="special-label" for="notas">Notas de prensa</label><br>
+	    	<span class="field-description">[% notes.label %]</span>
+	    	<div class="dropable dropzone" id="notas" min-qty="[% notes.min %]" max-qty="[% notes.max %]" current-qty="[% current_qty.notas %]"  [% IF notes.optional %]optional="1"[% END %]></div>
+	  	</div>
+	  	<div class="col s12">
+	    	<label class="special-label" for="documentos">Invitaciones, constancias y/o reconocimientos</label><br>
+	    	<span class="field-description">[% documents.label %]</span>
+	    	<div class="dropable dropzone" id="documentos" min-qty="[% documents.min %]" max-qty="[% documents.max %]" current-qty="[% current_qty.documentos %]"  [% IF documents.optional %]optional="1"[% END %]></div>
+	  	</div>
+  	</div>
+</div>

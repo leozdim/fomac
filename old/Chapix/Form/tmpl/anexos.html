@@ -1,0 +1,57 @@
+<section class="section">
+    [% msg %]
+    <div class="container">
+        [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+        <div class="row">
+        	<div class="row no-bottom-margin">
+                <div id="title" class="col s12 m12 l12">
+                    <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                </div>
+            </div>
+    		<div id="description" class="row">
+            	<span class="description">[% conf.Page.Description %]</span>
+            </div>
+            <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+            	<div class="card-content">
+            		<div class="row documents-title">
+						<span>Descarga estos documentos llénalos y súbelos donde el sistema te los solicite</span>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<span>Cartas FOMAC - </span><a target="_blank" href="/data/anexos/Cartas FOMAC.docx">Descargar</a>
+						</div>
+					</div>
+            		<div class="row documents-title">
+						<span>Este es el formato que se debe utilizar para realizar el desglose de gastos, fuentes de financiamiento y cronograma de actividades.</span>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<span>Formato para el cronograma de actividades, desglose de gastos y fuentes de financiamiento - </span><a target="_blank" href="/data/anexos/TABLAS FOMAC.xlsx">Descargar</a>
+						</div>
+					</div>
+            		<button id="continuar-anexos" class="btn waves-effect waves-light blue darken-2 cargar" type="button" value="[% submit %]">Continuar
+            		</button>
+            	</div>
+        	</div>
+        </div>
+       
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 90px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

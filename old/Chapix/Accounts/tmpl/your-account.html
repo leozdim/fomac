@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 l8 push-m2 push-l2">
+        <div class="card hoverable">
+          <div class="card-content">
+            <p>
+                [% msg %]
+                <div class="valign-wrapper">
+                  <h4>Tu cuenta</h4>
+                </div>
+                <ul>
+                    <li>Nombre: [% sess.user_name %]</li>
+                    <li>Correo: [% sess.user_email %]</li>
+                </ul>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="/" class="waves-effect waves-light">Editar ajustes</a>
+          </div>
+          <div class="card-action">
+            <a href="/" class="waves-effect waves-light">Cambiar contraseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>

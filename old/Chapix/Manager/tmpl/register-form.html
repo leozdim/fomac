@@ -1,0 +1,63 @@
+<section class="blue register-form">
+  <div class="container">
+    <div class="row no-margin">
+      <div class="center white-text">
+	<h4>Prueba Marketero gratis</h4>
+      </div>
+      <div class="row">
+	<div class="col s10 m8 l6 z-depth-4 card col-center">
+	  <div class="">
+	    <div class="card-content ">
+	      <div class="card-title text-black">Demo de 14 días.</div>
+	      <p>No requieres tarjeta de crédito</p><br>
+	      <div class="row">
+		[% msg %]
+		[% form.jshead %]
+		[% form.start %]	      
+		[% FOREACH field = form.fields %][% IF field.type == 'hidden'%][% field.field %][% END %][% END %]	      	     
+		<div class="row">
+		  [% FOREACH field = form.fields %]
+		  [% IF field.type != 'hidden' %]	      
+		  <div class="input-field col s12 m6 l6">
+		    [% IF field.icon %]<i class="material-icons prefix">[% field.icon %]</i>[% END %]
+		    [% field.prefix %][% field.field %][% field.unit %][% IF field.comment %]<span class="help-block">[% field.comment %]</span>[% END %]
+		    <label for="[% field.name %]">[% field.label %][% IF field.required %]<i class="req">*</i>[% END %]</label>
+		  </div>
+		  [% END %]
+		  [% END %]
+		</div>
+	      </div>
+	    </div>
+	    <div class="card-action">
+	      [% form.submit %][% buttons %]
+	    </div>
+	    [% form.end %]
+	  </div>
+	</div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>
+</section>
+[% bottom_data %]
+[% IF js %]
+[% jsFile = 'tmpl/' _ js %]
+<script type="text/javascript">
+  [% INCLUDE $jsFile %]
+</script>
+[% END %]

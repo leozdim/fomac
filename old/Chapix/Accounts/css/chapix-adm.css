@@ -1,0 +1,201 @@
+.col-center {
+    float: none !important;
+    margin: auto !important;
+}
+
+.space-sm {
+	height: 10px;
+}
+
+.space-md {
+	height: 25px;
+}
+
+.space-lg {
+	height: 50px;
+}
+
+.space-xl {
+	height: 100px;
+}
+
+.label-danger {
+	color: #F44336;
+	font-size: 13px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.main-contacts {
+    margin: 0 35px;
+}
+
+.contacts-listy {
+    display: table;
+    padding: 10px;
+}
+
+.listy-item {
+    display: table-cell;
+    vertical-align: middle;
+    width: 200px;
+}
+
+.listy-item a {
+    display: block;
+}
+
+.listy-item:first-child {
+    width: 77%;
+}
+
+.help-block {
+    bottom: 15px;
+    position: relative;
+    font-size: 12px;
+    color: #757575;
+}
+
+.msg {
+     display: none;
+}
+
+.msg-danger {
+	background-color: #e53935 !important;
+	color: #FFF;
+}
+
+.msg-success {
+	background-color: #7cb342 !important;
+	color: #FFF;
+}
+
+.msg-warning {
+	background-color: #ffb300 !important;
+	color: #fff;
+}
+
+.msg-info {
+    background-color: #1e88e5 !important;
+    color: #fff;
+}
+
+.req {
+	color: #d32f2f;
+}
+
+
+.fill-body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* top: 0px; */
+    left: 0px;
+}
+
+.page-title {
+    margin-left: 20px;
+    font-size: 25px !important;
+}
+
+.page-title small {
+    font-size: 15px;
+}
+
+.home-box {
+    color: #949697;
+}
+
+.home-box .title {
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+.home-box .qty {
+    font-size: 2.0em;
+    font-weight: bold;
+}
+/* Style to replace on other modules */
+
+.app-toolbar {
+    background-color: #ffeb3b;
+}
+
+nav a {
+    color: #212121;
+}
+
+.main-toolbar {
+    background-color: #eeeeee;
+    color: #000;
+}
+
+.main-toolbar .container-fluid{
+       margin-left: 20px;
+       margin-right: 20px;
+}
+
+.main-toolbar .container-fluid .button-collapse i.small {
+    font-size: 2rem;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.small-line-height {
+    line-height: 95% !important;
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    max-width: none;
+}
+
+.sticky-container {
+    width: 100%;
+}
+
+
+.your-contactos {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.userlike {
+    z-index: initial !important;
+}
+
+
+.card-header {
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+}
+
+.support-channels {
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+}
+
+.support-channels p, .support-channels p a {
+    padding : 6px 0;
+    display: flex;
+    align-items: center;
+}
+
+.mark-support {
+    position : absolute;
+    right: 160px;
+    bottom: -7px;
+    max-width: 215px;
+}

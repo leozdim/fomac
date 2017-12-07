@@ -1,0 +1,27 @@
+
+<section class="section">
+  <div class="space-lg"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 l8 push-m2 push-l2">
+        <div class="card hoverable">
+          <div class="card-content">
+            <p>
+              [% msg %]
+              <ul>
+                <li> <p class="flow-text"><strong>Nombre:<br/></strong> [% sess.account_name %] </p> </li>
+                <li> <p class="flow-text"> <strong>Correo Electrónico:<br/></strong> [% sess.account_email %]</p> </li>
+              </ul>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="/Admin/EditAccount" class="waves-effect waves-light">Editar</a>
+          </div>
+          <div class="card-action">
+            <a href="/Admin/ChangePassword" class="waves-effect waves-light">Cambiar Contraseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>

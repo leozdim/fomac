@@ -1,0 +1,128 @@
+<section class="section">
+    [% msg %]
+    <div class="container">
+        [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+        <div class="row">
+            <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+            	<div class="card-title">
+            		<div class="row no-bottom-margin">
+                        <div id="title" class="col s12 m12 l12">
+                            <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                        </div>
+                    </div>
+            	</div>
+            	<div class="card-content">
+            		<div id="description" class="row">
+                    	<span class="description">[% conf.Page.Description %]</span>
+                    </div>
+	            	<form id="project_registry_form" action="/Form" method="POST" name="project_registry_form">
+	            		[% IF project.disciplina %]
+	            			<input type="hidden" id="disciplina-value" value="[% project.disciplina %]">
+	            		[% END %]
+	            		[% IF project.tipo_proyecto %]
+							<input type="hidden" id="tipo_proyecto_value" value="[% project.tipo_proyecto %]">
+	            		[% END %]
+	            		[% IF project_collective %]
+	            			<input type="hidden" id="artes_visuales_value" value=[% project_collective.artes_visuales %]>
+	            			<input type="hidden" id="danza_value" value=[% project_collective.danza %]>
+	            			<input type="hidden" id="musica_value" value=[% project_collective.musica %]>
+	            			<input type="hidden" id="teatro_value" value=[% project_collective.teatro %]>
+	            			<input type="hidden" id="cine_video_value" value=[% project_collective.cine_video %]>
+	            			<input type="hidden" id="letras_value" value=[% project_collective.letras %]>
+	            		[% END %]
+	            		<input type="hidden" name="project_id" value="[% project.project_id %]">
+	            		<input name="account_id" type="hidden" value="[% view.account_data.account_id %]">
+	            		<input name="_submitted_register_project" type="hidden" value="1">
+	            		<div class="row" id="categoria-holder">
+	            			<div class="col s12">
+			            		<label for="categoria">Categoría</label>
+						    	<select id="categoria" name="categoria"  required>
+							      	[% IF project.categoria %]
+							      	<option value="" disabled>Selecciona la categoría</option>
+									[% ELSE %]
+									<option value="" disabled selected>Selecciona la categoria</option>
+									[% END %]
+									
+									[% IF project.categoria == 'Jóvenes creadores' %]
+							      	<option value="Jóvenes creadores" selected>Jóvenes creadores</option>
+							      	[% ELSE %]
+							      	<option value="Jóvenes creadores">Jóvenes creadores</option>
+							      	[% END %]
+
+							      	[% IF project.categoria == 'Creadores con trayectoria'%]
+							      	<option value="Creadores con trayectoria" selected>Creadores con trayectoria</option>
+							      	[% ELSE %]
+							      	<option value="Creadores con trayectoria">Creadores con trayectoria</option>
+							      	[% END %]
+									
+									[% IF project.categoria == 'Desarrollo artístico individual' %]
+							      	<option value="Desarrollo artístico individual" selected>Desarrollo artístico individual</option>
+							      	[% ELSE %]
+							      	<option value="Desarrollo artístico individual">Desarrollo artístico individual</option>
+							      	[% END %]
+
+							      	[% IF project.categoria == 'Producción artística colectiva' %]
+							      	<option value="Producción artística colectiva" selected>Producción artística colectiva</option>
+									[% ELSE %]
+									<option value="Producción artística colectiva">Producción artística colectiva</option>
+									[% END %]
+							    </select>
+						    </div>
+						</div>
+						<div class="row hidden" id="disciplina-holder">
+							
+						</div>
+						<div class="row">
+							<div class="col s12">
+								<label for="tipo-proyecto">Tipo de proyecto:</label>
+							</div>
+							<div id="tipo-proyecto" class="row">
+								<div id="tipo-proyecto-individual" class="col s6 center">
+									<div class="row no-margin-bottom">
+										<i class="material-icons large">person</i>
+									</div>
+									<div class="row no-margin-bottom">
+										<span>Individual</span>
+									</div>
+								</div>
+								<div id="tipo-proyecto-colectivo" class="col s6 center">
+									<div class="row no-margin-bottom">
+										<i class="material-icons large">people</i>
+									</div>
+									<div class="row no-margin-bottom">
+										<span>Colectivo</span>
+									</div>
+								</div>
+							</div>
+						</div>
+	            	</form>
+            	</div>
+            	<br>
+            	<br>
+            	<br>
+            	<div class="card-action">
+            		<button id="submit_project_registry" class="btn waves-effect waves-light blue darken-2" type="submit" value="[% submit %]">[% submit %]
+            		</button>
+            	</div>
+            </div>
+        </div>
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 80px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

@@ -1,0 +1,107 @@
+<section class="section">
+  [% msg %]
+  <div class="container">
+    [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+    <div class="row">
+      <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+            <div class="card-title">
+        	  <div class="row no-bottom-margin">
+                <div id="title" class="col s12 m12 l12">
+                  <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+	    	<div id="description" class="row">
+	            <span class="description">[% conf.Page.Description %]</span>
+	        </div>
+	        <form id="retribution_form" action="/Form" method="POST" name="retribution_form">
+	        	[% IF retribution.actividad_a_realizar %]
+	        	<input type="hidden" id="actividad-value" value="[% retribution.actividad_a_realizar %]">
+	        	<input type="hidden" id="modalidad-value" value="[% retribution.modalidad %]">
+	        	[% END %]
+	            <input name="project_id" type="hidden" value="[% view.project_id %]">
+			    <input name="_submitted_retribution" type="hidden" value="1">
+			            <div class="row" id="modalidad-holder">
+				<label for="modalidad">Modalidad</label>
+				<select id="modalidad" name="modalidad">
+					<option value="" disabled [% IF !retribution %]selected[% END%]>Selecciona la modalidad</option>
+					<option value="Artistica" [% IF retribution.modalidad == 'Artisctica' %]selected[% END %]>Artística</option>
+					<option value="Formativa" [% IF retribution.modalidad == 'Formativa' %]selected[% END %]>Formativa</option>
+					<option value="Difusion" [% IF retribution.modalidad == 'Difusion' %]selected[% END %]>Difusión</option>
+		      	</select>
+		    </div>
+		    <div class="row hidden" id="actividad-holder">
+		      
+		    </div>
+		    <div class="row hidden" id="contribucion-holder">
+		    	<div class="row">
+		    		<div class="col s12">
+		    		 <label class="special-label" for="numero_contribuciones">Número de contribuciones</label>
+		    		 </div>
+		    		<div class="col s12">
+		    			<span class="field-description">Especificar el número de contribuciones conforme a lo establecido en las bases de la Convocatoria</span>
+		    		</div>
+		    	</div>
+		    	<div class="input-field s12">
+		            <textarea id="numero_contribuciones" name="numero_contribuciones" class="materialize-textarea count-char" data-length="300">[% retribution.numero_contribuciones %]</textarea>
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="row">
+		    		<div class="col s12">
+		    			<label class="special-label" for="descripcion_actividad">Descripción de la actividad</label>
+		    		</div>
+		    		<div class="col s12">
+		    			 <span class="field-description">Señalar detalladamente en qué consistirá la actividad, temática y el objetivo</span>
+		    		</div>
+		    	</div>
+		    	<div class="input-field s12">
+		    		<textarea id="descripcion_actividad" name="descripcion_actividad" class="materialize-textarea count-char" data-length="300">[% retribution.descripcion_actividad %]</textarea>
+		            
+		    	</div>
+				<!--<div class="col s12">
+        			<div class="file-field input-field">
+				      	<div class="btn">
+					        <span>Carta compromiso[% IF retribution.carta_compromiso_retribucion %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+					        <input name="carta_compromiso_retribucion" type="file" required>
+				      	</div>
+				      	<div class="file-path-wrapper">
+					        <input placeholder="Carta carta compromiso" class="file-path validate" type="text">
+				      	</div>	
+				    </div>
+	            </div>-->
+			</div>
+	        </form>
+            	</div>
+            	<div class="card-action">
+            		<button id="submit_retribution" class="btn waves-effect waves-light blue darken-2" type="submit" value="[% submit %]">[% submit %]
+            		</button>
+            	</div>
+            </div>
+        </div>
+        <div class="row">
+        	<button id="continuar-retribucion" class="btn waves-effect waves-light blue darken-2 right" type="button" value="Continuar">Continuar</button>	
+        </div>
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 80px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

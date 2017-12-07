@@ -1,0 +1,165 @@
+<div class="row">
+	<input type="hidden" id="categoria" name="categoria" value="[% categoria %]">
+	<div class="row no-bottom-margin">
+		<div class="col s12">
+			<label class="special-label" for="video">Video muestra</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">[% video.label %]</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<input id="video" name="video" type="text" value="[% current_qty.videomuestra %]" [% IF video.optional %]optional[% ELSE %]required[% END %]>
+	</div>
+	[% IF categoria != 'Jóvenes creadores' %]
+	<div class="row no-bottom-margin">
+		<div class="col s12">
+			<label class="special-label" for="demo_reel">Demo reel</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">[% demo_reel.label %]</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<input id="demo_reel" name="demo_reel" type="text" value="[% current_qty.demo_reel %]" [% IF !current_qty.demo_reel %]required[% ELSE %]optional[% END %]>
+	</div>
+	<div class="row no-marign-bottom">
+		<div class="col s12">
+			<label class="special-label" for="sitioweb">Sitio web</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">[% sitio.label %]</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<input id="sitioweb" name="sitioweb" type="text" value="[% current_qty.sitioweb %]" [% IF !current_qty.sitioweb %]required[% ELSE %]optional[% END %]>
+	</div>
+	[% END %]
+	<div class="row no-bottom-margin">
+		<div class="col s12">
+			<label class="special-label" for="demo_reel">Cortometraje</label>
+		</div>
+		<div class="col s12">
+			  <span class="field-description">[% cortometraje.label %]</span>
+		</div>
+	</div>
+	<div class="col s12">
+		<!--<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Cortometraje [% IF current_qty.cortometraje %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="cortometraje_file" name="cortometraje_file">
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="cortometraje" name="cortometraje" placeholder="Cortometraje" class="file-path validate" type="text" value="" required>
+		    </div>
+		</div>-->
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Sinopsis [% IF current_qty.sinopsis_cortometraje %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="sinopsis_cortometraje_file" name="sinopsis_cortometraje_file">
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="sinopsis_cortometraje" name="sinopsis_cortometraje" placeholder="Sinopsis del cortometraje" class="file-path validate cortometraje" type="text" value="" required>
+		    </div>
+		</div>	
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Guion [% IF current_qty.guion_cortometraje %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="guion_cortometraje_file" name="guion_cortometraje_file">
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="guion_cortometraje" name="guion_cortometraje" placeholder="Guion del cortometraje" class="file-path validate cortometraje" type="text" value="" required>
+		    </div>
+		</div>
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Plan [% IF current_qty.plan_rodaje_cortometraje %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="plan_cortometraje_file" name="plan_cortometraje_file">
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="plan_cortometraje" name="plan_cortometraje" placeholder="Plan de rodaje del cortometraje" class="file-path validate cortometraje" type="text" value="" required>
+		    </div>
+		</div>
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Carta [% IF current_qty.carta_autorizacion_cortometraje %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="carta_autorizacion_cortometraje_file" name="carta_autorizacion_cortometraje_file">
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="carta_autorizacion_cortometraje" name="carta_autorizacion_cortometraje" placeholder="Carta de autorización del autor o registro ante Indautor del guion" class="file-path validate cortometraje" type="text" value="" required>
+		    </div>
+		</div>					
+	</div>
+	<div class="row no-bottom-margin">
+		<div class="col s12">
+			<label class="special-label" for="guion">Guion</label>
+		</div>
+		<div class="col s12">
+			<span class="field-description">
+				[% guion.label %]
+			</span>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="file-field input-field">
+	      	<div class="btn">
+	        	<span>Guion [% IF current_qty.guion %]
+							<i class="small right material-icons white-text">check_circle</i>
+		            		[% END %]</span>
+	        	<input type="file" id="guion_file" name="guion_file" [% IF guion.optional %]optional[% ELSE %]required[% END %]>
+	    	</div>
+		    <div class="file-path-wrapper">
+		        <input id="guion" name="guion" placeholder="Guion" class="file-path validate" type="text" value="" >
+		    </div>
+		</div>
+	</div>
+	[% IF categoria == 'Desarrollo artístico individual' %]
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">Kardex o boleta de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Kardex[% IF current_qty.boleta_kardex %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="boleta_kardex_file" id="boleta_kardex_file" type="file" [% IF !current_qty.boleta_kardex %]required[% ELSE %]optional[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="boleta_kardex" placeholder="Boleta o Kardex" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<span class="field-description">Carta de aceptación de la institución educativa</span>
+		</div>
+	</div>
+	<div class="input-field s12">
+		<div class="col s12">
+    		<div class="file-field input-field">
+		      	<div class="btn">
+			        <span>Carta de aceptación[% IF current_qty.carta_aceptacion %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+			        <input name="carta_aceptacion_file" id="carta_aceptacion_file" type="file" [% IF !current_qty.carta_aceptacion %]required[% ELSE %]optional[% END %]>
+		      	</div>
+		      	<div class="file-path-wrapper">
+			        <input id="carta_aceptacion" placeholder="Carta de aceptación de la institución educativa" class="file-path validate" type="text">
+		      	</div>
+			</div>
+    	</div>
+	</div>
+	[% END %]
+	
+</div>

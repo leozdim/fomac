@@ -1,0 +1,66 @@
+<section class="section">
+  [% msg %]
+  <div class="container">
+    [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+	<br>
+	<br>
+	<div class="row no-bottom-margin">
+        <div id="title" class="col s12 m12 l12">
+          	<span class="title blue-text text-darken-3">Evidencias Interdisciplinaras</span>
+        </div>
+    </div>
+	<div id="description-collective" class="row">
+		<div class="col s12">
+        	  <span class="description">[% subtitle %]</span>
+        </div>
+    </div>
+
+    [% FOREACH form IN forms %]
+    <div class="row">
+      <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="[% form.id %]">
+        <div class="card-title">
+          <div class="row no-bottom-margin">
+            <div id="title" class="col s12 m12 l12">
+              <span class="title blue-text text-darken-3">[% form.title %]</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div id="description" class="row">
+            <span class="description">[% conf.Page.Description %]</span><br>
+          </div>
+          <input type="hidden" id="project_id" name="project_id" value="[% view.project_id %]">
+          [% form.form %]
+        </div>
+        <div class="card-action">
+          <button id="submit_evidence" class="btn waves-effect waves-light blue darken-2" type="button" value="[% submit %]">Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+    [% END %]
+    [% IF view.agregar %]
+    <div id="equipo" class="row">
+      
+    </div>
+    [% END %]
+    <div class="row animated hidden">
+      <div class="col s12">
+	[% view.breadcrumbs %]
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 80px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+  [% view.logout %]
+</div>

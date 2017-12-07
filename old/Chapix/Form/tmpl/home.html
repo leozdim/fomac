@@ -1,0 +1,109 @@
+[% msg %]
+<section>
+  <div class="container">
+    <div class="row no-margin">
+      <div class="col m12">
+	<h4 class="stylish">¡Hola [% sess.user_name %]!</h4>
+      </div>
+    </div>
+    
+    <div class="row no-margin center">
+      <div class="col s12 m12 l12">
+	<div class="main-contacts">
+	  <div class="contacts-listy blue">
+	    <div class="listy-item">
+	      <a  class="black-text" href="/[% conf.Domain.folder %]/CRM/Contacts">
+		<h6 class="white-text uppercase left">Tu Lista de contactos</h6>
+	      </a>							
+	    </div>
+	    <div class="listy-item blue">
+	      <a class="white-text tooltipped" href="/[% conf.Domain.folder %]/CRM/Contacts" data-position="top" data-delay="50" data-tooltip="[% loc('Ve tu lista de contactos') %]"> 
+		<i class="material-icons small">list</i> 
+	      </a>							
+	    </div>
+	    <div class="listy-item blue">
+	      <a class="white-text tooltipped" href="/[% conf.Domain.folder %]/CRM/ContactEdit" data-position="top" data-delay="50" data-tooltip="[% loc('Agrega un contacto') %]"> 
+		<i class="material-icons small">face</i> 
+	      </a>							
+	    </div>
+	    <div class="listy-item blue">
+	      <a class="white-text tooltipped" href="/[% conf.Domain.folder %]/CRM/AddContacts" data-position="top" data-delay="50" data-tooltip="[% loc('Sube tus contactos') %]">
+								<i class="material-icons small">group_add</i>
+							</a>							
+						</div>
+						<div class="listy-item blue">
+							<a class="white-text tooltipped" href="/[% conf.Domain.folder %]/CRM/GroupForm" data-position="top" data-delay="50" data-tooltip="[% loc('Crea grupo') %]">
+								<i class="material-icons small">group</i>	
+							</a>						
+						</div>
+
+					</div>
+				</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 m12 l12">
+				<div class="row center">				
+
+					<div class="col s12 m4 l4">
+						<div class="section"></div>
+						<div class="card-wrapper">	      
+							<a href="/[% Domain.folder %]/Forms" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Tus formularios">
+								<div class="card custom-card force-center hoverable">
+									<h6 class="uppercase black-text">Capta prospectos</h6>
+									<div class="card-content white-text">
+										<i class="large material-icons light-blue-text">assignment</i>
+										<h5 class="light-blue-text uppercase small-line-height"><span class="small-text">Tus</span><br/>Formularios</h5>
+										<p class="uppercase light-blue-text card-txt">de aterrizaje.</p>
+									</div>
+								</div>
+							</a>
+							<div class="card-floating-action">
+								<a class="btn btn-floating btn-large waves-effect waves-light hoverable tooltipped" href="/[% conf.Domain.folder %]/Forms/NewForm" data-position="right" data-delay="50" data-tooltip="Crea formulario"><i class="material-icons">add</i></a>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col s12 m4 l4">
+						<div class="section"></div>
+						<div class="card-wrapper">
+							<a href="/[% Domain.folder %]/CRM" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Tus prospectos">
+								<div class="card custom-card force-center hoverable">
+									<h6 class="uppercase black-text">Cierra Ventas</h6>
+									<div class="card-content white-text">
+										<i class="large material-icons light-green-text text-darken-1">contact_mail</i>
+										<h5 class="uppercasse light-green-text text-darken-1 small-line-height"><span class="small-text">DA</span><br/>SEGUIMIENTO</h5>
+										<p class="uppercase light-green-text text-darken-1 card-txt">a tus prospectos.</p>
+									</div>
+								</div>
+							</a>
+							<div class="card-floating-action">
+								<a class="btn-floating btn-large waves-effect waves-light hoverable tooltipped" href="/[% conf.Domain.folder %]/CRM/ContactEdit" data-position="right" data-delay="50" data-tooltip="Agrega prospecto"><i class="material-icons">add</i></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col s12 m4 l4">
+						<div class="section"></div>
+						<div class="card-wrapper">
+							<a href="/[% Domain.folder %]/EmailMkt"class="tooltipped" data-position="right" data-delay="50" data-tooltip="Tus mensajes">
+								<div class="card custom-card force-center hoverable">
+									<h6 class="uppercase black-text">Enamora Clientes</h6>
+									<div class="card-content white-text">
+										<i class="large material-icons pink-text text-darken-1">mail</i>
+										<h5 class="pink-text text-darken-1 uppercase small-line-height"><span class="small-text">Tus</span><br/>Mensajes</h5>
+										<p class="uppercase pink-text text-darken-1 card-txt">de correo masivo.</p>
+									</div>
+								</div>
+							</a>
+							<div class="card-floating-action">
+								<a class="btn-floating btn-large waves-effect waves-light hoverable tooltipped" data-position="right" data-delay="50" data-tooltip="Crea mensaje" href="/[% Domain.folder %]/EmailMkt/Message"><i class="material-icons">add</i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

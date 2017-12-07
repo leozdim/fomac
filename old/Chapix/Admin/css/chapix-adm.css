@@ -1,0 +1,124 @@
+.col-center {
+    float: none !important;
+    margin: auto !important;
+}
+
+.space-sm {
+	height: 10px;
+}
+
+.space-md {
+	height: 25px;
+}
+
+.space-lg {
+	height: 50px;
+}
+
+.space-xl {
+	height: 100px;
+}
+
+.label-danger {
+	color: #F44336;
+	font-size: 13px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.btn {
+	margin-right: 5px !important;
+}
+    
+.msg {
+     display: none;
+}
+
+.msg-danger {
+	background-color: #e53935 !important;
+	color: #FFF;
+}
+
+.msg-success {
+	background-color: #7cb342 !important;
+	color: #FFF;
+}
+
+.msg-warning {
+	background-color: #ffb300 !important;
+	color: #fff;
+}
+
+.msg-info {
+    background-color: #1e88e5 !important;
+    color: #fff;
+}
+
+.req {
+	color: #d32f2f;
+}
+
+
+.fill-body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* top: 0px; */
+    left: 0px;
+}
+
+<<<<<<< HEAD:Chapix/Admin/css/chapix-adm.css
+.page-title {
+    margin-left: 20px;
+    font-size: 25px !important;
+}
+
+.home-box {
+    color: #949697;
+}
+
+.home-box .title {
+    font-size: 1.0em;
+    font-weight: normal;
+}
+
+.home-box .qty {
+    font-size: 2.0em;
+    font-weight: bold;
+}
+
+/* Style to replace on other modules */
+
+.app-toolbar {
+    background-color: #00abf7;
+}
+
+.card-title {
+    border-bottom: 1px solid rgba(160,160,160,.2);
+}
+
+nav a {
+    color: #000;
+}
+
+.main-toolbar {
+    background-color: #eeeeee;
+    color: #000;
+}
+
+.main-toolbar .container-fluid{
+       margin-left: 20px;
+       margin-right: 20px;
+}
+
+.main-toolbar .container-fluid .button-collapse i.small {
+    font-size: 2rem;
+}
+
+.collection a.collection-item {
+    color: #FF9100;
+}
+
+.my-account-dropdown-content {
+	width: 200px !important;
+}

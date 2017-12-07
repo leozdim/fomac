@@ -1,0 +1,155 @@
+<section class="section">
+    [% msg %]
+    <div class="container">
+        [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+        <div class="row">
+        	<div class="row no-bottom-margin">
+                <div id="title" class="col s12 m12 l12">
+                    <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                </div>
+            </div>
+    		<div id="description" class="row">
+            	<span class="description">[% conf.Page.Description %]</span>
+            </div>
+           
+            [% FOREACH participant IN participants %]
+            <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+            	<div class="card-content">
+            		<div class="row participant-name">
+            			[% participant.nombre %] sube tu documentación
+            		</div>
+					[% IF participant.uploaded %]
+					<div class="col s12">
+						<div class="row center">
+							<h5>Todos los documentos de este participante ya fueron agregados</h5><span><i class="medium material-icons blue-text text-darken-3">check_circle</i></span>
+						</div>
+					</div>
+					[% ELSE %]
+	            	<form class="upload_form" id="documents_[% participant.documents_id %]" action="/Form" method="POST" name="participant_[% participant.documents_id %]">
+	            		<input name="documents_id" value="[% participant.documents_id %]" type="hidden">
+	            		<input name="project_id" type="hidden" value="[% view.project_id %]">
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.carta_solicitud %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="carta_solicitud" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="Semblanza individual o colectiva" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.acta_de_nacimiento %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="acta_de_nacimiento" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="Acta de nacimiento" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.comprobante_de_domicilio %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="comprobante_de_domicilio" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="Comprobante de domicilio" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.identificacion_oficial %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="identificacion_oficial" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input  placeholder="Identificacion oficial con foto" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.CURP %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="curp" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="CURP" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.curriculum %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="curriculum" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="Curriculum Vitae" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		[% IF project.tipo_proyecto == 'Colectivo' %]
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.carta_asignacion %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="carta_asignacion" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input placeholder="Carta de asignación de representante legal" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		[% END %]
+	            		<div class="col s12">
+	            			<div class="file-field input-field">
+						      	<div class="btn">
+							        <span>Cargar[% IF docs.carta_compromiso %]<i class="material-icons white-text">check_circle</i>[% END %]</span>
+							        <input name="carta_compromiso" type="file" required>
+						      	</div>
+						      	<div class="file-path-wrapper">
+							        <input  placeholder="Carta compromiso" class="file-path validate" type="text">
+						      	</div>
+						    </div>
+	            		</div>
+	            		<button id="[% participant.documents_id %]" class="cargar_documentos btn waves-effect waves-light blue darken-2 cargar" type="button" value="Cargar">Subir Archivos
+            			</button>
+	            	</form>
+	            	[% END %]
+            	</div>
+        	</div>
+
+        	[% END %]
+        </div>
+        <div class="row">
+        	
+        	[% IF !finalizar %]
+        		<button id="continuar-docs" class="btn waves-effect waves-light blue darken-2 right" type="button" value="Continuar">Continuar</button>
+        	[% END %]
+        </div>
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 80px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

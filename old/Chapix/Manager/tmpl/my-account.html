@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col s12 offset-m3 m6 ">
+    <div class="card">
+      <div class="card-title"><i class="medium material-icons">account_circle</i> Your account</div>
+      <div class="card-content">
+	<p>
+          <ul>
+            <li>[% sess.user_name %]</li>
+            <li>[% sess.user_email %]</li>
+            <li>Time Zone: [% sess.user_time_zone %]</li>
+            <li>Language: [% sess.user_language %]</li>
+          </ul>
+        </p>
+      </div>
+      <div class="card-action">
+	<button onclick="document.location='/[% REQUEST.Domain %]/Xaa/EditAccount';" class="btn waves-effect waves-light">Change your settings </button>
+	<button onclick="document.location='/Xaa/Logout';" class="btn waves-effect waves-light right grey lighten-1">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>

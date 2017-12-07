@@ -1,0 +1,62 @@
+<section class="grey lighten-3 login-form">
+  <div class="section"></div>
+  <div class="container">
+    <div class="row">
+    	<div class="col s12 m12 l7 fomac-intro">
+			<div class="row no-bottom-margin">
+				<div class="col s12 center">
+					<img src="/Chapix/Form/img/fomac-logotipo.png" class="responsive-img logotipo"  alt="">
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col s12">
+					<p class="description">
+						Con el propósito de impulsar el desarrollo artístico y cultural del municipio de Chihuahua, el Gobierno Municipal a través de su Instituto de Cultura, organiza la primera emisión del Fondo Municipal para Artistas y Creadores (FOMAC).<br> 
+					</p>
+					<p class="center">
+						<a target="_blank" href="data/anexos/FOLLETO FOMAC.pdf"><img src="/templates/Chapix/img/convocatoria_button.jpg" alt="convocatoria" class="responsive-img convocatoria-button"></a>
+					</p>
+				</div>
+			</div>
+    	</div>	
+    <div class="col s12 m12 l5 z-depth-4 card col-center">
+	[% form.jshead %]
+	[% form.start %]
+	<div class="card-content">
+	  <div class="bold blue-text text-darken-3 center title">[% conf.App.Name %]</div>
+	  <p class="center">[% 'Entra en tu cuenta' %]</p>
+	  [% FOREACH field = form.fields %][% IF field.type == 'hidden'%][% field.field %][% END %][% END %]
+	  [% msg %]
+	  [% field = form.field.email %]
+	  <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              [% field.prefix %][% field.field %][% field.unit %][% IF field.comment %]<span class="help-block">[% field.comment %]</span>[% END %]
+              <label for="[% field.name %]">[% field.label %]</label>
+            </div>
+	  </div>
+	  [% field = form.field.password %]
+	  <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock</i>
+              [% field.prefix %][% field.field %][% field.unit %][% IF field.comment %]<span class="help-block">[% field.comment %]</span>[% END %]
+              <label for="[% field.name %]">[% field.label %]</label>
+            </div>
+	  </div>
+	  <div class="row no-margin-bottom">
+	  	<div class="col s12 center">
+	  		<div>[% buttons %]</div>
+	  	</div>
+	  </div>
+	</div>
+	<div class="card-action center">
+    <div class="col s6 m6 l6">[% form.submit %]</div>
+    <div class="col s6 m6 l6"><div class="row center">[% register %]</div></div>
+	  
+	</div>
+	[% form.end %]
+      </div>
+    </div>
+  </div>
+  <div class="section"></div>
+</section>

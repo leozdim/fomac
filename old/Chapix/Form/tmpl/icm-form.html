@@ -1,0 +1,122 @@
+<section class="section">
+    [% msg %]
+    <div class="container">
+        [% IF help %]<p class="alert alert-info">[% help %]</p>[% END %]
+        
+        <div class="row">
+            <div class="col s12 m12 l12 z-depth-4 card col-center hidden animated" id="card-[% form.name %]">
+                [% tabs %]
+                [% form.jshead %]
+                [% form.start %]
+                <div class="card-title">
+                    <div class="row no-bottom-margin">
+                        <div id="title" class="col s12 m12 l12">
+                            <span class="title blue-text text-darken-3">[% conf.Page.Title %]</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                	<div id="description" class="row">
+                    	<span class="description">[% conf.Page.Description %]</span>
+                    </div>
+                    [% FOREACH field = form.fields %][% IF field.type == 'hidden'%][% field.field %][% END %][% END %]
+                    <div class="row">
+                        [% FOREACH field = form.fields %]
+                        [% IF field.type != 'hidden'%]
+                        [% IF field.group %]
+                            <h6>[% field.group %]</h6>
+                        [% END %]
+                    </div>
+                    <div class="row">
+                        [% IF field.type == 'file' %]
+                            [% IF field.id == 'hidden'%]
+                            	<div class="row">
+	                            	<div class="col s12">
+	                        			[% IF field.comment %]<span class="help-block field-description">[% field.comment %]</span>[% END %]
+	                        		</div>
+                        		</div>
+                                <div id="[% field.name %]" class="file-field input-field hidden">
+                                    <div class="btn">
+                                        <span>[% field.label %][% IF field.required %]<i class="req">*</i>[% END %]</span>
+                                        [% field.prefix %][% field.field %][% field.unit %]
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path" type="text" readonly="readonly" disabled>
+                                    </div>
+                                </div>
+                            [% ELSE %]
+                            	<div class="row">
+	                            	<div class="col s12">
+	                        			[% IF field.comment %]<span class="help-block field-description">[% field.comment %]</span>[% END %]
+	                        		</div>
+                        		</div>
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>[% field.label %][% IF field.required %]<i class="req">*</i>[% END %]</span>
+                                        [% field.prefix %][% field.field %][% field.unit %]
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path" type="text" readonly="readonly" disabled>
+                                    </div>
+                                </div>
+                            [% END %]
+                        
+                        [% ELSIF field.type == 'checkbox' %]
+                        <label for="[% field.name %]">[% field.label %][% IF field.required %] <i class="req">*</i> [% END %]</label>
+                            [% field.prefix %][% field.field %][% field.unit %]
+                        [% ELSE %]
+                            [% IF field.id == 'hidden' %]
+                                <div id="[% field.name %]" class="input-field col s12 m8 l12 hidden">
+                                    [% field.prefix %][% field.field %][% field.unit %][% IF field.comment %]<span class="help-block">[% field.comment %]</span>[% END %]
+                                    <label [% IF field.type == 'select' %]class="active"[% END %] for="[% field.name %]">[% field.label %][% IF field.required %]<i class="req">*</i>[% END %]</label>
+                                </div>
+                            [% ELSE %]
+                            	<div class="col s12">
+                            	<label class="special-label" [% IF field.type == 'select' %]class="active"[% END %] for="[% field.name %]">[% field.label %][% IF field.required %]<i class="req">*</i>[% END %]</label>
+                            	</div>
+             
+                        		<div class="col s12">
+                        			[% IF field.comment %]<span class="help-block field-description">[% field.comment %]</span>[% END %]
+                        		</div>
+                            
+                                <div class="input-field col s12 m8 l12">
+                                    [% field.prefix %][% field.field %][% field.unit %]
+                                </div>
+                            [% END %]
+                        
+                        [% END %]
+                        [% END %]
+                        [% END %]
+                    </div>
+                </div>
+                <div class="card-action">
+                  [% form.submit %] [% buttons %]
+                </div>
+                [% form.end %]
+            </div>
+            <div class="row">
+            	[% IF !completed %]
+            	<button id="continuar-general" class="btn waves-effect waves-light blue darken-2 right" type="button" value="Continuar">Continuar</button>
+            	[% END %]
+        	</div>
+        </div>
+        <div class="row animated hidden">
+	        <div class="col s12">
+	        	[% view.breadcrumbs %]
+	        </div>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+        </div>
+  </div>
+</section>
+[% IF view.finish %]
+<div class="fixed-action-btn" style="bottom: 80px;">
+	 [% view.finish %]
+</div>
+[% END %]
+<div class="fixed-action-btn">
+    [% view.logout %]
+</div>

