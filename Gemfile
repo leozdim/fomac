@@ -21,10 +21,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 
 gem 'materialize-sass', '~> 0.100.2' 
+gem 'material_icons' 
 
 gem 'devise', '~> 4.3'
 
 gem 'cancancan', '~> 2.1', '>= 2.1.2'
+
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
