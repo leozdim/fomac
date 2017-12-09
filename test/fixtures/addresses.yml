@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: one
+  street: MyString
+  internal_number: MyString
+  external_number: MyString
+  colony: MyString
+  zip: MyString
+
+two:
+  person_id: two
+  street: MyString
+  internal_number: MyString
+  external_number: MyString
+  colony: MyString
+  zip: MyString
