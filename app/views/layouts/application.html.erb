@@ -109,9 +109,14 @@
         </nav>
       </div>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <section id="main-content">
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+      <div class="fixed-action-btn">
+        <%= link_to('Cerrar sesion',destroy_user_session_path, method: :delete, 
+        class: 'btn waves-effect waves-light blue darken-2 right') if user_signed_in?  %>
+      </div>
+    </section>
     <footer class="page-footer white ">
       <div class="col s12 m12 l12 center">
         <img src="/assets/placeholders/logo-chihuahua.jpg" alt="" class="responsive-img">
