@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20171210231732) do
     t.string "city"
     t.string "nationality"
     t.string "level_study"
+    t.string "email"
     t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

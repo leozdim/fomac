@@ -14,3 +14,7 @@
  *= require_self
  */
 @import "materialize";
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: green;
+}
