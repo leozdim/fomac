@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @art_form.name %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @art_form.active %>
+</p>
+
+<%= link_to 'Edit', edit_art_form_path(@art_form) %> |
+<%= link_to 'Back', art_forms_path %>

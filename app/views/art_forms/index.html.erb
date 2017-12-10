@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Art Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @art_forms.each do |art_form| %>
+      <tr>
+        <td><%= art_form.name %></td>
+        <td><%= art_form.active %></td>
+        <td><%= link_to 'Show', art_form %></td>
+        <td><%= link_to 'Edit', edit_art_form_path(art_form) %></td>
+        <td><%= link_to 'Destroy', art_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Art Form', new_art_form_path %>

@@ -1,0 +1,2 @@
+class ArtForm < ApplicationRecord
+end
