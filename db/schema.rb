@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20171210231732) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
+    t.string "key", null: false
+    t.boolean "single", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
