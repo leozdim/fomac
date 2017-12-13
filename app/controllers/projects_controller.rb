@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource param_method: :project_params
 
   # GET /projects
   # GET /projects.json
@@ -28,10 +29,11 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user=current_user
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
+    
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to new_person_path(:project=>@project), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -48,7 +50,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to new_person_path(:project=>@project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }

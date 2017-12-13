@@ -6,4 +6,30 @@ class User < ApplicationRecord
   belongs_to :person, optional: true 
   has_many :projects
   accepts_nested_attributes_for :person
+  ROLES = [:admin, :creator, :reviewer, :judge].freeze
+
+  def admin?
+    role==:admin 
+  end
+
+  def reviewer?
+    role==:reviewer 
+  end
+
+  def judge?
+    role==:judge 
+  end
+
+  def creator?
+    role==:creator 
+  end
+
+  def role
+    read_attribute(:role).to_sym
+  end
+
+  def role=(new_status)
+  write_attribute :role, new_status.to_s
+  end
+
 end
