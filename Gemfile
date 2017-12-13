@@ -26,6 +26,7 @@ gem 'material_icons'
 gem 'devise', '~> 4.3'
 
 gem 'cancancan', '~> 2.1', '>= 2.1.2'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 

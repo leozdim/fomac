@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210231732) do
+ActiveRecord::Schema.define(version: 20171212205717) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "person_id"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20171210231732) do
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "art_forms_projects", id: false, force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "art_form_id", null: false
+    t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -57,6 +63,17 @@ ActiveRecord::Schema.define(version: 20171210231732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_people_on_address_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "folio"
+    t.integer "user_id"
+    t.integer "category_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_projects_on_category_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

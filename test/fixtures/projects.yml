@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  folio: MyString
+  user: one
+  category: one
+  status: MyString
+
+two:
+  folio: MyString
+  user: two
+  category: two
+  status: MyString
