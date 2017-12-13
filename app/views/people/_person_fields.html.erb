@@ -1,0 +1,91 @@
+<div class="nested-fields" >
+  <%= link_to_remove_association "Remover participante", f unless @project.single? %>
+  <% if f.object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, id: :person_first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, id: :person_last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second_last_name %>
+    <%= f.text_field :second_last_name, id: :person_second_last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %>
+    <%= f.date_select :birthdate, id: :person_birthdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :home_phone_number %>
+    <%= f.text_field :home_phone_number, id: :person_home_phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cellphone %>
+    <%= f.text_field :cellphone, id: :person_cellphone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthplace %>
+    <%= f.text_field :birthplace, id: :person_birthplace %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.text_field :state, id: :person_state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city, id: :person_city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nationality %>
+    <%= f.text_field :nationality, id: :person_nationality %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level_study %>
+    <%= f.text_field :level_study, id: :person_level_study %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %>
+    <%= f.text_field :birthdate, id: :person_birthdate %>
+  </div>
+
+  <%= f.fields_for :address do |a| %> 
+      <%= a.label :street %>
+      <%= a.text_field :street %>
+      <%= a.label :internal_number %>
+      <%= a.text_field :internal_number %>
+      <%= a.label :external_number %>
+      <%= a.text_field :external_number %>
+      <%= a.label :colony %>
+      <%= a.text_field :colony %>
+      <%= a.label :zip %>
+      <%= a.text_field :zip %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</div>

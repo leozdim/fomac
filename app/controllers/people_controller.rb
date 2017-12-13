@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource param_method: :people_params
 
   # GET /people
   # GET /people.json
@@ -15,7 +16,8 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    @person = Person.new
+    @project=Project.find params[:project]
+    @project.people.build
   end
 
   # GET /people/1/edit
