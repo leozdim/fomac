@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213040435) do
+ActiveRecord::Schema.define(version: 20171214061015) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "person_id"
@@ -65,6 +65,22 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["project_id"], name: "index_people_on_project_id"
   end
 
+  create_table "person_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "person_id"
+    t.string "request_letter"
+    t.string "birth"
+    t.string "address"
+    t.string "identification"
+    t.string "curp"
+    t.string "resume"
+    t.string "kardex"
+    t.string "agreement_letter"
+    t.string "assign_letter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_documents_on_person_id"
+  end
+
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "folio"
     t.bigint "user_id"
@@ -105,6 +121,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
 
   add_foreign_key "addresses", "people"
   add_foreign_key "people", "projects"
+  add_foreign_key "person_documents", "people"
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
   add_foreign_key "users", "people"

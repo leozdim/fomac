@@ -1,0 +1,6 @@
+
+<%= form_for(@project, url: add_documents_people_path ) do |f| %>
+  <%= f.fields_for :people do |p| %> 
+    <%= render 'docs_person_fields', f: p %>
+  <% end %>
+<% end %>

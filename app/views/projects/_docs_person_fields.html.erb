@@ -1,0 +1,23 @@
+<%= link_to_add_association 'Agregar integrante', f, :person_document  %>
+<%= f.fields_for :person_document do |t| %>
+      <%= t.label :request_letter %>
+      <%= t.file_field :request_letter %>
+      <%= t.label :birth %>
+      <%= t.file_field :birth %>
+      <%= t.label :address %>
+      <%= t.file_field :address %>
+      <%= t.label :identification %>
+      <%= t.file_field :identification %>
+      <%= t.label :curp %>
+      <%= t.file_field :curp %>
+      <%= t.label :resume %>
+      <%= t.file_field :resume %>
+      <%= t.label :kardex %>
+      <%= t.file_field :kardex %>
+      <%= t.label :agreement_letter %>
+      <%= t.file_field :agreement_letter %>
+      <%= t.label :assign_letter %>
+      <%= t.file_field :assign_letter %>
+      <br></br>
+      <%= f.submit %> 
+<% end %>
