@@ -43,6 +43,18 @@ class ProjectsController < ApplicationController
   def anexos
   end
 
+  def add_documents_people
+    if request.patch?
+        if @project.update(project_params)
+          format.html { redirect_to add_anexo_people_path(@project), notice: 'Person was successfully updated.' }
+          format.json { render :show, status: :ok, location: @person }
+        else
+          format.html { render :edit }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+    end
+  end
+
   # POST /projects
   # POST /projects.json
   def create
@@ -95,6 +107,11 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params 
-    params.require(:project).permit( :category_id ,:people_attributes=>[ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, :addresses_attributes=>[ :street, :internal_number, :external_number, :colony, :zip ] ])
+    params.require(:project).permit( :category_id ,:people_attributes=>
+                                    [ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, 
+                                      :addresses_attributes=>
+                                        [ :street, :internal_number, :external_number, :colony, :zip ],
+                                      :person_document=>[:request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter]])
+
   end 
 end
