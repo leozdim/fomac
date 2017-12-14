@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  username: rails 
+  username: rails
   host: localhost 
 
 # Warning: The database defined as "test" will be erased and

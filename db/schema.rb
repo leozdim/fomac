@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171213040435) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
     t.string "street"
     t.string "internal_number"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
-  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id", null: false
     t.bigint "art_form_id", null: false
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "key", null: false
     t.boolean "single", null: false
@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
-    t.string "birthdate"
+    t.date "birthdate"
     t.string "home_phone_number"
     t.string "cellphone"
     t.string "birthplace"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["project_id"], name: "index_people_on_project_id"
   end
 
-  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "folio"
     t.bigint "user_id"
     t.bigint "category_id"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
