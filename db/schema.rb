@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
-    t.string "birthdate"
+    t.date "birthdate"
     t.string "home_phone_number"
     t.string "cellphone"
     t.string "birthplace"
