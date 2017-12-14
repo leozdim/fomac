@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails fomac: test" uuid="5eca103b-d7c8-43b5-a109-d625cffa17e0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="Rails fomac: default" uuid="8f0d43c5-6735-4203-8b2a-4ac8d1c1e70c">
+      <database-info product="MySQL" version="5.5.5-10.1.26-MariaDB-0+deb9u1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <user-name>root</user-name>
+      <introspection-schemas>*:rails_fomac</introspection-schemas>
+    </data-source>
+    <data-source name="Rails fomac: development" uuid="04eb4902-b3a0-4f72-ba99-73f00f991ab2">
+      <database-info product="MySQL" version="5.5.5-10.1.26-MariaDB-0+deb9u1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <user-name>rails</user-name>
+      <introspection-schemas>*:rails_fomac</introspection-schemas>
+    </data-source>
+    <data-source name="Rails fomac: production" uuid="a311d85d-76ce-468f-b868-96e7a69e63c7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
