@@ -14,7 +14,6 @@ class CreatePeople < ActiveRecord::Migration[5.1]
       t.string :level_study
       t.string :birthdate
       t.string :email
-      t.references :address, foreign_key: true
 
       t.timestamps
     end

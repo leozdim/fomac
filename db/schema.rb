@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20171213040435) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "person_id"
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "person_id"
     t.string "street"
     t.string "internal_number"
     t.string "external_number"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
-  create_table "art_forms", force: :cascade do |t|
+  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "art_forms_projects", id: false, force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "art_form_id", null: false
+  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "project_id", null: false
+    t.bigint "art_form_id", null: false
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name", null: false
     t.string "key", null: false
     t.boolean "single", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
@@ -59,18 +59,16 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.string "nationality"
     t.string "level_study"
     t.string "email"
-    t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
-    t.index ["address_id"], name: "index_people_on_address_id"
+    t.bigint "project_id"
     t.index ["project_id"], name: "index_people_on_project_id"
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "folio"
-    t.integer "user_id"
-    t.integer "category_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,17 +76,17 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
     t.string "role"
-    t.integer "person_id"
+    t.bigint "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
+    t.string "email", limit: 150, default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.string "reset_password_token", limit: 150
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
@@ -96,7 +94,7 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "confirmation_token"
+    t.string "confirmation_token", limit: 150
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -105,4 +103,9 @@ ActiveRecord::Schema.define(version: 20171213040435) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "people"
+  add_foreign_key "people", "projects"
+  add_foreign_key "projects", "categories"
+  add_foreign_key "projects", "users"
+  add_foreign_key "users", "people"
 end
