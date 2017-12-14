@@ -25,19 +25,22 @@ class ProjectsController < ApplicationController
 
 
   def add_people
-    if request.post?
+    if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+          format.html { redirect_to add_anexo_people_path(@project), notice: 'Person was successfully updated.' }
           format.json { render :show, status: :ok, location: @person }
         else
           format.html { render :edit }
-          format.json { render json: @person.errors, status: :unprocessable_entity }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
         end
       end
     else
       @project.people.build if @project.people.empty?
     end
+  end
+
+  def anexos
   end
 
   # POST /projects
@@ -46,8 +49,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user=current_user
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
-
-
     respond_to do |format|
       if @project.save
         format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully created.' }
@@ -94,6 +95,6 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params 
-    params.require(:project).permit(:id, :category_id ,:people_attributes=>[ :first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, :address=>[ :street, :internal_number, :external_number, :colony, :zip ] ])
+    params.require(:project).permit( :category_id ,:people_attributes=>[ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, :addresses_attributes=>[ :street, :internal_number, :external_number, :colony, :zip ] ])
   end 
 end

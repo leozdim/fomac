@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :id %>
 
   <div class="field">
     <%= f.label :first_name %>
@@ -68,18 +69,10 @@
   </div>
 
 
-  <%# <%= f.fields_for :address do |a| %> 
-  <%#     <%= a.label :street %>
-  <%#     <%= a.text_field :street %>
-  <%#     <%= a.label :internal_number %>
-  <%#     <%= a.text_field :internal_number %>
-  <%#     <%= a.label :external_number %>
-  <%#     <%= a.text_field :external_number %>
-  <%#     <%= a.label :colony %>
-  <%#     <%= a.text_field :colony %>
-  <%#     <%= a.label :zip %>
-  <%#     <%= a.text_field :zip %>
-  <%# <% end %>
+  <% f.object.addresses.build if f.object.addresses.empty? %>
+  <%= f.fields_for :addresses do |a| %> 
+    <%= render 'projects/address_fields', f: a %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

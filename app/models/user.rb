@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def role=(new_status)
-  write_attribute :role, new_status.to_s
+    write_attribute :role, new_status.to_s
   end
 
 end
