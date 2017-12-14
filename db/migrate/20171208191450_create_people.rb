@@ -12,7 +12,6 @@ class CreatePeople < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :nationality
       t.string :level_study
-      t.string :birthdate
       t.string :email
 
       t.timestamps
