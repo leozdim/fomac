@@ -1,0 +1,8 @@
+
+
+<%= form_for(@project, url: add_project_people_path ) do |f| %>
+  <%= f.fields_for :people do |p| %> 
+    <%= render 'people/person_fields', f: p %>
+  <% end %>
+  <%= link_to_add_association 'Agregar integrante', f, :people unless @project.single? %>
+<% end %>

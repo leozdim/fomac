@@ -29,7 +29,7 @@
 
   <div class="field">
     <%= f.label :birthdate %>
-    <%= f.date_select :birthdate, id: :person_birthdate %>
+    <%# <%= f.date_select :birthdate, id: :person_birthdate, start_date: 100.years.ago %>
   </div>
 
   <div class="field">
@@ -67,23 +67,19 @@
     <%= f.text_field :level_study, id: :person_level_study %>
   </div>
 
-  <div class="field">
-    <%= f.label :birthdate %>
-    <%= f.text_field :birthdate, id: :person_birthdate %>
-  </div>
 
-  <%= f.fields_for :address do |a| %> 
-      <%= a.label :street %>
-      <%= a.text_field :street %>
-      <%= a.label :internal_number %>
-      <%= a.text_field :internal_number %>
-      <%= a.label :external_number %>
-      <%= a.text_field :external_number %>
-      <%= a.label :colony %>
-      <%= a.text_field :colony %>
-      <%= a.label :zip %>
-      <%= a.text_field :zip %>
-  <% end %>
+  <%# <%= f.fields_for :address do |a| %> 
+  <%#     <%= a.label :street %>
+  <%#     <%= a.text_field :street %>
+  <%#     <%= a.label :internal_number %>
+  <%#     <%= a.text_field :internal_number %>
+  <%#     <%= a.label :external_number %>
+  <%#     <%= a.text_field :external_number %>
+  <%#     <%= a.label :colony %>
+  <%#     <%= a.text_field :colony %>
+  <%#     <%= a.label :zip %>
+  <%#     <%= a.text_field :zip %>
+  <%# <% end %>
 
   <div class="actions">
     <%= f.submit %>

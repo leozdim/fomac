@@ -12,6 +12,7 @@ class Ability
       when :creator
         can :update, User 
         can :update, Project , id: user.projects.pluck(:id)
+        can :add_people, Project , id: user.projects.pluck(:id)
         can :create, Project
         can :update, Person, :project_id=>user.projects.pluck(:id) 
         can :create, Person

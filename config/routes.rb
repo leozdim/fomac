@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :projects
+  match 'project/:id/add_people', to: 'projects#add_people', as: :add_project_people , via: :all
   resources :art_forms
   resources :categories
   devise_for :users, controllers: {

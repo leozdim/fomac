@@ -23,17 +23,34 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+
+  def add_people
+    if request.post?
+      respond_to do |format|
+        if @project.update(project_params)
+          format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+          format.json { render :show, status: :ok, location: @person }
+        else
+          format.html { render :edit }
+          format.json { render json: @person.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @project.people.build if @project.people.empty?
+    end
+  end
+
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(project_params)
     @project.user=current_user
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
-    
+
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to new_person_path(:project=>@project), notice: 'Project was successfully created.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -50,7 +67,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to new_person_path(:project=>@project), notice: 'Project was successfully updated.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -70,13 +87,13 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit( :category_id )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params 
+    params.require(:project).permit(:id, :category_id ,:people_attributes=>[ :first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, :address=>[ :street, :internal_number, :external_number, :colony, :zip ] ])
+  end 
 end
