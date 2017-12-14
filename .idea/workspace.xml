@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db072cd4-9b92-4dba-8e1a-6db676f5a074" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/fomac.iml" afterPath="$PROJECT_DIR$/.idea/fomac.iml" />
       <change beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -36,8 +37,8 @@
       <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="286">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,8 +97,8 @@
       <file leaf-file-name="Gemfile.lock" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile.lock">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="253" column="19" lean-forward="false" selection-start-line="253" selection-start-column="19" selection-end-line="253" selection-end-column="19" />
+            <state relative-caret-position="172">
+              <caret line="254" column="19" lean-forward="false" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -337,12 +338,12 @@
       <workItem from="1512846444285" duration="4762000" />
       <workItem from="1513221741985" duration="1261000" />
       <workItem from="1513223865066" duration="1882000" />
-      <workItem from="1513232458005" duration="2203000" />
+      <workItem from="1513232458005" duration="2474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10108000" />
+    <option name="totallyTimeSpent" value="10379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="448" y="94" width="1600" height="808" extended-state="6" />
@@ -593,16 +594,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile.lock">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="253" column="19" lean-forward="false" selection-start-line="253" selection-start-column="19" selection-end-line="253" selection-end-column="19" />
+        <state relative-caret-position="172">
+          <caret line="254" column="19" lean-forward="false" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="286">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
