@@ -1,0 +1,34 @@
+
+<%= form_for(@project, url: project_information_path ) do |f| %>
+  <%= f.fields_for :information  do |p| %> 
+    <%# <%= render 'docs_perproject_informationson_fields', f: p %>
+    <%= p.hidden_field :id %>
+    <%= p.label :name %>
+    <%= p.text_field :name %>
+    <%= p.label :description %>
+    <%= p.text_area :description %>
+    <%= p.label :antecedent %>
+    <%= p.text_area :antecedent %>
+    <%= p.label :justification %>
+    <%= p.text_area :justification %>
+    <%= p.label :general_objective %>
+    <%= p.text_area :general_objective %>
+    <%= p.label :specific_objective %>
+    <%= p.text_area :specific_objective %>
+    <%= p.label :goals %>
+    <%= p.text_area :goals %>
+    <%= p.label :beneficiary %>
+    <%= p.text_area :beneficiary %>
+    <%= p.label :context %>
+    <%= p.text_area :context %>
+    <%= p.label :bibliography %>
+    <%= p.text_area :bibliography %>
+    <%= p.label :activities %>
+    <%= p.file_field :activities %>
+    <%= p.label :spending %>
+    <%= p.file_field :spending %>
+    <%= p.label :funding %>
+    <%= p.file_field :funding %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

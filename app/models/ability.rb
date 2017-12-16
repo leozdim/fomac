@@ -15,6 +15,7 @@ class Ability
         can :add_people, Project , id: user.projects.pluck(:id)
         can :anexos, Project , id: user.projects.pluck(:id)
         can :add_documents_people, Project , id: user.projects.pluck(:id)
+        can :information, Project , id: user.projects.pluck(:id)
         can :create, Project
         can :update, Person, :project_id=>user.projects.pluck(:id) 
         can :create, Person

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  name: MyString
+  description: MyText
+  antecedent: MyText
+  justification: MyText
+  general_objective: MyText
+  specific_objective: MyText
+  goals: MyText
+  beneficiary: MyText
+  context: MyText
+  bibliography: MyText
+  activities: MyString
+  spending: MyString
+  funding: MyString
+
+two:
+  project: two
+  name: MyString
+  description: MyText
+  antecedent: MyText
+  justification: MyText
+  general_objective: MyText
+  specific_objective: MyText
+  goals: MyText
+  beneficiary: MyText
+  context: MyText
+  bibliography: MyText
+  activities: MyString
+  spending: MyString
+  funding: MyString

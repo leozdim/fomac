@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214061015) do
+ActiveRecord::Schema.define(version: 20171216013604) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "person_id"
     t.string "street"
     t.string "internal_number"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(version: 20171214061015) do
     t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
-  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "project_id", null: false
     t.bigint "art_form_id", null: false
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name", null: false
     t.string "key", null: false
     t.boolean "single", null: false
@@ -46,7 +46,27 @@ ActiveRecord::Schema.define(version: 20171214061015) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "project_id"
+    t.string "name"
+    t.text "description"
+    t.text "antecedent"
+    t.text "justification"
+    t.text "general_objective"
+    t.text "specific_objective"
+    t.text "goals"
+    t.text "beneficiary"
+    t.text "context"
+    t.text "bibliography"
+    t.string "activities"
+    t.string "spending"
+    t.string "funding"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_information_on_project_id"
+  end
+
+  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
@@ -92,7 +112,7 @@ ActiveRecord::Schema.define(version: 20171214061015) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
@@ -120,6 +140,7 @@ ActiveRecord::Schema.define(version: 20171214061015) do
   end
 
   add_foreign_key "addresses", "people"
+  add_foreign_key "information", "projects"
   add_foreign_key "people", "projects"
   add_foreign_key "person_documents", "people"
   add_foreign_key "projects", "categories"
