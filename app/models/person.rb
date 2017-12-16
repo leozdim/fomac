@@ -4,7 +4,7 @@ class Person < ApplicationRecord
   has_one :user
   accepts_nested_attributes_for :addresses
   has_one :person_document
-  accepts_nested_attributes_for :person_document
+  accepts_nested_attributes_for :person_document,allow_destroy: true
 
   def birthdate=(new_status)
     date=Date.parse new_status.values.join("-")

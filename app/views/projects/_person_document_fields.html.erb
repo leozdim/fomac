@@ -1,0 +1,104 @@
+<div class="nested-fields" >
+  <%= f.hidden_field :id %>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :request_letter %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.request_letter.url, class: 'file-path validate', placeholder: 'request' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :birth %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag  nil, f.object.birth.url, class: 'file-path validate', placeholder: 'birth', id: nil, name: nil %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :address %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.address.url, class: 'file-path validate', placeholder: 'address' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :identification %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.identification.url, class: 'file-path validate', placeholder: 'identification' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :curp %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.curp.url, class: 'file-path validate', placeholder: 'curp' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :resume %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.resume.url, class: 'file-path validate', placeholder: 'resume' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :kardex %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.kardex.url, class: 'file-path validate', placeholder: 'kardex' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :agreement_letter %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.agreement_letter.url, class: 'file-path validate', placeholder: 'agreement_letter' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :assign_letter %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.assign_letter.url, class: 'file-path validate', placeholder: 'assign_letter' %>
+    </div>
+  </div>
+
+
+</div>
