@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
           format.json { render :show, status: :ok, location: @person }
         else
           format.html { render :edit }
@@ -93,6 +93,22 @@ class ProjectsController < ApplicationController
         retribution.art_activity=ArtActivity.order(:name).first
         @project.retribution=retribution
       end
+    end
+  end
+
+  def evidence
+    if request.patch?
+      respond_to do |format|
+        if @project.update(project_params)
+          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
+          format.json { render :show, status: :ok, location: @person }
+        else
+          format.html { render :edit }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @project.visual_evidence=VisualEvidence.new if @project.visual_evidence.blank?
     end
   end
 
@@ -154,7 +170,8 @@ class ProjectsController < ApplicationController
                                     [ :street, :internal_number, :external_number, :colony, :zip ],
                                       :person_document_attributes=>[:id,:request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter]],
                                     :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding],
-                                   :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description])
+                                   :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description],
+                                   :visual_evidence_attributes=> [:id, :image=>[], :catalog=>[], :note=>[], :document=>[]])
 
   end 
 end

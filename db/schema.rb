@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217191531) do
+ActiveRecord::Schema.define(version: 20171217202912) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "person_id"
@@ -167,6 +167,17 @@ ActiveRecord::Schema.define(version: 20171217191531) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "visual_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "project_id"
+    t.text "catalog"
+    t.text "image"
+    t.text "note"
+    t.text "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_visual_evidences_on_project_id"
+  end
+
   add_foreign_key "addresses", "people"
   add_foreign_key "art_activities", "modalities"
   add_foreign_key "information", "projects"
@@ -178,4 +189,5 @@ ActiveRecord::Schema.define(version: 20171217191531) do
   add_foreign_key "retributions", "modalities"
   add_foreign_key "retributions", "projects"
   add_foreign_key "users", "people"
+  add_foreign_key "visual_evidences", "projects"
 end

@@ -18,6 +18,7 @@ class Ability
         can :add_documents_people, Project , id: projects
         can :information, Project , id: projects
         can :retribution, Project , id: projects
+        can :evidence, Project , id: projects
         can :create, Project
         can :update, Person, :project_id=>projects
         can :create, Person
