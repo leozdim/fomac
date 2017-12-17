@@ -7,10 +7,12 @@ class Project < ApplicationRecord
   has_one :information
   has_one :retribution
   has_one :visual_evidence
+  has_one :dance_evidence
   accepts_nested_attributes_for :people
   accepts_nested_attributes_for :information
   accepts_nested_attributes_for :retribution
   accepts_nested_attributes_for :visual_evidence
+  accepts_nested_attributes_for :dance_evidence
 
   def single?
     category.single
