@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_information_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to project_retribution_path(@project), notice: 'Person was successfully updated.' }
           format.json { render :show, status: :ok, location: @person }
         else
           format.html { render :edit }
@@ -74,6 +74,27 @@ class ProjectsController < ApplicationController
       @project.information=Information.new if @project.information.blank?
     end
   end 
+
+  def retribution 
+    if request.patch?
+      respond_to do |format|
+        if @project.update(project_params)
+          format.html { redirect_to project_retribution_path(@project), notice: 'Person was successfully updated.' }
+          format.json { render :show, status: :ok, location: @person }
+        else
+          format.html { render :edit }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      if @project.retribution.blank?
+        retribution= Retribution.new
+        retribution.modality=Modality.order(:name).first
+        retribution.art_activity=ArtActivity.order(:name).first
+        @project.retribution=retribution
+      end
+    end
+  end
 
   # POST /projects
   # POST /projects.json
@@ -132,7 +153,8 @@ class ProjectsController < ApplicationController
                                       :addresses_attributes=>
                                     [ :street, :internal_number, :external_number, :colony, :zip ],
                                       :person_document_attributes=>[:id,:request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter]],
-                                    :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding])
+                                    :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding],
+                                   :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description])
 
   end 
 end

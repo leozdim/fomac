@@ -10,14 +10,16 @@ class Ability
         can :read, :all
         return
       when :creator
-        can :update, User 
-        can :update, Project , id: user.projects.pluck(:id)
-        can :add_people, Project , id: user.projects.pluck(:id)
-        can :anexos, Project , id: user.projects.pluck(:id)
-        can :add_documents_people, Project , id: user.projects.pluck(:id)
-        can :information, Project , id: user.projects.pluck(:id)
+        projects=user.projects.pluck(:id)
+        can :update, User, id: user.id
+        can :update, Project , id: projects
+        can :add_people, Project , id: projects
+        can :anexos, Project , id: projects
+        can :add_documents_people, Project , id: projects
+        can :information, Project , id: projects
+        can :retribution, Project , id: projects
         can :create, Project
-        can :update, Person, :project_id=>user.projects.pluck(:id) 
+        can :update, Person, :project_id=>projects
         can :create, Person
       when :reviewer
       when :judge

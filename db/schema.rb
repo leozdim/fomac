@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216013604) do
+ActiveRecord::Schema.define(version: 20171217191531) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "person_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20171216013604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_addresses_on_person_id"
+  end
+
+  create_table "art_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "modality_id"
+    t.string "name"
+    t.integer "contributions"
+    t.string "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["modality_id"], name: "index_art_activities_on_modality_id"
   end
 
   create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -64,6 +74,12 @@ ActiveRecord::Schema.define(version: 20171216013604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_information_on_project_id"
+  end
+
+  create_table "modalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -112,6 +128,18 @@ ActiveRecord::Schema.define(version: 20171216013604) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "retributions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "project_id"
+    t.bigint "modality_id"
+    t.bigint "art_activity_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["art_activity_id"], name: "index_retributions_on_art_activity_id"
+    t.index ["modality_id"], name: "index_retributions_on_modality_id"
+    t.index ["project_id"], name: "index_retributions_on_project_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "first_name"
     t.string "last_name"
@@ -140,10 +168,14 @@ ActiveRecord::Schema.define(version: 20171216013604) do
   end
 
   add_foreign_key "addresses", "people"
+  add_foreign_key "art_activities", "modalities"
   add_foreign_key "information", "projects"
   add_foreign_key "people", "projects"
   add_foreign_key "person_documents", "people"
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
+  add_foreign_key "retributions", "art_activities"
+  add_foreign_key "retributions", "modalities"
+  add_foreign_key "retributions", "projects"
   add_foreign_key "users", "people"
 end

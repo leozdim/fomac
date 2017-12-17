@@ -1,0 +1,17 @@
+
+
+<%= form_for(@project, url: project_retribution_path ) do |f| %>
+  <%= f.fields_for :retribution  do |p| %> 
+    <%# <%= render 'docs_perproject_informationson_fields', f: p %>
+    <%= p.hidden_field :id %>
+    <%= p.label :Modalidad %>
+    <%= p.select :modality_id,  options_from_collection_for_select(Modality.all.order(:name), :id, :name, f.object.retribution.modality_id), 
+      { :prompt=> 'Seleccione' }  %>
+    <%= p.label :Actividad %>
+    <%= p.select :art_activity_id,  options_from_collection_for_select(ArtActivity.all.order(:name), :id, :name, f.object.retribution.art_activity_id), 
+      { :prompt=> 'Seleccione' }  %>
+    <%= p.label :Descripcion %>
+    <%= p.text_area :description %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
