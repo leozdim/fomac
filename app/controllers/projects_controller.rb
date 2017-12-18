@@ -110,6 +110,7 @@ class ProjectsController < ApplicationController
     else
       @project.visual_evidence=VisualEvidence.new if @project.visual_evidence.blank?
       @project.dance_evidence=DanceEvidence.new if @project.dance_evidence.blank?
+      @project.music_evidence=MusicEvidence.new if @project.music_evidence.blank?
     end
   end
 
@@ -173,7 +174,8 @@ class ProjectsController < ApplicationController
                                     :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding],
                                    :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description],
                                    :visual_evidence_attributes=> [:id, :image=>[], :catalog=>[], :note=>[], :document=>[]],
-                                   :dance_evidence_attributes=> [:id,:video, :web , :image=>[], :note=>[], :document=>[]])
+                                   :dance_evidence_attributes=> [:id,:video, :web , :image=>[], :note=>[], :document=>[]],
+                                   :music_evidence_attributes=> [:id,:video, :web , :audio, :score=>[], :note=>[], :document=>[]])
 
   end 
 end

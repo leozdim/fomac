@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217214326) do
+ActiveRecord::Schema.define(version: 20171217234442) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "person_id"
@@ -92,6 +92,19 @@ ActiveRecord::Schema.define(version: 20171217214326) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "music_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "project_id"
+    t.string "web"
+    t.string "video"
+    t.string "audio"
+    t.text "score"
+    t.text "note"
+    t.text "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_music_evidences_on_project_id"
   end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -194,6 +207,7 @@ ActiveRecord::Schema.define(version: 20171217214326) do
   add_foreign_key "art_activities", "modalities"
   add_foreign_key "dance_evidences", "projects"
   add_foreign_key "information", "projects"
+  add_foreign_key "music_evidences", "projects"
   add_foreign_key "people", "projects"
   add_foreign_key "person_documents", "people"
   add_foreign_key "projects", "categories"

@@ -6,5 +6,8 @@
   <%= f.fields_for :dance_evidence  do |p| %> 
     <%= render 'dance_evidence_fields', f: p %>
   <% end %>
+  <%= f.fields_for :music_evidence  do |p| %> 
+    <%= render 'music_evidence_fields', f: p %>
+  <% end %>
   <%= f.submit %>
 <% end %>

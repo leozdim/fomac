@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  web: MyString
+  video: MyString
+  audio: MyString
+  score: MyText
+  note: MyText
+  document: MyText
+
+two:
+  project: two
+  web: MyString
+  video: MyString
+  audio: MyString
+  score: MyText
+  note: MyText
+  document: MyText
