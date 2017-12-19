@@ -1,0 +1,48 @@
+<div >
+  Visuales
+  <%= f.hidden_field :id %>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :image, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.images, class: 'file-path validate', placeholder: 'Imagenes' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :catalog, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.catalogs, class: 'file-path validate', placeholder: 'Csatalogo' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :note, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.notes, class: 'file-path validate', placeholder: 'Notas de prensa' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :document, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancios y/o reconocimientos' %>
+    </div>
+  </div>
+</div>

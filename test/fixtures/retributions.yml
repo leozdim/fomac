@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  modality: one
+  art_activity: one
+  description: MyText
+
+two:
+  project: two
+  modality: two
+  art_activity: two
+  description: MyText
