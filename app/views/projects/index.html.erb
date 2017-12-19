@@ -2,6 +2,22 @@
 
 <h1>Projects</h1>
 
+
+
+<table id="projects-table", data-source="<%= projects_path(format: :json) %>">
+  <thead>
+  <tr>
+    <th>Folio</th>
+    <th>User</th>
+    <th>Category</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
 <table>
   <thead>
     <tr>
@@ -31,3 +47,5 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+
+
