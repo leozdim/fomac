@@ -11,7 +11,6 @@ class Ability
         return
       when :creator
         projects=user.projects.pluck(:id)
-        can :update, User, id: user.id
         can :update, Project , id: projects
         can :add_people, Project , id: projects
         can :anexos, Project , id: projects
@@ -26,6 +25,7 @@ class Ability
       when :judge
       end
       can :manage, User, id: user.id
+      can :download, Project
 
 
     #

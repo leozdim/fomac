@@ -3,11 +3,10 @@ class ApplicationController < ActionController::Base
   check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.json { head :forbidden, content_type: 'text/html' }
-      format.html { redirect_to  session[:return_to] ||= request.referer, notice: 'No tienes acceso a esa pagina' }
-      format.js   { head :forbidden, content_type: 'text/html' }
-    end
+    path||=request.referer
+    path||=session[:return_to]
+    path||='/403.html'
+    redirect_to  path, notice: 'No tienes acceso a esa pagina' 
   end
 
   protected  

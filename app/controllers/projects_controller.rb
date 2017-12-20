@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource param_method: :project_params
+  skip_load_resource only: [:download]
 
   # GET /projects
   # GET /projects.json
@@ -111,6 +112,9 @@ class ProjectsController < ApplicationController
       @project.visual_evidence=VisualEvidence.new if @project.visual_evidence.blank?
       @project.dance_evidence=DanceEvidence.new if @project.dance_evidence.blank?
       @project.music_evidence=MusicEvidence.new if @project.music_evidence.blank?
+      @project.theater_evidence=TheaterEvidence.new if @project.theater_evidence.blank?
+      @project.film_evidence=FilmEvidence.new if @project.film_evidence.blank?
+      @project.letter_evidence=LetterEvidence.new if @project.letter_evidence.blank?
     end
   end
 
@@ -158,6 +162,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def download
+    if current_user.role==:creator
+      access=params[:class].camelize.constantize.joins(:project).where('projects.user_id'=>current_user.id, :id=>params[:id]).count
+      if access==0
+        raise CanCan::AccessDenied.new("No tienes acceso")
+      end
+    end
+    path = "#{Rails.root}/uploads/#{params[:class]}/#{params[:as]}/#{params[:id]}/#{params[:basename]}.#{params[:extension]}"
+    if  File.exist?(path)
+      send_file path, :x_sendfile=>true
+    else
+      redirect_to '/404.html' 
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_project
@@ -175,7 +194,10 @@ class ProjectsController < ApplicationController
                                    :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description],
                                    :visual_evidence_attributes=> [:id, :image=>[], :catalog=>[], :note=>[], :document=>[]],
                                    :dance_evidence_attributes=> [:id,:video, :web , :image=>[], :note=>[], :document=>[]],
-                                   :music_evidence_attributes=> [:id,:video, :web , :audio, :score=>[], :note=>[], :document=>[]])
+                                   :music_evidence_attributes=> [:id,:video, :web , :audio, :score=>[], :note=>[], :document=>[]],
+                                   :theater_evidence_attributes=> [:id,:video, :web , :script, :letter, :image=>[], :note=>[], :document=>[]],
+                                   :film_evidence_attributes=> [:id,:video, :web , :demo, :script, :plan, :synopsis, :letter],
+                                   :letter_evidence_attributes=> [:id, :web , :work, :cover=>[] ])
 
   end 
 end

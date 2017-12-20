@@ -1,0 +1,65 @@
+<div >
+  Teatro
+  <%= f.hidden_field :id %>
+  <%= f.label 'Video de muestra' %>
+  <%= f.text_field :video %>
+  <%= f.label 'Demo reel' %>
+  <%= f.text_field :demo %>
+  <%= f.label 'Sitio web' %>
+  <%= f.text_field :web %>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :synopsis %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.synopsis.url, class: 'file-path validate', placeholder: 'Sinopsis' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :script %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.script.url, class: 'file-path validate', placeholder: 'Guion' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :plan %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.plan.url, class: 'file-path validate', placeholder: 'Plan' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :letter%>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.letter.url, class: 'file-path validate', placeholder: 'Carta' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :script %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.script.url, class: 'file-path validate', placeholder: 'Guion' %>
+    </div>
+  </div>
+</div>
