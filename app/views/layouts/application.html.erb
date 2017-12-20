@@ -123,8 +123,8 @@
       </div>
     </div>
     <div class="fixed-action-btn">
-      <%= link_to('Cerrar sesion',destroy_user_session_path, method: :delete,
-      class: 'btn  ') if user_signed_in?  %>
+      <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete,
+      class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
     </div>
   </section>
   <footer class="page-footer white ">
