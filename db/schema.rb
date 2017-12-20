@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_dance_evidences_on_project_id"
   end
 
-<<<<<<< Updated upstream
-  create_table "film_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "film_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -83,10 +82,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_film_evidences_on_project_id"
   end
 
-  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-=======
   create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
->>>>>>> Stashed changes
     t.bigint "project_id"
     t.string "name"
     t.text "description"
@@ -106,8 +102,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_information_on_project_id"
   end
 
-<<<<<<< Updated upstream
-  create_table "letter_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "letter_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "work"
@@ -117,10 +112,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_letter_evidences_on_project_id"
   end
 
-  create_table "modalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-=======
   create_table "modalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
->>>>>>> Stashed changes
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -197,8 +189,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_retributions_on_project_id"
   end
 
-<<<<<<< Updated upstream
-  create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -212,10 +203,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_theater_evidences_on_project_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-=======
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
->>>>>>> Stashed changes
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
