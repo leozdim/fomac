@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   belongs_to :category
   has_many :people
   has_many :addresses, through: :people
+  has_many :person_document , through: :people
   has_and_belongs_to_many :art_forms
   has_one :information
   has_one :retribution
@@ -25,4 +26,13 @@ class Project < ApplicationRecord
   def single?
     category.single
   end
+
+  def any_evidence?
+    if visual_evidence.nil? and dance_evidence.nil? and music_evidence.nil? and theater_evidence.nil? and film_evidence.nil? and letter_evidence.nil? 
+      false
+    else
+      true
+    end
+  end
+
 end
