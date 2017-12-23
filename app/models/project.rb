@@ -22,6 +22,7 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :theater_evidence
   accepts_nested_attributes_for :film_evidence
   accepts_nested_attributes_for :letter_evidence
+  validates_presence_of :category, :art_forms
 
   def single?
     category.single

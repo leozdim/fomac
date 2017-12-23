@@ -1,18 +1,9 @@
 <%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-      <ul>
-        <% project.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <p>
      En este formulario elegirás la categoría y disciplina de tu proyecto
   </p>
   <br>
+  <%= render 'errors' %>
   <div class="input-field", id="category">
     <%= form.select :category_id, options_for_select(Category.options_array, :selected=> form.object.category_id), prompt: 'Seleccione una categoria'%>
     <%= form.label :category, 'Categoría' %>

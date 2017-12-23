@@ -1,3 +1,4 @@
+<% f.object.build_person_document if f.object.person_document.nil? %>
 <%= f.fields_for :person_document do |t| %>
     <%= render 'person_document_fields', f: t %>
 <% end %>
