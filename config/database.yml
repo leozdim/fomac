@@ -9,8 +9,7 @@ default: &default
   database: rails_fomac
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: root
-  password: root
+  username: rails
 
 development:
   <<: *default

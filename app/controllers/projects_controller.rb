@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    respond_to do |format|
+      format.html
+      format.json { render json: ProjectDatatable.new(view_context) }
+    end
   end
 
   # GET /projects/1

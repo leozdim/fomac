@@ -20,3 +20,15 @@ $(document).on('turbolinks:load', ->
   $('#category select').change set_up_select
   set_up_select.apply($('#category select'))
 )
+$ ->
+  $('#projects-table').dataTable
+    processing: true
+    serverSide: true
+    ajax: $('#projects-table').data('source')
+    pagingType: 'full_numbers'
+    columns: [
+      {data: 'folio'}
+      {data: 'user'}
+      {data: 'category'}
+      {data: 'status'}
+    ]
