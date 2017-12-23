@@ -57,13 +57,29 @@ es:
                 zip: El campo Codigo postal
             people/person_document:
                 request_letter: El documento Semblanza
-                birth: El documento acta de nacimiento
-                identification: El documento indentificacion
+                birth: El documento Acta de nacimiento
+                identification: El documento Indentificacion con foto
                 curp: El documento CURP 
-                resume: El Documento Curriculum
-
-
-
+                resume: El documento Curriculum
+                address: El documento Comprobante de domicilio
+            information:
+                name: El campo Nombre del proyecto
+                description: El campo Descripciòn
+                antecedent: El campo Antecedentes
+                justification: El campo Justificaciòn
+                general_objective: El campo Objetivo general
+                specific_objective: El campo Objetivos especificos
+                goals: El campo Metas o propòsitos
+                beneficiary: El campo Titulares del derecho
+                context: El campo Ubicación y contexto
+                bibliography: El campo Bibliografía
+                activities: El documento Cronograma de actividades
+                spending: El documento Desgloce de gastos
+                funding: El documento Fuentes de financiamiento
+            retribution:
+                description: El campo Descripciòn
+                modality: El campo Modalidad
+                activity: El campo Actividad
         errors:
             messages: 
                 blank: es obligatorio

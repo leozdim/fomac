@@ -58,11 +58,9 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto fue guarda con èxito' }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :information }
         end
       end
     else
@@ -75,10 +73,8 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.update(project_params)
           format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :retribution }
         end
       end
     else

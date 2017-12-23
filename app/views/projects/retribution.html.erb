@@ -1,6 +1,7 @@
 
 
 <%= form_for(@project, url: project_retribution_path ) do |f| %>
+<%= render 'errors' %>
 <%= f.fields_for :retribution  do |p| %>
 <%# <%= render 'docs_perproject_informationson_fields', f: p %>
 <%= p.hidden_field :id %>

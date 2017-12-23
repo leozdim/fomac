@@ -11,6 +11,7 @@ span.ayuda {
 </style>
 <span class="card-title">Información del proyecto</span>
 <%= form_for(@project, url: project_information_path ) do |f| %>
+    <%= render 'errors' %>
 <%= f.fields_for :information  do |p| %>
 <%# <%= render 'docs_perproject_informationson_fields', f: p %>
 <%= p.hidden_field :id %>
