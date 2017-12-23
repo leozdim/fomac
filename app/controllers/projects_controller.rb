@@ -30,10 +30,8 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.update(project_params)
           format.html { redirect_to add_anexo_people_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :add_people }
         end
       end
     else
@@ -68,7 +66,7 @@ class ProjectsController < ApplicationController
         end
       end
     else
-      @project.information=Information.new if @project.information.blank?
+      @project.build_information if @project.information.blank?
     end
   end 
 
@@ -85,10 +83,10 @@ class ProjectsController < ApplicationController
       end
     else
       if @project.retribution.blank?
-        retribution= Retribution.new
+        @project.build_retribution
+        retribution= @project.retribution
         retribution.modality=Modality.order(:name).first
         retribution.art_activity=ArtActivity.order(:name).first
-        @project.retribution=retribution
       end
     end
   end
@@ -105,12 +103,12 @@ class ProjectsController < ApplicationController
         end
       end
     else
-      @project.visual_evidence=VisualEvidence.new if @project.visual_evidence.blank?
-      @project.dance_evidence=DanceEvidence.new if @project.dance_evidence.blank?
-      @project.music_evidence=MusicEvidence.new if @project.music_evidence.blank?
-      @project.theater_evidence=TheaterEvidence.new if @project.theater_evidence.blank?
-      @project.film_evidence=FilmEvidence.new if @project.film_evidence.blank?
-      @project.letter_evidence=LetterEvidence.new if @project.letter_evidence.blank?
+      @project.build_visual_evidence if @project.visual_evidence.blank?
+      @project.build_dance_evidence if @project.dance_evidence.blank?
+      @project.build_music_evidence if @project.music_evidence.blank?
+      @project.build_theater_evidence if @project.theater_evidence.blank?
+      @project.build_film_evidence if @project.film_evidence.blank?
+      @project.build_letter_evidence if @project.letter_evidence.blank?
     end
   end
 
@@ -184,7 +182,7 @@ class ProjectsController < ApplicationController
     params.require(:project).permit( :category_id ,:people_attributes=>
                                     [ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, 
                                       :addresses_attributes=>
-                                    [ :street, :internal_number, :external_number, :colony, :zip ],
+                                    [ :id , :street, :internal_number, :external_number, :colony, :zip ],
                                       :person_document_attributes=>[:id,:request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter]],
                                     :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding],
                                    :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description],

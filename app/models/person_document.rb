@@ -11,5 +11,5 @@ class PersonDocument < ApplicationRecord
   mount_uploader :agreement_letter, DocumentsUploader
   mount_uploader :assign_letter, DocumentsUploader
 
-  validates_presence_of :request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter
+  validates_presence_of :request_letter,:birth,:address,:identification,:curp,:resume
 end
