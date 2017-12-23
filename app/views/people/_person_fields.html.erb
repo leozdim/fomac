@@ -1,80 +1,94 @@
 <div class="nested-fields" >
+  <span class="card-title">Información del participante</span>
   <%= link_to_remove_association "Remover participante", f unless @project.single? %>
   <% if f.object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
-
-      <ul>
-        <% person.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div id="error_explanation">
+    <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+    <ul>
+      <% person.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
   <%= f.hidden_field :id %>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, id: :person_first_name %>
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= f.text_field :first_name, id: :person_first_name %>
+        <%= f.label :first_name, 'Nombre' %>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= f.text_field :last_name, id: :person_last_name %>
+        <%= f.label :last_name, 'Apellido paterno' %>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= f.text_field :second_last_name, id: :person_second_last_name %>
+        <%= f.label :second_last_name, 'Apellido materno' %>
+      </div>
+    </div>
+    <div class="col s12">
+    <!--CORREGIR ya que muestra todos los input en s12 || Solo necesito saber en donde formateo este input
+        Esto pasa por materialize atte damian-->
+      <div class="input-field">
+        <%= f.date_select :birthdate, id: :person_birthdate, start_date: 100.years.ago %>
+        <%= f.label :birthdate, 'Fecha de nacimiento' %>
+      </div>
+    </div>
+    <div class="col s6 m3">
+      <div class="input-field">
+        <%= f.text_field :home_phone_number, id: :person_home_phone_number %>
+        <%= f.label :home_phone_number, 'Teléfono' %>
+      </div>
+    </div>
+    <div class="col s6 m3">
+      <div class="input-field">
+        <%= f.text_field :cellphone, id: :person_cellphone %>
+        <%= f.label :cellphone, 'Celular' %>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field">
+        <%= f.text_field :level_study, id: :person_level_study %>
+        <%= f.label :level_study, 'Grado maximo de estudios' %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, id: :person_last_name %>
+  <div class="row">
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= f.text_field :birthplace, id: :person_birthplace %>
+        <%= f.label :birthplace, 'Lugar de nacimiento' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= f.text_field :state, id: :person_state %>
+        <%= f.label :state, 'Estado' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= f.text_field :city, id: :person_city %>
+        <%= f.label :city, 'Ciudad' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= f.text_field :nationality, id: :person_nationality %>
+        <%= f.label :nationality, 'Nacionalidad' %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :second_last_name %>
-    <%= f.text_field :second_last_name, id: :person_second_last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birthdate %>
-    <%= f.date_select :birthdate, id: :person_birthdate, start_date: 100.years.ago %>
-  </div>
-
-  <div class="field">
-    <%= f.label :home_phone_number %>
-    <%= f.text_field :home_phone_number, id: :person_home_phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cellphone %>
-    <%= f.text_field :cellphone, id: :person_cellphone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birthplace %>
-    <%= f.text_field :birthplace, id: :person_birthplace %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.text_field :state, id: :person_state %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_field :city, id: :person_city %>
-  </div>
-
-  <div class="field">
-    <%= f.label :nationality %>
-    <%= f.text_field :nationality, id: :person_nationality %>
-  </div>
-
-  <div class="field">
-    <%= f.label :level_study %>
-    <%= f.text_field :level_study, id: :person_level_study %>
-  </div>
-
-
   <% f.object.addresses.build if f.object.addresses.empty? %>
-  <%= f.fields_for :addresses do |a| %> 
-    <%= render 'projects/address_fields', f: a %>
+  <%= f.fields_for :addresses do |a| %>
+  <%= render 'projects/address_fields', f: a %>
   <% end %>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Registrar participante', class:'btn' %>
   </div>
 </div>

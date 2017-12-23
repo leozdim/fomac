@@ -1,13 +1,33 @@
-<div class="nested-fields">
-  <%= f.hidden_field :id %> 
-  <%= f.label :street %>
-  <%= f.text_field :street %>
-  <%= f.label :internal_number %>
-  <%= f.text_field :internal_number %>
-  <%= f.label :external_number %>
-  <%= f.text_field :external_number %>
-  <%= f.label :colony %>
-  <%= f.text_field :colony %>
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
+<div class="nested-fields row">
+  <%= f.hidden_field :id %>
+  <div class="col s6 m4">
+    <div class="input-field">
+      <%= f.label :street, 'Calle' %>
+      <%= f.text_field :street %>
+    </div>
+  </div>
+  <div class="col s6 m2 l1">
+    <div class="input-field">
+      <%= f.label :internal_number,'# int' %>
+      <%= f.text_field :internal_number %>
+    </div>
+  </div>
+  <div class="col s6 m2 l1">
+    <div class="input-field">
+      <%= f.label :external_number, '# ext' %>
+      <%= f.text_field :external_number %>
+    </div>
+  </div>
+  <div class="col s6 m4">
+    <div class="input-field">
+      <%= f.label :colony, 'Colonia' %>
+      <%= f.text_field :colony %>
+    </div>
+  </div>
+  <div class="col s6 m3 l2">
+    <div class="input-field">
+      <%= f.label :zip,'C.P.' %>
+      <%= f.text_field :zip %>
+    </div>
+  </div>
 </div>

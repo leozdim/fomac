@@ -1,22 +1,22 @@
 
 <%= form_for(@project, url: project_evidence_path ) do |f| %>
-  <%= f.fields_for :visual_evidence  do |p| %> 
+  <%= f.fields_for :visual_evidence  do |p| %>
     <%= render 'visual_evidence_fields', f: p %>
   <% end %>
-  <%= f.fields_for :dance_evidence  do |p| %> 
+  <%= f.fields_for :dance_evidence  do |p| %>
     <%= render 'dance_evidence_fields', f: p %>
   <% end %>
-  <%= f.fields_for :music_evidence  do |p| %> 
+  <%= f.fields_for :music_evidence  do |p| %>
     <%= render 'music_evidence_fields', f: p %>
   <% end %>
-  <%= f.fields_for :theater_evidence  do |p| %> 
+  <%= f.fields_for :theater_evidence  do |p| %>
     <%= render 'theater_evidence_fields', f: p %>
   <% end %>
-  <%= f.fields_for :film_evidence  do |p| %> 
+  <%= f.fields_for :film_evidence  do |p| %>
     <%= render 'film_evidence_fields', f: p %>
   <% end %>
-  <%= f.fields_for :letter_evidence  do |p| %> 
+  <%= f.fields_for :letter_evidence  do |p| %>
     <%= render 'letter_evidence_fields', f: p %>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
 <% end %>
