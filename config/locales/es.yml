@@ -29,6 +29,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
+# if you change the identation, you gonna screw everithing :D
 es:
     helpers:
         submit:
@@ -80,6 +82,49 @@ es:
                 description: El campo Descripciòn
                 modality: El campo Modalidad
                 activity: El campo Actividad
+            visual_evidence: 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            dance_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            music_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                audio: El campo Audio Muestra 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                score: El documento  Partituras de tu autoría
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            theater_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                script: El documento texto de muestra
+                letter: El documento Carta de autorización del autor
+                note: El documento notas de prensa
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                score: El documento  Partituras de tu autoría
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            film_evidence: 
+                video: El campo Video muestra 
+                demo: El campo Demo reel
+                web: El campo Sitio web 
+                script: El documento Guion
+                synopsis: El documento Sinopsis
+                plan: El documento plan
+                letter: El documento Carta de autorización del autor
+            letter_evidence: 
+                web: El campo Sitio web 
+                work: El documento Texto de muestra
+                cover: El documento Portadas de libros
         errors:
             messages: 
                 blank: es obligatorio

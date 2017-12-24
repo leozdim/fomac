@@ -1,5 +1,6 @@
 
 <%= form_for(@project, url: project_evidence_path ) do |f| %>
+  <%= render 'errors' %>
   <%= f.fields_for :visual_evidence  do |p| %>
     <%= render 'visual_evidence_fields', f: p %>
   <% end %>

@@ -92,10 +92,8 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.update(project_params)
           format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :evidence }
         end
       end
     else
