@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource param_method: :project_params
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: UserDatatable.new(view_context) }
+    end
   end
 
   # GET /users/1

@@ -3,7 +3,7 @@ module ApplicationHelper
   def nav_project
     if current_user.projects.any?
       @proy_ready='ready'
-      edit_project_path params[:id]
+      edit_project_path current_user.projects.first.id
     else
       new_project_path
     end
@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def nav_participant
     if current_user.projects.any?
-      if Project.find(params[:id]).people.any?
+      if Project.find(current_user.projects.first.id).people.any?
         @part_ready='ready'
       end
       add_project_people_path params[:id]

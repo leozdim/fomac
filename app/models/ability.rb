@@ -7,7 +7,9 @@ class Ability
       user ||= User.new # guest user (not logged in)
       case user.role
       when :admin
-        can :read, :all
+        can :read,:all
+        can  :update,:all
+        can :create,:all
         return
       when :creator
         projects=user.projects.pluck(:id)
