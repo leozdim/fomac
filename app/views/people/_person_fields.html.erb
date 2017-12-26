@@ -1,16 +1,6 @@
 <div class="nested-fields" >
   <span class="card-title">Información del participante</span>
   <%= link_to_remove_association "Remover participante", f unless @project.single? %>
-  <% if f.object.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
-    <ul>
-      <% person.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
   <%= f.hidden_field :id %>
   <div class="row">
     <div class="col s12 m4">
@@ -35,7 +25,7 @@
     <!--CORREGIR ya que muestra todos los input en s12 || Solo necesito saber en donde formateo este input
         Esto pasa por materialize atte damian-->
       <div class="input-field">
-        <%= f.date_select :birthdate, id: :person_birthdate, start_date: 100.years.ago %>
+        <%= f.date_select :birthdate, id: :person_birthdate, start_year: Date.today.year - 100 %>
         <%= f.label :birthdate, 'Fecha de nacimiento' %>
       </div>
     </div>

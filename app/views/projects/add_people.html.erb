@@ -1,6 +1,7 @@
 
 
 <%= form_for(@project, url: add_project_people_path ) do |f| %>
+  <%= render 'errors' %>
   <%= f.fields_for :people do |p| %> 
     <%= render 'people/person_fields', f: p %>
   <% end %>

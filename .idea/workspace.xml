@@ -3,13 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="db072cd4-9b92-4dba-8e1a-6db676f5a074" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/users.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.coffee" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/projects_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
       <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change beforePath="$PROJECT_DIR$/app/models/ability.rb" afterPath="$PROJECT_DIR$/app/models/ability.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/address.rb" afterPath="$PROJECT_DIR$/app/models/address.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/dance_evidence.rb" afterPath="$PROJECT_DIR$/app/models/dance_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/film_evidence.rb" afterPath="$PROJECT_DIR$/app/models/film_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/information.rb" afterPath="$PROJECT_DIR$/app/models/information.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/letter_evidence.rb" afterPath="$PROJECT_DIR$/app/models/letter_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/music_evidence.rb" afterPath="$PROJECT_DIR$/app/models/music_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/person.rb" afterPath="$PROJECT_DIR$/app/models/person.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/person_document.rb" afterPath="$PROJECT_DIR$/app/models/person_document.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/retribution.rb" afterPath="$PROJECT_DIR$/app/models/retribution.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/theater_evidence.rb" afterPath="$PROJECT_DIR$/app/models/theater_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/visual_evidence.rb" afterPath="$PROJECT_DIR$/app/models/visual_evidence.rb" />
+      <change beforePath="$PROJECT_DIR$/app/views/people/_person_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/people/_person_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/_film_evidence_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_film_evidence_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/_letter_evidence_fields.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_letter_evidence_fields.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/add_people.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/add_people.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/evidence.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/evidence.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/information.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/information.html.erb" />
+      <change beforePath="$PROJECT_DIR$/app/views/projects/retribution.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/retribution.html.erb" />
+      <change beforePath="$PROJECT_DIR$/config/locales/es.yml" afterPath="$PROJECT_DIR$/config/locales/es.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -75,8 +89,8 @@
       <file leaf-file-name="application_helper.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -169,13 +183,13 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/projects.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
         <option value="$PROJECT_DIR$/app/datatables/project_datatable.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/models/ability.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/datatables/user_datatable.rb" />
         <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/users.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
       </list>
     </option>
   </component>
@@ -442,12 +456,12 @@
       <workItem from="1513740993251" duration="5281000" />
       <workItem from="1514058587959" duration="6504000" />
       <workItem from="1514136506432" duration="8586000" />
-      <workItem from="1514244568268" duration="172000" />
+      <workItem from="1514244568268" duration="911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30922000" />
+    <option name="totallyTimeSpent" value="31661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -460,6 +474,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="448" y="94" width="1600" height="808" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27706185" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -469,9 +484,9 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2711599" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45768026" sideWeight="0.4974227" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45768026" sideWeight="0.4974227" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39968652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -519,7 +534,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/helpers/application_helper.rb</url>
-          <line>3</line>
+          <line>4</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -904,8 +919,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding />
         </state>
       </provider>

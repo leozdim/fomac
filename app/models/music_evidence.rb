@@ -6,7 +6,8 @@ class MusicEvidence < ApplicationRecord
   serialize :note, JSON
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
-
+  validates_presence_of :video, :web , :audio, :score, :note, :document
+ 
   def scores
     score.map{|x| x.url}.join ',' 
   end

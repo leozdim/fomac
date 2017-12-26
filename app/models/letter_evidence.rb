@@ -4,6 +4,7 @@ class LetterEvidence < ApplicationRecord
   mount_uploader :work, DocumentsUploader
   mount_uploaders :cover, DocumentsUploader
   serialize :cover, JSON
+  validates_presence_of  :web , :work, :cover
 
   def covers
     cover.map{|x| x.url}.join ','
