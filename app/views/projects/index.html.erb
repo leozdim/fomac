@@ -10,13 +10,16 @@
     <th>User</th>
     <th>Category</th>
     <th>Status</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
   </tbody>
 </table>
 
-
+<!--
 <table>
   <thead>
     <tr>
@@ -29,20 +32,20 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
+    <%# @projects.each do |project| %>
       <tr>
-        <td><%= project.folio %></td>
-        <td><%= project.user %></td>
-        <td><%= project.category %></td>
-        <td><%= project.status %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= project.folio %></td>
+        <td><%#= project.user %></td>
+        <td><%#= project.category %></td>
+        <td><%#= project.status %></td>
+        <td><%#= link_to 'Show', project %></td>
+        <td><%#= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%#= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <#% end %>
   </tbody>
 </table>
-
+-!>
 <br>
 
 <%= link_to 'New Project', new_project_path %>

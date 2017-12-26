@@ -31,4 +31,7 @@ $ ->
       {data: 'user'}
       {data: 'category'}
       {data: 'status'}
+      {data: 'show'}
+      {data: 'edit'}
+      {data: 'delete'}
     ]
