@@ -9,7 +9,7 @@ class Ability
       when :admin
         can :read,:all
         can  :update,:all
-        can :create,:all
+        can :modify, :all
         return
       when :creator
         projects=user.projects.pluck(:id)
