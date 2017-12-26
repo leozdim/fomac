@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match 'projects/:id/information', to: 'projects#information', as: :project_information, via: :all
   match 'projects/:id/retribution', to: 'projects#retribution', as: :project_retribution, via: :all
   match 'projects/:id/evidence', to: 'projects#evidence', as: :project_evidence, via: :all
+  match 'projects/:id/finish', to: 'projects#finish', as: :project_finish, via: :all
   match '/uploads/:class/:as/:id/:basename.:extension', to: 'projects#download', via: :all, as: :download_doc, :constraints => { :extension => /[^\/]+/ }
   resources :art_forms
   resources :categories

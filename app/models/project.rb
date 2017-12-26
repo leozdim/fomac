@@ -36,4 +36,40 @@ class Project < ApplicationRecord
     end
   end
 
+  def folio
+    first= category.key 
+    second= art_forms.first.name if art_forms.length==1 
+    third= id
+    "#{first} #{second} #{third}".parameterize
+  end 
+
+  def self.find_by_folio folio
+    id=folio.split('-').last 
+    find_by id: id
+  end
+
+  def finish?
+    if people.any? and person_document.any? and !information.blank? and !retribution.blank?
+      evi=false
+      art_forms.each do |a|
+        case a.id 
+        when 1
+          evi=!visual_evidence.blank?
+        when 2
+          evi=!dance_evidence.blank?
+        when 3
+          evi=!music_evidence.blank?
+        when 4
+          evi=!theater_evidence.blank?
+        when 5
+          evi=!film_evidence.blank?
+        when 6
+          evi=!letter_evidence.blank?
+        end
+      end
+      return evi
+    end
+    false
+  end
+
 end

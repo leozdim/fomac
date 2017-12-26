@@ -24,6 +24,16 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def finish 
+    unless @project.finish?
+      redirect_to edit_project_path(@project), notice: 'Aùn no terminas de dar de alta el proyeto'
+    else
+      ProjectMailer.finish(@project).deliver_later
+    end
+
+
+  end 
+
   # GET /projects/1/edit
   def edit
   end
@@ -96,7 +106,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
+          format.html { redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
         else
           format.html { render :evidence }
         end

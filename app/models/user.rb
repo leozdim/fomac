@@ -32,4 +32,8 @@ class User < ApplicationRecord
     write_attribute :role, new_status.to_s
   end
 
+  def full_name
+    "#{last_name}#{second_last_name}#{first_name}"
+  end
+
 end

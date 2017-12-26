@@ -14,7 +14,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.projects.any?
       # change this to hte active projects
-      nav_project
+      p=current_user.projects.first
+      if p.finish?
+        project_finish_path(p)
+      else
+        nav_project
+      end
     else
        new_project_path
     end

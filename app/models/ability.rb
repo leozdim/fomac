@@ -20,6 +20,7 @@ class Ability
         can :information, Project , id: projects
         can :retribution, Project , id: projects
         can :evidence, Project , id: projects
+        can :finish, Project , id: projects
         can :create, Project
         can :update, Person, :project_id=>projects
         can :create, Person
