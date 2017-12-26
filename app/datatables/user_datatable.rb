@@ -1,5 +1,8 @@
 class UserDatatable < AjaxDatatablesRails::Base
 
+  def_delegators :@view, :link_to, :h, :mailto, :edit_user_path
+
+
   def view_columns
     # Declare strings in this format: ModelName.column_name
     # or in aliased_join_table.column_name format
@@ -20,6 +23,9 @@ class UserDatatable < AjaxDatatablesRails::Base
           last_name:   record.last_name,
           second_last_name: record.second_last_name,
           role: record.role,
+          show: link_to('Show', record ),
+          edit: link_to('Edit', @view.edit_user_path(record)),
+          destroy: link_to('Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } ),
         # example:
         # id: record.id,
         # name: record.name

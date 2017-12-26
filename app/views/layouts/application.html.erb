@@ -97,7 +97,7 @@
             <li><a href="http://prueba.icm.gob.mx/?page_id=121">TEATRO DE LA CIUDAD</a></li>
             <li><a href="http://prueba.icm.gob.mx/?page_id=125">CDC</a></li>
             <li><a href="http://prueba.icm.gob.mx/?page_id=127">CONSERVATORIO</a></li>
-          </li></ul>
+          </ul></li>
           <li><a href="http://prueba.icm.gob.mx/?page_id=71">PRENSA</a></li>
           <li><a href="http://prueba.icm.gob.mx/?page_id=80">NUESTROS PRODUCTOS</a></li>
           <li><a href="http://prueba.icm.gob.mx/?page_id=53">CONTACTO</a></li>
@@ -127,8 +127,20 @@
       <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete,
       class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
     </div>
+    <%if current_user&.role==:admin %>
+      <div class="fixed-action-btn">
+        <%= link_to(t(:proyects),projects_path, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
+      </div>
+    <% end %>
+    <%if current_user&.role==:admin %>
+      <div class="fixed-action-btn">
+        <%= link_to(t(:users),users_path, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
+      </div>
+    <% end %>
   </section>
   <footer class="page-footer white ">
     <div class="col s12 m12 l12 center">
       <img src="/assets/placeholders/logo-chihuahua.jpg" alt="" class="responsive-img">
     </div>
+  </footer>
+</section>

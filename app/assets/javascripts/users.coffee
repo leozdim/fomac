@@ -13,5 +13,9 @@ $(document).on('turbolinks:load', ->
       {data: 'last_name'}
       {data: 'second_last_name'}
       {data: 'role'}
+      {data: 'show'}
+      {data: 'edit'}
+      {data: 'destroy'}
+
     ]
 )

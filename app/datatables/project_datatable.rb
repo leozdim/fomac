@@ -27,7 +27,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
         status: record.status,
         show: link_to( 'Mostrar', record),
         edit: link_to("Editar", @view.edit_project_path(record)),
-        delete:   link_to('Borrar', record, method: :delete, data: { confirm: 'Are you sure?' })
+        delete:   link_to('Borrar', record, method: :delete, data: { confirm: 'Are you sure?' }),
         # example:
         # id: record.id,
         # name: record.name
