@@ -78,7 +78,7 @@ span.ayuda {
         <%= p.file_field :activities %>
     </div>
     <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Cargar cronograma de actividades">
+      <%= text_field_tag nil, p.object.activities_identifier, class: 'file-path validate', placeholder: 'Guion' %>
     </div>
 </div>
 <div class="file-field input-field">
@@ -87,7 +87,7 @@ span.ayuda {
         <%= p.file_field :spending %>
     </div>
     <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Cargar desgloce de gastos">
+      <%= text_field_tag nil, p.object.spending_identifier, class: 'file-path validate', placeholder: 'Guion' %>
     </div>
 </div>
 <div class="file-field input-field">
@@ -96,7 +96,7 @@ span.ayuda {
         <%= p.file_field :funding %>
     </div>
     <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Cargar fuentes de financiamiento">
+      <%= text_field_tag nil, p.object.funding_identifier, class: 'file-path validate', placeholder: 'Guion' %>
     </div>
 </div>
 <% end %>

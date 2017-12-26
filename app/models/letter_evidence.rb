@@ -7,6 +7,6 @@ class LetterEvidence < ApplicationRecord
   validates_presence_of  :web , :work, :cover
 
   def covers
-    cover.map{|x| x.url}.join ','
+      cover.map{|x| x.file.filename}.join ','
   end
 end

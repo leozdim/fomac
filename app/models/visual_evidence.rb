@@ -11,19 +11,19 @@ class VisualEvidence < ApplicationRecord
   validates_presence_of :image, :catalog, :note, :document
 
   def images
-    image.map{|x| x.url}.join ','
+      image.map{|x| x.file.filename}.join ','
   end
 
   def catalogs
-    catalog.map{|x| x.url}.join ','
+      catalog.map{|x| x.file.filename}.join ','
   end
 
   def notes
-    note.map{|x| x.url}.join ','
+      note.map{|x| x.file.filename}.join ','
   end
 
   def documents
-    document.map{|x| x.url}.join ','
+      document.map{|x| x.file.filename}.join ','
   end
 
 end

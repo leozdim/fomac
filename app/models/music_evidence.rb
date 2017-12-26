@@ -9,15 +9,15 @@ class MusicEvidence < ApplicationRecord
   validates_presence_of :video, :web , :audio, :score, :note, :document
  
   def scores
-    score.map{|x| x.url}.join ',' 
+      score.map{|x| x.file.filename}.join ',' 
   end
 
   def notes
-    note.map{|x| x.url}.join ','
+      note.map{|x| x.file.filename}.join ','
   end
 
   def documents
-    document.map{|x| x.url}.join ','
+      document.map{|x| x.file.filename}.join ','
   end
 
 end
