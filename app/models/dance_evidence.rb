@@ -7,6 +7,7 @@ class DanceEvidence < ApplicationRecord
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
   validates_presence_of :video, :web , :image, :note, :document
+  ART_FORM_ID=2
 
   def images
       image.map{|x| x.file.filename}.join ','

@@ -92,6 +92,7 @@ class ProjectsController < ApplicationController
   end
 
   def evidence
+    @arts=@project.art_forms
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
@@ -101,12 +102,14 @@ class ProjectsController < ApplicationController
         end
       end
     else
-      @project.build_visual_evidence if @project.visual_evidence.blank?
-      @project.build_dance_evidence if @project.dance_evidence.blank?
-      @project.build_music_evidence if @project.music_evidence.blank?
-      @project.build_theater_evidence if @project.theater_evidence.blank?
-      @project.build_film_evidence if @project.film_evidence.blank?
-      @project.build_letter_evidence if @project.letter_evidence.blank?
+      @arts.each do |a|
+        @project.build_visual_evidence if @project.visual_evidence.blank? and VisualEvidence::ART_FORM_ID==a.id
+        @project.build_dance_evidence if @project.dance_evidence.blank? and DanceEvidence::ART_FORM_ID==a.id
+        @project.build_music_evidence if @project.music_evidence.blank? and MusicEvidence::ART_FORM_ID==a.id
+        @project.build_theater_evidence if @project.theater_evidence.blank? and TheaterEvidence::ART_FORM_ID==a.id
+        @project.build_film_evidence if @project.film_evidence.blank? and FilmEvidence::ART_FORM_ID==a.id
+        @project.build_letter_evidence if @project.letter_evidence.blank? and LetterEvidence::ART_FORM_ID==a.id
+      end
     end
   end
 

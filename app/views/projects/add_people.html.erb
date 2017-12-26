@@ -5,5 +5,8 @@
   <%= f.fields_for :people do |p| %> 
     <%= render 'people/person_fields', f: p %>
   <% end %>
-  <%= link_to_add_association 'Agregar integrante', f, :people unless @project.single? %>
+  <%= link_to_add_association 'Agregar integrante', f, :people, partial: 'people/person_fields' unless @project.single? %>
+  <div class="actions">
+    <%= f.submit 'Registrar participante', class:'btn' %>
+  </div>
 <% end %>

@@ -9,6 +9,7 @@ class TheaterEvidence < ApplicationRecord
   mount_uploaders :image, DocumentsUploader
   serialize :image, JSON
   validates_presence_of :video, :web , :script, :letter, :image, :note, :document
+  ART_FORM_ID=4
 
   def images
       image.map{|x| x.file.filename}.join ',' 

@@ -6,5 +6,6 @@ class FilmEvidence < ApplicationRecord
   mount_uploader :plan, DocumentsUploader
   mount_uploader :letter, DocumentsUploader
   validates_presence_of :video, :web , :demo, :script, :plan, :synopsis, :letter
+  ART_FORM_ID=5
 
 end

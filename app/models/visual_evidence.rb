@@ -9,6 +9,7 @@ class VisualEvidence < ApplicationRecord
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
   validates_presence_of :image, :catalog, :note, :document
+  ART_FORM_ID=1
 
   def images
       image.map{|x| x.file.filename}.join ','
