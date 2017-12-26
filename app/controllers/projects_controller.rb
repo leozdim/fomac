@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to add_anexo_people_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to add_anexo_people_path(@project), notice: 'Lo(s) participante(s) del proyecto se guardo con èxito'  }
         else
           format.html { render :add_people }
         end
@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_information_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
         else
           format.html { render :add_documents_people }
         end
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto fue guarda con èxito' }
+          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto se guardo con èxito' }
         else
           format.html { render :information }
         end
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to project_evidence_path(@project), notice: 'La retribuciòn del proyecto se guardo con èxito' }
         else
           format.html { render :retribution }
         end
@@ -95,7 +95,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
+          format.html { redirect_to project_evidence_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
         else
           format.html { render :evidence }
         end
@@ -118,7 +118,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully created.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito'  }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -135,7 +135,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully updated.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -149,7 +149,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, notice: 'La Información del proyecto fue guarda con èxito'  }
       format.json { head :no_content }
     end
   end

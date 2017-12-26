@@ -6,6 +6,9 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <% flash.each do |message_type, message| %>
+      <%= javascript_tag "$(document).ready(function(){ Materialize.toast('#{message}', 4000)})" %>
+  <% end %>
 </head>
 
 <body>
@@ -111,8 +114,6 @@
 </header>
 <section id="main-content">
   <section class="grey lighten-3 login-form">
-    <p class="alert"><%= alert %></p>
-    <p class="notice"><%= notice %></p>
     <div class="container">
       <div class="row">
         <div class="col s12 m12 l12 z-depth-5 card col-center animated bounceInRight">
