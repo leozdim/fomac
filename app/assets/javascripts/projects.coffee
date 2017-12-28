@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', ->
   $('#category select').change set_up_select
   set_up_select.apply($('#category select'))
 
+
   $ ->
     $('#projects-table').dataTable
       processing: true
