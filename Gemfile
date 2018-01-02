@@ -41,6 +41,7 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave-i18n'
 gem 'devise-i18n'
 
 # Use Capistrano for deployment

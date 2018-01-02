@@ -20,5 +20,6 @@
 //= require_tree .
 $(document).on('turbolinks:load', function() {
   $('select').material_select();
+  $('div.birthdate .select-wrapper ').addClass('col sm4 m4')
 });
 
