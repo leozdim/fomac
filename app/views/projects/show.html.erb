@@ -1,24 +1,169 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Folio:</strong>
-  <%= @project.folio %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user.first_name + " " +@project.user.last_name %>
-</p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @project.category.name %>
-</p>
+<h3>Proyecto <%= !@project.information.blank? ? @project.information.name : "" %></h3>
+<div class="col s10 m5">
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <h4 class="header">Información del trabajo</h4>
 
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
+      <div class="card-content">
+        <p>
+          <strong>Folio:</strong>
+          <%= @project.folio %><
+        </p>
+        <p>
+          <strong>User:</strong>
+          <%=(@project.user.first_name||"")  + " " +(@project.user.last_name||"") + " " + (@project.user.second_last_name||"") %>
+        </p>
+
+        <p>
+          <strong>Category:</strong>
+          <%= @project.category.name %>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <%= @project.status %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col s12 m7">
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <h4 class="header">Documentos</h4>
+      <div class="card-content">
+        <% unless @project.person_document.blank? %>
+
+          <div class="file-field input-field">
+            <div>
+                <span>
+                  Semblanza
+                </span>
+            </div>
+              <%=link_to 'Download file', download_doc_path(:class => "person_document", :as => "request_letter",:id => @project.person_document.first.id, :basename => @project.person_document.first.request_letter.file.basename, :extension => @project.person_document.first.request_letter.file.extension), :target => "_blank" %>
+            <%#=image_tag @project.person_document.first.id%>
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Acta de nacimiento
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"birth",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.birth.file.basename, :extension=>@project.person_document.first.birth.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Domicilio
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"address",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.address.file.basename, :extension=>@project.person_document.first.address.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Identificación
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"identification",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.identification.file.basename, :extension=>@project.person_document.first.identification.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  CURP
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"curp",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.curp.file.basename, :extension=>@project.person_document.first.curp.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Currículum
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"resume",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.resume.file.basename, :extension=>@project.person_document.first.resume.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Kardex
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"kardex",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.kardex.file.basename, :extension=>@project.person_document.first.kardex.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Carta de concentimiento
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"agreement_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.agreement_letter.file.basename, :extension=>@project.person_document.first.agreement_letter.file.extension), :target=>"_blank" %>
+
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+          <div class="file-field input-field">
+            <div >
+                <span>
+                  Carta de asignacion
+                </span>
+            </div>
+            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"assign_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.assign_letter.file.basename, :extension=>@project.person_document.first.assign_letter.file.extension), :target=>"_blank" %>
+            <div class="file-path-wrapper">
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col s10 m5">
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <h4 class="header">Información del creador</h4>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+

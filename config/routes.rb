@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  post 'static_pages/savenew'
+
   resources :projects
   match 'projects/:id/add_people', to: 'projects#add_people', as: :add_project_people , via: :all
   get 'projects/:id/anexos', to: 'projects#anexos', as: :add_anexo_people
@@ -16,8 +19,10 @@ Rails.application.routes.draw do
     :confirmations => "users/confirmations",
     :passwords => "users/passwords"
   }
+
   resources :users
   resources :people
+
   root to: "projects#new"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

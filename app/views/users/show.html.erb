@@ -19,11 +19,14 @@
   <strong>Role:</strong>
   <%= @user.role %>
 </p>
-
 <p>
-  <strong>Person:</strong>
-  <%= @user.person_id %>
+  <strong>Estatus:</strong>
+  <%= @user.account_active ? "Activo" : "Inactivo"  %>
 </p>
+<!--p>
+  <strong>Person:</strong>
+  <%#= @user.person_id %>
+</p-->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

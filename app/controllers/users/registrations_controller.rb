@@ -12,7 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    resource.role='creator' 
+    resource.role='creator'
+    resource.account_active = true
     resource.save
   end
 

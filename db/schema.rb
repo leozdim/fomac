@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219224136) do
+ActiveRecord::Schema.define(version: 20180101171751) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
     t.string "street"
     t.string "internal_number"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
-  create_table "art_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "art_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "modality_id"
     t.string "name"
     t.integer "contributions"
@@ -34,20 +34,20 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["modality_id"], name: "index_art_activities_on_modality_id"
   end
 
-  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "art_forms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "art_forms_projects", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id", null: false
     t.bigint "art_form_id", null: false
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "key", null: false
     t.boolean "single", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dance_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "dance_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_dance_evidences_on_project_id"
   end
 
-  create_table "film_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "film_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_film_evidences_on_project_id"
   end
 
-  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "name"
     t.text "description"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_information_on_project_id"
   end
 
-  create_table "letter_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "letter_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "work"
@@ -112,13 +112,13 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_letter_evidences_on_project_id"
   end
 
-  create_table "modalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "modalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "music_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "music_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_music_evidences_on_project_id"
   end
 
-  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_people_on_project_id"
   end
 
-  create_table "person_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "person_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
     t.string "request_letter"
     t.string "birth"
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["person_id"], name: "person_index"
   end
 
-  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "folio"
     t.bigint "user_id"
     t.bigint "category_id"
@@ -177,7 +177,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
-  create_table "retributions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "retributions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.bigint "modality_id"
     t.bigint "art_activity_id"
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_retributions_on_project_id"
   end
 
-  create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
     t.string "video"
@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.index ["project_id"], name: "index_theater_evidences_on_project_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "second_last_name"
@@ -224,13 +224,14 @@ ActiveRecord::Schema.define(version: 20171219224136) do
     t.string "confirmation_token", limit: 150
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "account_active"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "visual_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "visual_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.text "catalog"
     t.text "image"
