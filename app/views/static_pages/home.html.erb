@@ -1,0 +1,57 @@
+<%= form_for @user, :url => {:action => "savenew"} do |f| %>
+
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, id: :user_first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, id: :user_last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second_last_name %>
+    <%= f.text_field :second_last_name, id: :user_second_last_name %>
+  </div>
+
+  <div class="input-field">
+    <%= f.label :email, 'Correo electrónico' %>
+    <%= f.email_field :email %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :role %>
+    <%#= form.text_field :role, id: :user_role %>
+    <%= select_tag(:role, options_for_select([['Admin', 'Admin'], ['Juez', 'Judge']]))%>
+  </div>
+
+  <div class="field">
+    <%= f.label :account_active %>
+    <%#= form.text_field :role, id: :user_role %>
+    <%= f.select :account_active, [['Activo', true], ['Inactivo', false]]%>
+  </div>
+
+  <!--div class="field">
+    <%#= form.label :person_id_id %>
+  <%#= form.text_field :person_id_id, id: :user_person_id_id %>
+  </div-->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

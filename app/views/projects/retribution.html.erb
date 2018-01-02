@@ -1,17 +1,26 @@
 
 
 <%= form_for(@project, url: project_retribution_path ) do |f| %>
-  <%= f.fields_for :retribution  do |p| %> 
-    <%# <%= render 'docs_perproject_informationson_fields', f: p %>
-    <%= p.hidden_field :id %>
-    <%= p.label :Modalidad %>
-    <%= p.select :modality_id,  options_from_collection_for_select(Modality.all.order(:name), :id, :name, f.object.retribution.modality_id), 
-      { :prompt=> 'Seleccione' }  %>
-    <%= p.label :Actividad %>
-    <%= p.select :art_activity_id,  options_from_collection_for_select(ArtActivity.all.order(:name), :id, :name, f.object.retribution.art_activity_id), 
-      { :prompt=> 'Seleccione' }  %>
-    <%= p.label :Descripcion %>
-    <%= p.text_area :description %>
-  <% end %>
-  <%= f.submit %>
+<%= render 'errors' %>
+<%= f.fields_for :retribution  do |p| %>
+<%# <%= render 'docs_perproject_informationson_fields', f: p %>
+<%= p.hidden_field :id %>
+<div class="row">
+  <div class="input-field col s12 m6">
+    <%= p.select :modality_id,  options_from_collection_for_select(Modality.all.order(:name), :id, :name, f.object.retribution.modality_id),
+    { :prompt=> 'Seleccione' }  %>
+    <%= p.label :modality_id, 'Modalidad' %>
+  </div>
+  <div class="input-field col s12 m6">
+    <%= p.select :art_activity_id,  options_from_collection_for_select(ArtActivity.all.order(:name), :id, :name, f.object.retribution.art_activity_id),
+    { :prompt=> 'Seleccione' }  %>
+    <%= p.label :art_activity_id, 'Actividad' %>
+  </div>
+  <div class="input-field col s12">
+    <%= p.label :description, 'Descripción' %>
+    <%= p.text_area :description, :class=>"materialize-textarea" %>
+  </div>
+</div>
+<% end %>
+<%= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
 <% end %>

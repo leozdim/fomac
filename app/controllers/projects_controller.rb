@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource param_method: :project_params
+  skip_load_resource only: [:download]
 
   # GET /projects
   # GET /projects.json
@@ -23,6 +24,16 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def finish 
+    unless @project.finish?
+      redirect_to edit_project_path(@project), notice: 'Aùn no terminas de dar de alta el proyeto'
+    else
+      ProjectMailer.finish(@project).deliver_later
+    end
+
+
+  end 
+
   # GET /projects/1/edit
   def edit
   end
@@ -32,11 +43,9 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to add_anexo_people_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to add_anexo_people_path(@project), notice: 'Lo(s) participante(s) del proyecto se guardo con èxito'  }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :add_people }
         end
       end
     else
@@ -51,15 +60,11 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_information_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :add_documents_people }
         end
       end
-    else
-      @project.people.first.person_document=PersonDocument.new if @project.people.first.person_document.blank?
     end
   end
 
@@ -67,15 +72,13 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto se guardo con èxito' }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :information }
         end
       end
     else
-      @project.information=Information.new if @project.information.blank?
+      @project.build_information if @project.information.blank?
     end
   end 
 
@@ -83,38 +86,40 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to project_evidence_path(@project), notice: 'La retribuciòn del proyecto se guardo con èxito' }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :retribution }
         end
       end
     else
       if @project.retribution.blank?
-        retribution= Retribution.new
+        @project.build_retribution
+        retribution= @project.retribution
         retribution.modality=Modality.order(:name).first
         retribution.art_activity=ArtActivity.order(:name).first
-        @project.retribution=retribution
       end
     end
   end
 
   def evidence
+    @arts=@project.art_forms
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'Person was successfully updated.' }
-          format.json { render :show, status: :ok, location: @person }
+          format.html { redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
         else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.html { render :evidence }
         end
       end
     else
-      @project.visual_evidence=VisualEvidence.new if @project.visual_evidence.blank?
-      @project.dance_evidence=DanceEvidence.new if @project.dance_evidence.blank?
-      @project.music_evidence=MusicEvidence.new if @project.music_evidence.blank?
+      @arts.each do |a|
+        @project.build_visual_evidence if @project.visual_evidence.blank? and VisualEvidence::ART_FORM_ID==a.id
+        @project.build_dance_evidence if @project.dance_evidence.blank? and DanceEvidence::ART_FORM_ID==a.id
+        @project.build_music_evidence if @project.music_evidence.blank? and MusicEvidence::ART_FORM_ID==a.id
+        @project.build_theater_evidence if @project.theater_evidence.blank? and TheaterEvidence::ART_FORM_ID==a.id
+        @project.build_film_evidence if @project.film_evidence.blank? and FilmEvidence::ART_FORM_ID==a.id
+        @project.build_letter_evidence if @project.letter_evidence.blank? and LetterEvidence::ART_FORM_ID==a.id
+      end
     end
   end
 
@@ -126,7 +131,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully created.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito'  }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -143,7 +148,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'Project was successfully updated.' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -157,8 +162,23 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, notice: 'La Información del proyecto fue guarda con èxito'  }
       format.json { head :no_content }
+    end
+  end
+
+  def download
+    if current_user.role==:creator
+      access=params[:class].camelize.constantize.joins(:project).where('projects.user_id'=>current_user.id, :id=>params[:id]).count
+      if access==0
+        raise CanCan::AccessDenied.new("No tienes acceso")
+      end
+    end
+    path = "#{Rails.root}/uploads/#{params[:class]}/#{params[:as]}/#{params[:id]}/#{params[:basename]}.#{params[:extension]}"
+    if  File.exist?(path)
+      send_file path, :x_sendfile=>true
+    else
+      redirect_to '/404.html' 
     end
   end
 
@@ -173,13 +193,16 @@ class ProjectsController < ApplicationController
     params.require(:project).permit( :category_id ,:people_attributes=>
                                     [ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, 
                                       :addresses_attributes=>
-                                    [ :street, :internal_number, :external_number, :colony, :zip ],
+                                    [ :id , :street, :internal_number, :external_number, :colony, :zip ],
                                       :person_document_attributes=>[:id,:request_letter,:birth,:address,:identification,:curp,:resume,:kardex,:agreement_letter,:assign_letter]],
                                     :information_attributes=> [:id,:name,:description,:antecedent,:justification,:general_objective,:specific_objective,:goals,:beneficiary,:context,:bibliography,:activities,:spending,:funding],
                                    :retribution_attributes=> [:id, :modality_id, :art_activity_id, :description],
                                    :visual_evidence_attributes=> [:id, :image=>[], :catalog=>[], :note=>[], :document=>[]],
                                    :dance_evidence_attributes=> [:id,:video, :web , :image=>[], :note=>[], :document=>[]],
-                                   :music_evidence_attributes=> [:id,:video, :web , :audio, :score=>[], :note=>[], :document=>[]])
+                                   :music_evidence_attributes=> [:id,:video, :web , :audio, :score=>[], :note=>[], :document=>[]],
+                                   :theater_evidence_attributes=> [:id,:video, :web , :script, :letter, :image=>[], :note=>[], :document=>[]],
+                                   :film_evidence_attributes=> [:id,:video, :web , :demo, :script, :plan, :synopsis, :letter],
+                                   :letter_evidence_attributes=> [:id, :web , :work, :cover=>[] ])
 
   end 
 end

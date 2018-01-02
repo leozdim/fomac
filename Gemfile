@@ -41,6 +41,8 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave-i18n'
+gem 'devise-i18n'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
@@ -68,4 +70,5 @@ gem 'pg'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-datatables-rails'
+
 gem 'ajax-datatables-rails'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217234442) do
+ActiveRecord::Schema.define(version: 20180101171751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,20 @@ ActiveRecord::Schema.define(version: 20171217234442) do
     t.index ["project_id"], name: "index_dance_evidences_on_project_id"
   end
 
+  create_table "film_evidences", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "web"
+    t.string "video"
+    t.string "demo"
+    t.string "synopsis"
+    t.string "script"
+    t.string "plan"
+    t.string "letter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_film_evidences_on_project_id"
+  end
+
   create_table "information", force: :cascade do |t|
     t.bigint "project_id"
     t.string "name"
@@ -89,6 +103,16 @@ ActiveRecord::Schema.define(version: 20171217234442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_information_on_project_id"
+  end
+
+  create_table "letter_evidences", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "web"
+    t.string "work"
+    t.text "cover"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_letter_evidences_on_project_id"
   end
 
   create_table "modalities", force: :cascade do |t|
@@ -169,6 +193,20 @@ ActiveRecord::Schema.define(version: 20171217234442) do
     t.index ["project_id"], name: "index_retributions_on_project_id"
   end
 
+  create_table "theater_evidences", force: :cascade do |t|
+    t.bigint "project_id"
+    t.string "web"
+    t.string "video"
+    t.string "letter"
+    t.string "script"
+    t.text "document"
+    t.text "image"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_theater_evidences_on_project_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -190,6 +228,7 @@ ActiveRecord::Schema.define(version: 20171217234442) do
     t.string "confirmation_token", limit: 150
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "account_active"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"
@@ -210,7 +249,9 @@ ActiveRecord::Schema.define(version: 20171217234442) do
   add_foreign_key "addresses", "people"
   add_foreign_key "art_activities", "modalities"
   add_foreign_key "dance_evidences", "projects"
+  add_foreign_key "film_evidences", "projects"
   add_foreign_key "information", "projects"
+  add_foreign_key "letter_evidences", "projects"
   add_foreign_key "music_evidences", "projects"
   add_foreign_key "people", "projects"
   add_foreign_key "person_documents", "people"
@@ -219,6 +260,7 @@ ActiveRecord::Schema.define(version: 20171217234442) do
   add_foreign_key "retributions", "art_activities"
   add_foreign_key "retributions", "modalities"
   add_foreign_key "retributions", "projects"
+  add_foreign_key "theater_evidences", "projects"
   add_foreign_key "users", "people"
   add_foreign_key "visual_evidences", "projects"
 end

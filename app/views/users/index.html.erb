@@ -2,6 +2,24 @@
 
 <h1>Users</h1>
 
+<table id="users-table", data-source="<%= users_path(format: :json) %>">
+  <thead>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Second last name</th>
+    <th>Role</th>
+    <th>Mostrar</th>
+    <th>Editar</th>
+    <th>Destruir</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+<!--
 <table>
   <thead>
     <tr>
@@ -15,21 +33,21 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <%# @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.second_last_name %></td>
-        <td><%= user.role %></td>
-        <td><%= user.person_id %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= user.first_name %></td>
+        <td><%#= user.last_name %></td>
+        <td><%#= user.second_last_name %></td>
+        <td><%#= user.role %></td>
+        <td><%#= user.person_id %></td>
+        <td><%#= link_to 'Show', user %></td>
+        <td><%#= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
-
+-->
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Nuevo usuario', static_pages_home_path %>

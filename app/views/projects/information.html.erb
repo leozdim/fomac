@@ -1,34 +1,104 @@
-
+<style>
+span.ayuda {
+  font-size: 0.8rem;
+  margin-top: -15px;
+  display: block;
+  margin-left: 1em;
+}
+.marge24{
+    margin-bottom: 24px;
+}
+</style>
+<span class="card-title">Información del proyecto</span>
 <%= form_for(@project, url: project_information_path ) do |f| %>
-  <%= f.fields_for :information  do |p| %> 
-    <%# <%= render 'docs_perproject_informationson_fields', f: p %>
-    <%= p.hidden_field :id %>
-    <%= p.label :name %>
-    <%= p.text_field :name %>
-    <%= p.label :description %>
-    <%= p.text_area :description %>
-    <%= p.label :antecedent %>
-    <%= p.text_area :antecedent %>
-    <%= p.label :justification %>
-    <%= p.text_area :justification %>
-    <%= p.label :general_objective %>
-    <%= p.text_area :general_objective %>
-    <%= p.label :specific_objective %>
-    <%= p.text_area :specific_objective %>
-    <%= p.label :goals %>
-    <%= p.text_area :goals %>
-    <%= p.label :beneficiary %>
-    <%= p.text_area :beneficiary %>
-    <%= p.label :context %>
-    <%= p.text_area :context %>
-    <%= p.label :bibliography %>
-    <%= p.text_area :bibliography %>
-    <%= p.label :activities %>
-    <%= p.file_field :activities %>
-    <%= p.label :spending %>
-    <%= p.file_field :spending %>
-    <%= p.label :funding %>
-    <%= p.file_field :funding %>
-  <% end %>
-  <%= f.submit %>
+    <%= render 'errors' %>
+<%= f.fields_for :information  do |p| %>
+<%# <%= render 'docs_perproject_informationson_fields', f: p %>
+<%= p.hidden_field :id %>
+<div class="input-field margen24">
+  <%= p.text_field :name %>
+  <%= p.label :name, 'Nombre del proyecto' %>
+</div>
+<div class="input-field margen24">
+    <%= p.text_area :description, class:'materialize-textarea' %>
+    <%= p.label :description, 'Descripción' %>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :antecedent, class:'materialize-textarea' %>
+    <%= p.label :antecedent, 'Antecedentes' %>
+    <span class="ayuda">Antecedentes: Referencia histórica breve y aspectos generales del caso. Recuento de teorías, autores, corrientes o puntos de vista que se hayan efectuado sobre el tema o similares.</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :justification, class:'materialize-textarea' %>
+    <%= p.label :justification, 'Justificación' %>
+    <span class="ayuda">Justificación: Indicar la importancia del proyecto, el impacto social y cultural, sostenibilidad y sustentabilidad. Razones por las que debe llevarse a cabo el proyecto</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :general_objective, class:'materialize-textarea' %>
+    <%= p.label :general_objective, 'Objetivo general' %>
+    <span class="ayuda">Objetivo general: Responde a las preguntas ¿Qué? ¿Para qué? utilizando verbos de acción, expresados en infinitivo</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :specific_objective, class:'materialize-textarea' %>
+    <%= p.label :specific_objective, 'Objetivos específicos' %>
+    <span class="ayuda">Objetivos específicos: Explicar de manera detallada las acciones y beneficios que respaldan el objetivo general, se redacta en infinitivo</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :goals, class:'materialize-textarea' %>
+    <%= p.label :goals, 'Metas o propósitos' %>
+    <span class="ayuda">Metas o propósitos: Describir los fines concretos, cuantificar las acciones y resultados a lograr con el desarrollo del proyecto</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :beneficiary, class:'materialize-textarea' %>
+    <%= p.label :beneficiary, 'Titulares de derecho' %>
+    <span class="ayuda">Titulares de derecho: Señalar la cantidad de personas beneficiadas, ejemplo: 150 niñas de primaria. Especificar beneficiarios directos e indirectos del proyecto</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :context, class:'materialize-textarea' %>
+    <%= p.label :context, 'Ubicación y contexto' %>
+    <span class="ayuda">Ubicación y contexto: Describir el lugar y ambiente en que se desarrollará su proyecto</span>
+</div>
+<br>
+<div class="input-field margen24">
+    <%= p.text_area :bibliography, class:'materialize-textarea' %>
+    <%= p.label :bibliography, 'Bibliografía' %>
+    <span class="ayuda">Bibliografía: Escribe aquí tus citas bibliográficas</span>
+</div>
+<br>
+<div class="file-field input-field">
+    <div class="btn">
+        <span>Cronograma de actividades</span>
+        <%= p.file_field :activities %>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, p.object.activities_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+    </div>
+</div>
+<div class="file-field input-field">
+    <div class="btn">
+        <span>Desgloce de gastos</span>
+        <%= p.file_field :spending %>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, p.object.spending_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+    </div>
+</div>
+<div class="file-field input-field">
+    <div class="btn">
+        <span>Fuentes de financiamiento</span>
+        <%= p.file_field :funding %>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, p.object.funding_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+    </div>
+</div>
+<% end %>
+<%= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
 <% end %>

@@ -1,0 +1,136 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+
+# if you change the identation, you gonna screw everithing :D
+es:
+    helpers:
+        submit:
+            create: "Guardar %{model}"
+            update: "Guardar %{model}"
+    activerecord:
+        models:
+            project: Proyecto
+        attributes:
+            project:
+                category: El campo Categoria
+                art_forms: El campo Modalidad
+            people: 
+                first_name: El campo Nombre
+                last_name: El campo Apellido paterno
+                second_last_name: El campo Apellido materno
+                level_study: El campo Nivel de estudios
+                city: El campo Ciudad
+                state: El campo Estado
+                nationality: El campo Nacionalidad
+                birthplace: El campo Lugar de nacimiento
+            people/addresses:
+                street: El campo Calle
+                external_number: El campo Numero externo
+                colony: El campo Colonia
+                zip: El campo Codigo postal
+            people/person_document:
+                request_letter: El documento Semblanza
+                birth: El documento Acta de nacimiento
+                identification: El documento Indentificacion con foto
+                curp: El documento CURP 
+                resume: El documento Curriculum
+                address: El documento Comprobante de domicilio
+            information:
+                name: El campo Nombre del proyecto
+                description: El campo Descripciòn
+                antecedent: El campo Antecedentes
+                justification: El campo Justificaciòn
+                general_objective: El campo Objetivo general
+                specific_objective: El campo Objetivos especificos
+                goals: El campo Metas o propòsitos
+                beneficiary: El campo Titulares del derecho
+                context: El campo Ubicación y contexto
+                bibliography: El campo Bibliografía
+                activities: El documento Cronograma de actividades
+                spending: El documento Desgloce de gastos
+                funding: El documento Fuentes de financiamiento
+            retribution:
+                description: El campo Descripciòn
+                modality: El campo Modalidad
+                activity: El campo Actividad
+            visual_evidence: 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            dance_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            music_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                audio: El campo Audio Muestra 
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                note: El documento notas de prensa
+                score: El documento  Partituras de tu autoría
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            theater_evidence: 
+                video: El campo Video muestra 
+                web: El campo Sitio web 
+                script: El documento texto de muestra
+                letter: El documento Carta de autorización del autor
+                note: El documento notas de prensa
+                image: El documento Imágenes de obras realizadas
+                catalog: El documento Catálogo
+                score: El documento  Partituras de tu autoría
+                document: El documento Invitaciones, constancias y/o reconocimientos
+            film_evidence: 
+                video: El campo Video muestra 
+                demo: El campo Demo reel
+                web: El campo Sitio web 
+                script: El documento Guion
+                synopsis: El documento Sinopsis
+                plan: El documento plan
+                letter: El documento Carta de autorización del autor
+            letter_evidence: 
+                web: El campo Sitio web 
+                work: El documento Texto de muestra
+                cover: El documento Portadas de libros
+        errors:
+            messages: 
+                blank: es obligatorio
+                required : es obligatorio
+    date:
+        order: ["day", "year",  "month"]
+        month_names: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", 
+            "Agosto", "Septiembre", "Octubre", "Nobiembre", "Diciembre"]
+

@@ -7,11 +7,13 @@ class Ability
       user ||= User.new # guest user (not logged in)
       case user.role
       when :admin
-        can :read, :all
+        can :read,:all
+        can  :update,:all
+        can :modify, :all
+        can :manage,  :all
         return
       when :creator
         projects=user.projects.pluck(:id)
-        can :update, User, id: user.id
         can :update, Project , id: projects
         can :add_people, Project , id: projects
         can :anexos, Project , id: projects
@@ -19,6 +21,7 @@ class Ability
         can :information, Project , id: projects
         can :retribution, Project , id: projects
         can :evidence, Project , id: projects
+        can :finish, Project , id: projects
         can :create, Project
         can :update, Person, :project_id=>projects
         can :create, Person
@@ -26,6 +29,7 @@ class Ability
       when :judge
       end
       can :manage, User, id: user.id
+      can :download, Project
 
 
     #

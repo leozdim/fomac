@@ -1,4 +1,4 @@
-<section class="grey lighten-3 register-form">
+<section class="grey lighten-5 register-form">
   <div class="container">
     <div class="row no-margin">
       <div class="section"></div>
@@ -13,11 +13,11 @@
 	      <div class="row">
 		[% msg %]
 		[% form.jshead %]
-		[% form.start %]	      
-		[% FOREACH field = form.fields %][% IF field.type == 'hidden'%][% field.field %][% END %][% END %]	      	     
+		[% form.start %]
+		[% FOREACH field = form.fields %][% IF field.type == 'hidden'%][% field.field %][% END %][% END %]
 		<div class="row">
 		  [% FOREACH field = form.fields %]
-		  [% IF field.type != 'hidden' %]	      
+		  [% IF field.type != 'hidden' %]
 		  <div class="input-field col s12 m12 l12">
 		    [% IF field.icon %]<i class="material-icons prefix">[% field.icon %]</i>[% END %]
 		    [% field.prefix %][% field.field %][% field.unit %][% IF field.comment %]<span class="help-block">[% field.comment %]</span>[% END %]

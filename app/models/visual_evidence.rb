@@ -8,21 +8,23 @@ class VisualEvidence < ApplicationRecord
   serialize :note, JSON
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
+  validates_presence_of :image, :catalog, :note, :document
+  ART_FORM_ID=1
 
   def images
-    image.map{|x| x.url}.join ','
+      image.map{|x| x.file.filename}.join ','
   end
 
   def catalogs
-    catalog.map{|x| x.url}.join ','
+      catalog.map{|x| x.file.filename}.join ','
   end
 
   def notes
-    note.map{|x| x.url}.join ','
+      note.map{|x| x.file.filename}.join ','
   end
 
   def documents
-    document.map{|x| x.url}.join ','
+      document.map{|x| x.file.filename}.join ','
   end
 
 end

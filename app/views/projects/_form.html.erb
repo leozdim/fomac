@@ -1,27 +1,17 @@
 <%= form_with(model: project, local: true) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-        <% project.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <h2>
-     En este formulario elegirás la categoría y disciplina de tu proyecto 
-  </h2> 
-  
-  <div class="field", id="category">
-    <%= form.label :category %>
-    <%= form.select :category_id,  options_for_select(Category.options_array, :selected=> form.object.category_id), prompt: 'Seleccione'   %>
+  <p>
+     En este formulario elegirás la categoría y disciplina de tu proyecto
+  </p>
+  <br>
+  <%= render 'errors' %>
+  <div class="input-field", id="category">
+    <%= form.select :category_id, options_for_select(Category.options_array, :selected=> form.object.category_id), prompt: 'Seleccione una categoria'%>
+    <%= form.label :category, 'Categoría' %>
   </div>
   <div class="field hide" id="art">
-    <%= form.label :art_form %>
-    <%= form.select :art_forms,  options_from_collection_for_select(ArtForm.all.order(:name), :id, :name, form.object.art_forms.to_a.pluck(:id)), 
-      { :prompt=> 'Seleccione' },{:multiple=>true}  %>
+    <%= form.label :art_form, 'Modalidad' %>
+    <%= form.select :art_forms,  options_from_collection_for_select(ArtForm.all.order(:name), :id, :name, form.object.art_forms.to_a.pluck(:id)),
+      { :prompt=> 'Seleccione ' },{:multiple=>true}  %>
 </div>
 <div class="row">
   <div id="single" class="col s6 center active-project">

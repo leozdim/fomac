@@ -6,17 +6,19 @@ class MusicEvidence < ApplicationRecord
   serialize :note, JSON
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
-
+  validates_presence_of :video, :web , :audio, :score, :note, :document
+  ART_FORM_ID=3
+ 
   def scores
-    score.map{|x| x.url}.join ',' 
+      score.map{|x| x.file.filename}.join ',' 
   end
 
   def notes
-    note.map{|x| x.url}.join ','
+      note.map{|x| x.file.filename}.join ','
   end
 
   def documents
-    document.map{|x| x.url}.join ','
+      document.map{|x| x.file.filename}.join ','
   end
 
 end

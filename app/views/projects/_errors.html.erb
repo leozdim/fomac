@@ -1,0 +1,12 @@
+<% if @project.errors.any? %>
+<div class="card-panel  red darken-1 z-depth-2" style="color: rgba(255, 255, 255, 0.901961);">
+	<div class="row">
+		<p class="flow-text col s12">Se encontraron errores, los cuales evitaron se guardara la información</p>
+		<ul class="col s12">
+			<% @project.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<% end %>
