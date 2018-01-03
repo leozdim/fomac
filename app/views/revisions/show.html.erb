@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @revision.user %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @revision.project %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @revision.field %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @revision.status %>
+</p>
+
+<p>
+  <strong>Observations:</strong>
+  <%= @revision.observations %>
+</p>
+
+<%= link_to 'Edit', edit_revision_path(@revision) %> |
+<%= link_to 'Back', revisions_path %>

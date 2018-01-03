@@ -1,0 +1,93 @@
+<style>
+  span.ayuda {
+    font-size: 0.8rem;
+    margin-top: -15px;
+    display: block;
+    margin-left: 1em;
+  }
+  .marge24{
+    margin-bottom: 24px;
+  }
+</style>
+<span class="card-title">Información del proyecto</span>
+
+<%# <%= render 'docs_perproject_informationson_fields', f: p %>
+    <%#= p.hidden_field :id %>
+    <div class="input-field margen24">
+      <%= text_field_tag :name , @information.name%>
+      <%= label_tag 'Nombre del proyecto' %>
+    </div>
+    <div class="input-field margen24">
+      <%= text_area_tag :description,@information.description, class:'materialize-textarea' %>
+      <%= label_tag :description, 'Descripción' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :antecedent,@information.antecedent, class:'materialize-textarea' %>
+      <%= label_tag :antecedent, 'Antecedentes' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :justification, @information.justification, class:'materialize-textarea' %>
+      <%= label_tag :justification, 'Justificación' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :general_objective,@information.general_objective, class:'materialize-textarea' %>
+      <%= label_tag :general_objective, 'Objetivo general' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :specific_objective,@information.specific_objective, class:'materialize-textarea' %>
+      <%= label_tag :specific_objective, 'Objetivos específicos' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :goals, @information.goals,class:'materialize-textarea' %>
+      <%= label_tag :goals, 'Metas o propósitos' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :beneficiary,@information.beneficiary, class:'materialize-textarea' %>
+      <%= label_tag :beneficiary, 'Titulares de derecho' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :context, @information.context, class:'materialize-textarea' %>
+      <%= label_tag :context, 'Ubicación y contexto' %>
+    </div>
+    <br>
+    <div class="input-field margen24">
+      <%= text_area_tag :bibliography, @information.bibliography, class:'materialize-textarea' %>
+      <%= label_tag :bibliography, 'Bibliografía' %>
+    </div>
+    <br>
+    <!--div class="file-field input-field">
+      <div class="btn">
+        <span>Cronograma de actividades</span>
+        <%#= p.file_field :activities %>
+      </div>
+      <div class="file-path-wrapper">
+        <%#= text_field_tag nil, p.object.activities_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+        <%#=link_to 'Download file', download_doc_path(:class => "person_document", :as => "activities_identifier", :basename => @information.activities.id.file.basename, :extension => @information.activities.id.file.extension), :target => "_blank" %>
+
+      </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Desgloce de gastos</span>
+        <%#= p.file_field :spending %>
+      </div>
+      <div class="file-path-wrapper">
+        <%#= text_field_tag nil, p.object.spending_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+      </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Fuentes de financiamiento</span>
+        <%#= p.file_field :funding %>
+      </div>
+      <div class="file-path-wrapper">
+        <%#= text_field_tag nil, p.object.funding_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+      </div>
+    </div-->

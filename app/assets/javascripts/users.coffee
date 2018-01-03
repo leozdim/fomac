@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', ->
       {data: 'role'}
       {data: 'show'}
       {data: 'edit'}
-      {data: 'destroy'}
 
     ]
 )

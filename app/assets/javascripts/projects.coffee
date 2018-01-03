@@ -31,10 +31,8 @@ $(document).on('turbolinks:load', ->
         {data: 'folio'}
         {data: 'user'}
         {data: 'category'}
-        {data: 'status'}
         {data: 'show'}
         {data: 'edit'}
-        {data: 'delete'}
       ]
 )
 

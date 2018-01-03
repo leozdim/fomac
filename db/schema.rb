@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180101171751) do
+ActiveRecord::Schema.define(version: 20180103072852) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
@@ -189,6 +189,18 @@ ActiveRecord::Schema.define(version: 20180101171751) do
     t.index ["project_id"], name: "index_retributions_on_project_id"
   end
 
+  create_table "revisions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.string "field"
+    t.string "status"
+    t.string "observations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_revisions_on_project_id"
+    t.index ["user_id"], name: "index_revisions_on_user_id"
+  end
+
   create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
@@ -256,6 +268,8 @@ ActiveRecord::Schema.define(version: 20180101171751) do
   add_foreign_key "retributions", "art_activities"
   add_foreign_key "retributions", "modalities"
   add_foreign_key "retributions", "projects"
+  add_foreign_key "revisions", "projects"
+  add_foreign_key "revisions", "users"
   add_foreign_key "theater_evidences", "projects"
   add_foreign_key "users", "people"
   add_foreign_key "visual_evidences", "projects"

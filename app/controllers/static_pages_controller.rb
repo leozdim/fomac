@@ -36,5 +36,13 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def creator
+      @project = Person.where(:project_id => params[:project]).first
+  end
+
+  def project
+    @information = Information.where(:project_id => params[:project]).first
+  end
+
 
 end

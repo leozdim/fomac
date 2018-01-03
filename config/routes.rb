@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  resources :revisions
+  get 'revisions/observation'
+  get 'revisions/validate' , to: 'revisions#validate'
   get 'static_pages/home'
+  get 'static_pages/creator'
+  get 'static_pages/project'
   post 'static_pages/savenew'
 
   resources :projects

@@ -1,0 +1,114 @@
+<div class="nested-fields" >
+  <span class="card-title">Información del participante</span>
+
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= text_field_tag 'first_name' ,@project.first_name %>
+        <%= label_tag :first_name, 'Nombre' %>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= text_field_tag :last_name, @project.last_name %>
+        <%= label_tag :last_name, 'Apellido paterno' %>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="input-field">
+        <%= text_field_tag :second_last_name, @project.second_last_name %>
+        <%= label_tag :second_last_name, 'Apellido materno' %>
+      </div>
+    </div>
+    <div class="col s12" style='padding: 0'>
+      <div class="input-field birthdate">
+        <%= text_field_tag :birthdate, @project.birthdate, start_year: Date.today.year - 100  %>
+        <%= label_tag :birthdate, 'Fecha de nacimiento' %>
+      </div>
+    </div>
+    <div class="col s6 m3">
+      <div class="input-field">
+        <%= text_field_tag :home_phone_number, @project.home_phone_number, maxlength: '12' %>
+        <%= label_tag :home_phone_number, 'Teléfono' %>
+      </div>
+    </div>
+    <div class="col s6 m3">
+      <div class="input-field">
+        <%= text_field_tag :cellphone, @project.cellphone , maxlength: '12' %>
+        <%= label_tag :cellphone, 'Celular' %>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field">
+        <%= text_field_tag :level_study,@project.level_study %>
+        <%= label_tag :level_study, 'Grado maximo de estudios' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= text_field_tag :birthplace,@project.birthplace %>
+        <%= label_tag :birthplace, 'Lugar de nacimiento' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= text_field_tag :state, @project.state %>
+        <%= label_tag :state, 'Estado' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= text_field_tag :city, @project.city %>
+        <%= label_tag :city, 'Ciudad' %>
+      </div>
+    </div>
+    <div class="col s12 m4 l3">
+      <div class="input-field">
+        <%= text_field_tag :nationality, @project.nationality %>
+        <%= label_tag :nationality, 'Nacionalidad' %>
+      </div>
+    </div>
+  </div>
+  <%#= @project.fields_for :addresses do |a| %>
+    <%#= render 'projects/address_fields', f: a %>
+  <%# end %>
+  <div class="nested-fields row">
+    <%#= f.hidden_field :id %>
+    <div class="col s6 m4">
+      <div class="input-field">
+        <%= label_tag  :street, 'Calle' %>
+        <%= text_field_tag :street ,@project.addresses.first.street%>
+      </div>
+    </div>
+    <div class="col s6 m2 l1">
+      <div class="input-field">
+        <%= label_tag  :internal_number,'# int' %>
+        <%=text_field_tag :internal_number,@project.addresses.first.internal_number %>
+      </div>
+    </div>
+    <div class="col s6 m2 l1">
+      <div class="input-field">
+        <%= label_tag  :external_number, '# ext' %>
+        <%= text_field_tag :external_number ,@project.addresses.first.external_number%>
+      </div>
+    </div>
+    <div class="col s6 m4">
+      <div class="input-field">
+        <%= label_tag  :colony, 'Colonia'%>
+        <%= text_field_tag :colony ,@project.addresses.first.colony %>
+      </div>
+    </div>
+    <div class="col s6 m3 l2">
+      <div class="input-field">
+        <%= label_tag  :zip,'C.P.' %>
+        <%= text_field_tag :zip ,@project.addresses.first.zip%>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<%= link_to 'Back', project_path(params[:project]) %>

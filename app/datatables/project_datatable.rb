@@ -9,12 +9,11 @@ class ProjectDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       # id: { source: "User.id", cond: :eq },
       # name: { source: "User.name", cond: :like }
-      folio:      { source: "Project.folio", cond: :like,  orderable: true },
-      user:       { source: "User.first_name",  cond: :like,searchable: true },
-      category:   { source: "Category.name" ,  cond: :like,searchable: true},
-      status:     { source: "Project.status",  cond: :like,searchable: true},
-      #edit:   { source: "Project.category.name" },
-      #delete:     { source: "Project.status"},
+      folio:      { source: "Project.folio",    cond: :like,searchable: true, orderable: true },
+      user:       { source: "User.first_name",  cond: :like,searchable: true},
+      category:   { source: "Category.name" ,   cond: :like,searchable: true},
+      #show:       { source: "Project.category.name" },
+      #edit:       { source: "Project.status"},
     }
   end
 
@@ -24,10 +23,8 @@ class ProjectDatatable < AjaxDatatablesRails::Base
         folio:  record.folio,
         user:   record.user.first_name,
         category: record.category.name,
-        status: record.status,
         show: link_to( 'Mostrar', record),
         edit: link_to("Editar", @view.edit_project_path(record)),
-        delete:   link_to('Borrar', record, method: :delete, data: { confirm: 'Are you sure?' }),
         # example:
         # id: record.id,
         # name: record.name

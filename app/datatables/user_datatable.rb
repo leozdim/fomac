@@ -10,9 +10,9 @@ class UserDatatable < AjaxDatatablesRails::Base
       # id: { source: "User.id", cond: :eq },
       # name: { source: "User.name", cond: :like }
       first_name: { source: "User.first_name", cond: :like, searchable: true, orderable: true },
-      last_name:  { source: "User.last_name",  cond: :like },
-      second_last_name: { source: "User.second_last_name",  cond: :like },
-      role:        { source: "User.role" },
+      last_name:  { source: "User.last_name",  cond: :like, searchable: true},
+      second_last_name: { source: "User.second_last_name",  cond: :like ,searchable: true},
+      role:        { source: "User.role",searchable: true },
     }
   end
 
@@ -25,7 +25,6 @@ class UserDatatable < AjaxDatatablesRails::Base
           role: record.role,
           show: link_to('Show', record ),
           edit: link_to('Edit', @view.edit_user_path(record)),
-          destroy: link_to('Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } ),
         # example:
         # id: record.id,
         # name: record.name
