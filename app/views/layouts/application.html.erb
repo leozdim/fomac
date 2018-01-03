@@ -127,7 +127,7 @@
     <div class="fixed-action-btn">
       <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete,
       class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
-      <%= link_to(t(:proyect),project_path(@project.id), class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in? && current_user&.role==:creator %>
+      <%#= link_to(t(:proyect),project_path(@project.id), class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in? && current_user&.role==:creator %>
 
       <%if current_user&.role==:admin %>
         <%= link_to(t(:proyects),projects_path, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
