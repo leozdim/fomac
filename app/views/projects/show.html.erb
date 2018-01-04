@@ -1,272 +1,227 @@
 <p id="notice"><%= notice %></p>
+<span class="card-title">Proyecto <%= !@project.information.blank? ? @project.information.name : "" %></span>
+<div class="row">
+  <div class="col s12 m6 l6">
+    <span class="card-title">Información del trabajo</span>
+    <p>
+      <strong>Folio:</strong> <%= @project.folio %><br>
+      <strong>User:</strong> <%=(@project.user.first_name||"")  + " " +(@project.user.last_name||"") + " " + (@project.user.second_last_name||"") %><br>
+      <strong>Categoría:</strong> <%= @project.category.name %><br>
+      <strong>Estatus:</strong> <%= @project.status %>
+    </p>
+    <%= link_to "Detalles", static_pages_project_path(project: @project) %>
+  </div>
+  <div class="col s12 m6 l6">
+    <span class="card-title">Información del creador</span>
+    <div class="card-content">
+      <p>
+        <strong>Nombre:</strong>
+        <%= (!@project.people.first.blank? ? @project.people.first.first_name + " " + @project.people.first.last_name + " " + @project.people.first.second_last_name : "")%><br>
+        <strong>Fecha de nacimiento:</strong>
+        <%= (!@project.people.first.blank? ? @project.people.first.birthdate : "" )%>
+      </p>
 
-
-
-<h3>Proyecto <%= !@project.information.blank? ? @project.information.name : "" %></h3>
-<div class="col s10 m5">
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <h4 class="header">Información del trabajo</h4>
-
-      <div class="card-content">
-        <p>
-          <strong>Folio:</strong>
-          <%= @project.folio %><
-        </p>
-        <p>
-          <strong>User:</strong>
-          <%=(@project.user.first_name||"")  + " " +(@project.user.last_name||"") + " " + (@project.user.second_last_name||"") %>
-        </p>
-        <p>
-          <strong>Category:</strong>
-          <%= @project.category.name %>
-        </p>
-
-        <p>
-          <strong>Status:</strong>
-          <%= @project.status %>
-        </p>
-
-        <%= link_to "Detalles", static_pages_project_path(project: @project) %>
-
-      </div>
+      <%= link_to "Detalle", static_pages_creator_path(project: @project) %>
     </div>
+  </div>
+  <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
+    <span class="card-title" style="margin-top: 24px;">Documentos</span>
+    <% unless @project.person_document.blank? %>
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Semblanza</span>
+        <div>
+          <%=link_to 'Descargar archivo de Semblanza', download_doc_path(:class => "person_document", :as => "request_letter",:id => @project.person_document.first.id, :basename => @project.person_document.first.request_letter.file.basename, :extension => @project.person_document.first.request_letter.file.extension), :target => "_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %>
+          <%if current_user.role==:admin && get_status("request_letter") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("request_letter") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("request_letter")%></textarea>
+            <label for="textarea1">Observaciones de semblanza</label>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("request_letter") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Acta de nacimiento</span>
+        <div>
+          <%=  link_to 'Descargar acta de nacimiento', download_doc_path(:class => "person_document", :as=>"birth",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.birth.file.basename, :extension=>@project.person_document.first.birth.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("birth"), 1]]) %>
+          <%if current_user.role==:admin && get_status("birth") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("birth") == "Invalido"%>
+          <div class="intput-field">
+            <textarea class="materialize-textarea" id="birth"><%=get_observation("birth")%></textarea>
+            <label for="textarea" id="birth">Observaciones del acta de nacimiento</label>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("birth") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Domicilio</span>
+        <div>
+          <%=  link_to 'Descargar comprobante de domicilio', download_doc_path(:class => "person_document", :as=>"address",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.address.file.basename, :extension=>@project.person_document.first.address.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("address"), 1]]) %>
+          <%if current_user.role==:admin && get_status("address") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("address") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("address")%></textarea>
+            <label for="textarea" id="address">Observaciones del acta de nacimiento</label>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("address") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Identificación</span>
+        <div>
+          <%=  link_to 'Descargar identificación', download_doc_path(:class => "person_document", :as=>"identification",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.identification.file.basename, :extension=>@project.person_document.first.identification.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("identification"), 1]]) %>
+          <%if current_user.role==:admin && get_status("identification") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("identification") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("identification")%></textarea>
+            <label for="textarea" id="identification">Observaciones de la identificación</label>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("identification") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">CURP</span>
+        <div>
+          <%=  link_to 'Descargar CURP', download_doc_path(:class => "person_document", :as=>"curp",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.curp.file.basename, :extension=>@project.person_document.first.curp.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("curp"), 1]]) %>
+          <%if current_user.role==:admin && get_status("curp") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("curp") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("curp")%></textarea>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%=get_status("curp")%>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Currículum</span>
+        <div>
+          <%=  link_to 'Descargar currículum', download_doc_path(:class => "person_document", :as=>"resume",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.resume.file.basename, :extension=>@project.person_document.first.resume.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("resume"), 1]]) %>
+          <%if current_user.role==:admin && get_status("resume") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Invalido") %>
+          <%end%>
+          <%if get_status("resume") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("resume")%></textarea>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("resume") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Carta de concentimiento</span>
+        <div>
+          <%=  link_to 'Descargar carta de concentimiento', download_doc_path(:class => "person_document", :as=>"agreement_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.agreement_letter.file.basename, :extension=>@project.person_document.first.agreement_letter.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("agreement_letter"), 1]]) %>
+          <%if current_user.role==:admin && get_status("agreement_letter") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Invalido") %>
+
+          <%end%>
+          <%if get_status("agreement_letter") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("agreement_letter")%></textarea>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("agreement_letter") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Kardex</span>
+        <div>
+          <%=  link_to 'Descargar Kardex', download_doc_path(:class => "person_document", :as=>"kardex",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.kardex.file.basename, :extension=>@project.person_document.first.kardex.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("kardex"), 1]]) %>
+          <%if current_user.role==:admin && get_status("kardex") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Invalido") %>
+
+          <%end%>
+          <%if get_status("kardex") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("kardex")%></textarea>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("kardex") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Carta de asignación</span>
+        <div>
+          <%=  link_to 'Descargar carta de asignación', download_doc_path(:class => "person_document", :as=>"assign_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.assign_letter.file.basename, :extension=>@project.person_document.first.assign_letter.file.extension), :target=>"_blank" %>
+          <%= select_tag "lala",options_for_select([[get_status("assign_letter"), 1]]) %>
+          <%if current_user.role==:admin && get_status("assign_letter") == "Pendiente"%>
+          <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Valido") %>
+          <%= link_to "Observación",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Invalido") %>
+
+          <%end%>
+          <%if get_status("assign_letter") == "Invalido"%>
+          <div class="input-field">
+            <textarea class="materialize-textarea"><%=get_observation("assign_letter")%></textarea>
+          </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("assign_letter") %>
+        </div>
+      </li>
+    </ul>
+    <% end %>
   </div>
 </div>
 
 
-
-
-<div class="col s12 m7">
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <h4 class="header">Documentos</h4>
-      <div class="card-content">
-        <% unless @project.person_document.blank? %>
-
-          <div class="file-field input-field">
-            <div>
-                <h4>
-                  Semblanza
-                </h4>
-            </div>
-              <%=link_to 'Download file', download_doc_path(:class => "person_document", :as => "request_letter",:id => @project.person_document.first.id, :basename => @project.person_document.first.request_letter.file.basename, :extension => @project.person_document.first.request_letter.file.extension), :target => "_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %>
-            <%if current_user.role==:admin && get_status("request_letter") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("request_letter") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("request_letter")%></textarea>
-              </div>
-            <%end%>
-
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Acta de nacimiento
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"birth",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.birth.file.basename, :extension=>@project.person_document.first.birth.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("birth"), 1]]) %>
-            <%if current_user.role==:admin && get_status("birth") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("birth") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("birth")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Domicilio
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"address",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.address.file.basename, :extension=>@project.person_document.first.address.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("address"), 1]]) %>
-            <%if current_user.role==:admin && get_status("address") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("address") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("address")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Identificación
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"identification",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.identification.file.basename, :extension=>@project.person_document.first.identification.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("identification"), 1]]) %>
-            <%if current_user.role==:admin && get_status("identification") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("identification") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("identification")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  CURP
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"curp",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.curp.file.basename, :extension=>@project.person_document.first.curp.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("curp"), 1]]) %>
-            <%if current_user.role==:admin && get_status("curp") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("curp") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("curp")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Currículum
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"resume",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.resume.file.basename, :extension=>@project.person_document.first.resume.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("resume"), 1]]) %>
-            <%if current_user.role==:admin && get_status("resume") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("resume") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("resume")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Kardex
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"kardex",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.kardex.file.basename, :extension=>@project.person_document.first.kardex.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("kardex"), 1]]) %>
-            <%if current_user.role==:admin && get_status("kardex") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("kardex") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("kardex")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Carta de concentimiento
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"agreement_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.agreement_letter.file.basename, :extension=>@project.person_document.first.agreement_letter.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("agreement_letter"), 1]]) %>
-            <%if current_user.role==:admin && get_status("agreement_letter") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("agreement_letter") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("agreement_letter")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-          <div class="file-field input-field">
-            <div >
-                <h4>
-                  Carta de asignacion
-                </h4>
-            </div>
-            <%=  link_to 'Download file', download_doc_path(:class => "person_document", :as=>"assign_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.assign_letter.file.basename, :extension=>@project.person_document.first.assign_letter.file.extension), :target=>"_blank" %>
-            <%= select_tag "lala",options_for_select([[get_status("assign_letter"), 1]]) %>
-            <%if current_user.role==:admin && get_status("assign_letter") == "Pendiente"%>
-              <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Valido") %>
-              <%= link_to "Observacion",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Invalido") %>
-
-            <%end%>
-            <%if get_status("assign_letter") == "Invalido"%>
-              <div class="intput_field">
-                <textarea class="materialize-textarea"><%=get_observation("assign_letter")%></textarea>
-              </div>
-            <%end%>
-            <div class="file-path-wrapper">
-            </div>
-          </div>
-        <% end %>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="col s10 m5">
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <h4 class="header">Información del creador</h4>
-      <div class="card-content">
-        <p>
-          <strong>Nombre:</strong>
-          <%= (!@project.people.first.blank? ? @project.people.first.first_name + " " + @project.people.first.last_name + " " + @project.people.first.second_last_name : "")%>
-        </p>
-        <p>
-          <strong>Fecha de nacimiento:</strong>
-          <%= (!@project.people.first.blank? ? @project.people.first.birthdate : "" )%>
-        </p>
-
-        <%= link_to "Detalle", static_pages_creator_path(project: @project) %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Editar', edit_project_path(@project), :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+<%= link_to 'Regresar', projects_path, :class => 'waves-effect waves-light btn', :style => 'color:white' %>
 
 
