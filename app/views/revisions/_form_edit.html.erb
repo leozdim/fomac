@@ -1,0 +1,41 @@
+<%= form_with(model: revision, local: true) do |form| %>
+  <% if revision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(revision.errors.count, "error") %> prohibited this revision from being saved:</h2>
+
+      <ul>
+      <% revision.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" hidden>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :revision_user_id %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id, id: :revision_project_id %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :field %>
+    <%= form.text_field :field, id: :revision_field %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :revision_status, :value=> "Invalido" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :observations, id: :revision_observations %>
+  </div>
+
+  <div class="actions" >
+    <%= form.submit "Guardar Observacion" %>
+  </div>
+<% end %>

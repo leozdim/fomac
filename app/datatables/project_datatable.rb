@@ -24,12 +24,22 @@ class ProjectDatatable < AjaxDatatablesRails::Base
         user:   record.user.first_name,
         category: record.category.name,
         show: link_to( 'Mostrar', record),
-        edit: link_to("Editar", @view.edit_project_path(record)),
+        status:  document_validation(record.id)
+        #edit: link_to("Editar", @view.edit_project_path(record)),
         # example:
         # id: record.id,
         # name: record.name
       }
     end
+  end
+
+
+  def document_validation(id)
+
+    @valid=Project.where(id: id).first.is_valid?
+    @invalid = Project.where(id: id).first.invalid_revisions.pluck(:field,:observations)
+    validation = @invalid.empty? ? "Pendiente":"Invalido"
+    @valid ? "Valido": validation
   end
 
   private

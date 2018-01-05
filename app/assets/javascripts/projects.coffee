@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', ->
         {data: 'user'}
         {data: 'category'}
         {data: 'show'}
-        {data: 'edit'}
+        {data: 'status'}
       ]
     validate=$('form:last').data('validate')
     if validate and  !validate.empty?  and validate.length>0

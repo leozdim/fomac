@@ -1,6 +1,5 @@
-<h1>Editing Revision</h1>
+<h1>Editar Observacion</h1>
+<h2><%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.folio %> <%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.information.name %></h2>
 
-<%= render 'form', revision: @revision %>
+<%= render 'form_edit', revision: @revision %>
 
-<%= link_to 'Show', @revision %> |
-<%= link_to 'Back', revisions_path %>

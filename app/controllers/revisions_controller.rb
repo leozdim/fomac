@@ -16,7 +16,13 @@ class RevisionsController < ApplicationController
 
   # GET /revisions/new
   def new
-    @revision = Revision.new()
+    id = get_observation_id(params[:field])
+    if id != ""
+      @revision = Revision.where(id: id).first
+      @revision.observations = ""
+    else
+      @revision = Revision.new()
+    end
     @revision.user_id= params[:user_id]
     @revision.project_id= params[:project_id]
     @revision.field= params[:field]
@@ -24,7 +30,7 @@ class RevisionsController < ApplicationController
     if params[:status] == "Valido"
       respond_to do |format|
         if @revision.save
-          format.html { redirect_to project_path(params[:project_id]), notice: 'Revision was successfully created.' }
+          format.html { redirect_to project_path(params[:project_id]) }
           format.json { render :show, status: :created, location: @revision }
         else
           format.html { render :new }
@@ -45,7 +51,7 @@ class RevisionsController < ApplicationController
     respond_to do |format|
       if @revision.save
         ProjectMailer.observation(@revision).deliver_now
-        format.html { redirect_to project_path @revision.project_id, notice: 'Revision was successfully created.' }
+        format.html { redirect_to project_path @revision.project_id }
         format.json { render :show, status: :created, location: @revision }
       else
         format.html { render :new }
@@ -62,7 +68,7 @@ class RevisionsController < ApplicationController
     @revision.status= "Valido"
     respond_to do |format|
       if @revision.save
-        format.html { redirect_to project_path(params[:project_id]), notice: 'Revision was successfully created.' }
+        format.html { redirect_to project_path(params[:project_id]) }
         format.json { render :show, status: :created, location: @revision }
       else
         format.html { render :new }
@@ -82,7 +88,7 @@ class RevisionsController < ApplicationController
   def update
     respond_to do |format|
       if @revision.update(revision_params)
-        format.html { redirect_to @revision, notice: 'Revision was successfully updated.' }
+        format.html { redirect_to project_path @revision.project_id   }
         format.json { render :show, status: :ok, location: @revision }
       else
         format.html { render :edit }
@@ -91,12 +97,12 @@ class RevisionsController < ApplicationController
     end
   end
 
-  # DELETE /revisions/1
+  # DELETE /revisions/1s
   # DELETE /revisions/1.json
   def destroy
     @revision.destroy
     respond_to do |format|
-      format.html { redirect_to revisions_url, notice: 'Revision was successfully destroyed.' }
+      format.html { redirect_to project_path @revision.project_id }
       format.json { head :no_content }
     end
   end
@@ -111,4 +117,10 @@ class RevisionsController < ApplicationController
     def revision_params
       params.require(:revision).permit(:user_id, :project_id, :field, :status, :observations)
     end
+
+    def get_observation_id(field)
+      test = Revision.where(user_id: params[:user_id], project_id: params[:project_id], field: params[:field]).order(:created_at).first
+      test.blank? ? "" : test.id
+    end
+
 end

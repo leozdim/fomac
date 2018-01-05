@@ -5,10 +5,16 @@ module ProjectsHelper
      test.blank? ? "Pendiente" : test.status
   end
 
+  def get_observation_id(field)
+    test = Revision.where(user_id: @project.user.id, project_id: @project.id, field: field).order(:created_at).first
+    test.blank? ? "" : test.id
+  end
+
   def get_observation(field)
     test = Revision.where(user_id: @project.user.id, project_id: @project.id, field: field).order(:created_at).first
     test.blank? ? " " : test.observations
   end
+
 
   def document_valid
     @invalid_fields=@project.invalid_revisions.pluck(:field,:observations)
