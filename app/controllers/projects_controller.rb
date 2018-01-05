@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include ProjectsHelper
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource param_method: :project_params
@@ -57,13 +58,15 @@ class ProjectsController < ApplicationController
   end
 
   def add_documents_people
+    document_valid 
     if request.patch?
-      respond_to do |format|
-        if @project.update(project_params)
-          format.html { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
-        else
-          format.html { render :add_documents_people }
+      if @project.update(project_params)
+        if  @invalid_fields
+          @project.invalid_revisions.update_all status: 'Revision'
         end
+        redirect_control { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+      else
+        render :add_documents_people 
       end
     end
   end

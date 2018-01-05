@@ -9,4 +9,18 @@ module ProjectsHelper
     test = Revision.where(user_id: @project.user.id, project_id: @project.id, field: field).order(:created_at).first
     test.blank? ? " " : test.observations
   end
+
+  def document_valid
+    @invalid_fields=@project.invalid_revisions.pluck(:field,:observations)
+    flash[:notice]='Algunos documentos son invalidos '  unless @invalid_fields.empty?
+  end
+
+  def redirect_control 
+    if @project.finish? and @project.invalid_revisions.empty? 
+      redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'   
+    else
+      yield
+    end
+  end
+
 end

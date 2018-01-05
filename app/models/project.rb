@@ -13,6 +13,7 @@ class Project < ApplicationRecord
   has_one :theater_evidence
   has_one :film_evidence
   has_one :letter_evidence
+  has_many :revisions
   accepts_nested_attributes_for :people
   accepts_nested_attributes_for :information
   accepts_nested_attributes_for :retribution
@@ -47,6 +48,15 @@ class Project < ApplicationRecord
     id=folio.split('-').last 
     find_by id: id
   end
+
+  #CAUTION valid is a method of active record  
+  def is_valid?
+    revisions.where(status: 'Valido').count == 9
+  end
+
+  def invalid_revisions
+    revisions.where(status: 'Invalido')
+  end 
 
   def finish?
     if people.any? and person_document.any? and !information.blank? and !retribution.blank?

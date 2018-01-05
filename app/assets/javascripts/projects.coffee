@@ -34,5 +34,15 @@ $(document).on('turbolinks:load', ->
         {data: 'show'}
         {data: 'edit'}
       ]
+    validate=$('form:last').data('validate')
+    if validate and  !validate.empty?  and validate.length>0
+      $('form:last input[type=text],form:last input[type=file], form:last textarea, form:last select').attr('disabled',true)
+      for v in validate 
+        do -> 
+          target=$("form:last [id*=#{v[0]}]")
+          target.attr('disabled',false)
+          unless v[1].nil?
+            if target.prop('type')=='file'
+              target.parents('div.file-field').after('<div class="chip" >Observaciòn: '+v[1]+'</div>')
 )
 

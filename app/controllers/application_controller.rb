@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
         # change this to hte active projects
         p=current_user.projects.first
         if p.finish?
-          project_finish_path(p)
+          if p.is_valid?
+            project_finish_path(p)
+          else
+            add_documents_people_path p
+          end
         else
           nav_project
         end
