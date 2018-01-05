@@ -32,7 +32,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Semblanza</span>
         <div style="margin-top:16px">
-          <%=link_to 'Descargar archivo de Semblanza', download_doc_path(:class => "person_document", :as => "request_letter",:id => @project.person_document.first.id, :basename => @project.person_document.first.request_letter.file.basename, :extension => @project.person_document.first.request_letter.file.extension), :target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=link_to 'Descargar archivo de Semblanza',  @project.person_document.first.request_letter.url,:target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
           <a class='dropdown-button btn' href='#' data-activates='nombre_del_archivo_aqui'>Validar semblanza</a>
           <ul id='nombre_del_archivo_aqui' class='dropdown-content'>
@@ -58,7 +58,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Acta de nacimiento</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar acta de nacimiento', download_doc_path(:class => "person_document", :as=>"birth",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.birth.file.basename, :extension=>@project.person_document.first.birth.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar acta de nacimiento', @project.person_document.first.birth.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("birth"), 1]]) %>
           <%if current_user.role==:admin && get_status("birth") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Valido") %>
@@ -79,7 +79,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Domicilio</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar comprobante de domicilio', download_doc_path(:class => "person_document", :as=>"address",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.address.file.basename, :extension=>@project.person_document.first.address.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar comprobante de domicilio', @project.person_document.first.address.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("address"), 1]]) %>
           <%if current_user.role==:admin && get_status("address") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Valido") %>
@@ -100,7 +100,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Identificación</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar identificación', download_doc_path(:class => "person_document", :as=>"identification",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.identification.file.basename, :extension=>@project.person_document.first.identification.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar identificación', @project.person_document.first.identification.url,  :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("identification"), 1]]) %>
           <%if current_user.role==:admin && get_status("identification") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Valido") %>
@@ -121,7 +121,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">CURP</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar CURP', download_doc_path(:class => "person_document", :as=>"curp",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.curp.file.basename, :extension=>@project.person_document.first.curp.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar CURP', @project.person_document.first.curp.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("curp"), 1]]) %>
           <%if current_user.role==:admin && get_status("curp") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Valido") %>
@@ -141,7 +141,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Currículum</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar currículum', download_doc_path(:class => "person_document", :as=>"resume",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.resume.file.basename, :extension=>@project.person_document.first.resume.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar currículum', @project.person_document.first.resume.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("resume"), 1]]) %>
           <%if current_user.role==:admin && get_status("resume") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Valido") %>
@@ -161,7 +161,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Carta de concentimiento</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar carta de concentimiento', download_doc_path(:class => "person_document", :as=>"agreement_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.agreement_letter.file.basename, :extension=>@project.person_document.first.agreement_letter.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar carta de concentimiento', @project.person_document.first.agreement_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("agreement_letter"), 1]]) %>
           <%if current_user.role==:admin && get_status("agreement_letter") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido") %>
@@ -182,7 +182,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Kardex</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar Kardex', download_doc_path(:class => "person_document", :as=>"kardex",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.kardex.file.basename, :extension=>@project.person_document.first.kardex.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar Kardex', @project.person_document.first.kardex.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("kardex"), 1]]) %>
           <%if current_user.role==:admin && get_status("kardex") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Valido") %>
@@ -203,7 +203,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Carta de asignación</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar carta de asignación', download_doc_path(:class => "person_document", :as=>"assign_letter",:id=>@project.person_document.first.id, :basename =>@project.person_document.first.assign_letter.file.basename, :extension=>@project.person_document.first.assign_letter.file.extension), :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar carta de asignación', @project.person_document.first.assign_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
           <%= select_tag "lala",options_for_select([[get_status("assign_letter"), 1]]) %>
           <%if current_user.role==:admin && get_status("assign_letter") == "Pendiente"%>
           <%= link_to "Validar",new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Valido") %>
