@@ -32,7 +32,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Semblanza</span>
         <div style="margin-top:16px">
-          <%=link_to 'Descargar archivo de Semblanza',  @project.person_document.first.request_letter.url,:target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=link_to 'Descargar archivo de Semblanza',  @project.person_document.first.request_letter.url,:target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
           <a class='dropdown-button btn' href='#' data-activates='Semblanza'>Validar semblanza</a>
           <ul id='Semblanza' class='dropdown-content'>
@@ -60,7 +60,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Acta de nacimiento</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar acta de nacimiento', @project.person_document.first.birth.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar acta de nacimiento', @project.person_document.first.birth.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='birth'>Validar acta de nacimiento</a>
           <ul id='birth' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -85,7 +85,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Domicilio</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar comprobante de domicilio', @project.person_document.first.address.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar comprobante de domicilio', @project.person_document.first.address.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='address'>Validar comprobante de domicilio</a>
           <ul id='address' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -111,7 +111,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Identificación</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar identificación', @project.person_document.first.identification.url,  :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar identificación', @project.person_document.first.identification.url,  :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='identification'>Validar identificación</a>
           <ul id='identification' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -138,7 +138,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">CURP</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar CURP', @project.person_document.first.curp.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar CURP', @project.person_document.first.curp.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='curp'>Validar CURP</a>
           <ul id='curp' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -162,7 +162,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Currículum</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar currículum', @project.person_document.first.resume.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar currículum', @project.person_document.first.resume.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='resume'>Validar currículum</a>
           <ul id='resume' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -186,7 +186,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Carta de concentimiento</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar carta de concentimiento', @project.person_document.first.agreement_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar carta de concentimiento', @project.person_document.first.agreement_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='agreement_letter'>Validar concentimiento</a>
           <ul id='agreement_letter' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -211,7 +211,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Kardex</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar Kardex', @project.person_document.first.kardex.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar Kardex', @project.person_document.first.kardex.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='kardex'>Validar kardex</a>
           <ul id='kardex' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -235,7 +235,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Carta de asignación</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar carta de asignación', @project.person_document.first.assign_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+          <%=  link_to 'Descargar carta de asignación', @project.person_document.first.assign_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
           <a class='dropdown-button btn' href='#' data-activates='assign_letter'>Validar carta de asignación</a>
           <ul id='assign_letter' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -261,7 +261,7 @@
 </div>
 
 
-<%#= link_to 'Editar', edit_project_path(@project), :class => 'waves-effect waves-light btn', :style => 'color:white' %>
-<%= link_to 'Regresar', projects_path, :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+<%#= link_to 'Editar', edit_project_path(@project), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+<%= link_to 'Regresar', projects_path, :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
 
 

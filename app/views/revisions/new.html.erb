@@ -1,5 +1,4 @@
-<h1>Observacion </h1><br>
-<h2><%= Project.where(id: params[:project_id]).first.folio %> <%= Project.where(id: params[:project_id]).first.information.name %></h2>
+ <span class="card-title">Agregar observaciones al proyecto:<br><strong><%= Project.where(id: params[:project_id]).first.folio %> <%= Project.where(id: params[:project_id]).first.information.name %></strong></span>
 
 <%= render 'form', revision: @revision %>
 
