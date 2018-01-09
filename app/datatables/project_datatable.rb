@@ -23,7 +23,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
         folio:  record.folio,
         user:   record.user.first_name,
         category: record.category.name,
-        show: link_to( 'Mostrar', record),
+        show: link_to( 'Mostrar', record, :class=>'waves-effect waves-light btn',:style=>'color:white'),
         status:  document_validation(record.id)
         #edit: link_to("Editar", @view.edit_project_path(record)),
         # example:

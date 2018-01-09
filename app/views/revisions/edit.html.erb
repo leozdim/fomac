@@ -1,5 +1,7 @@
-<h1>Editar Observacion</h1>
-<h2><%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.folio %> <%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.information.name %></h2>
-
+<span class="card-title">Editar observaciones al proyecto:<br>
+	<strong>
+		<%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.folio %> <%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.information.name %>
+	</strong>
+</span>
 <%= render 'form_edit', revision: @revision %>
 
