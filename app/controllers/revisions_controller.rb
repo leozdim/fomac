@@ -27,6 +27,7 @@ class RevisionsController < ApplicationController
     @revision.project_id= params[:project_id]
     @revision.field= params[:field]
     @revision.status= params[:status]
+    @revision.model = params[:model]
     if params[:status] == "Valido"
       respond_to do |format|
         if @revision.save
@@ -115,11 +116,11 @@ class RevisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def revision_params
-      params.require(:revision).permit(:user_id, :project_id, :field, :status, :observations)
+      params.require(:revision).permit(:user_id, :project_id, :field, :status, :model,:observations)
     end
 
     def get_observation_id(field)
-      test = Revision.where(user_id: params[:user_id], project_id: params[:project_id], field: params[:field]).order(:created_at).first
+      test = Revision.where(user_id: params[:user_id], project_id: params[:project_id], field: params[:field], model: params[:model]).order(:created_at).first
       test.blank? ? "" : test.id
     end
 

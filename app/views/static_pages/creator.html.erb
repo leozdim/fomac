@@ -4,69 +4,81 @@
   <div class="row">
     <div class="col s12 m4">
       <div class="input-field">
-        <%= text_field_tag 'first_name' ,@project.first_name %>
         <%= label_tag :first_name, 'Nombre' %>
+       <%= text_field_tag 'first_name' ,@person.first_name , disabled: true%>
       </div>
     </div>
     <div class="col s12 m4">
       <div class="input-field">
-        <%= text_field_tag :last_name, @project.last_name %>
+        <%= text_field_tag :last_name, @person.last_name , disabled: true%>
         <%= label_tag :last_name, 'Apellido paterno' %>
       </div>
     </div>
+
+
     <div class="col s12 m4">
       <div class="input-field">
-        <%= text_field_tag :second_last_name, @project.second_last_name %>
+        <%= text_field_tag :second_last_name, @person.second_last_name, disabled: true %>
         <%= label_tag :second_last_name, 'Apellido materno' %>
       </div>
     </div>
+
+
     <div class="col s12" style='padding: 0'>
       <div class="input-field birthdate">
-        <%= text_field_tag :birthdate, @project.birthdate, start_year: Date.today.year - 100  %>
+        <%= text_field_tag :birthdate, @person.birthdate, start_year: Date.today.year - 100  , disabled: true %>
         <%= label_tag :birthdate, 'Fecha de nacimiento' %>
       </div>
     </div>
+
+
     <div class="col s6 m3">
       <div class="input-field">
-        <%= text_field_tag :home_phone_number, @project.home_phone_number, maxlength: '12' %>
+        <%= text_field_tag :home_phone_number, @person.home_phone_number, maxlength: '12' , disabled: true%>
         <%= label_tag :home_phone_number, 'Teléfono' %>
       </div>
     </div>
+
+
     <div class="col s6 m3">
       <div class="input-field">
-        <%= text_field_tag :cellphone, @project.cellphone , maxlength: '12' %>
+        <%= text_field_tag :cellphone, @person.cellphone , maxlength: '12', disabled: true %>
         <%= label_tag :cellphone, 'Celular' %>
       </div>
     </div>
+
+
     <div class="col s12 m6">
       <div class="input-field">
-        <%= text_field_tag :level_study,@project.level_study %>
+        <%= text_field_tag :level_study,@person.level_study , disabled: true%>
         <%= label_tag :level_study, 'Grado maximo de estudios' %>
       </div>
     </div>
+
   </div>
   <div class="row">
+
     <div class="col s12 m4 l3">
       <div class="input-field">
-        <%= text_field_tag :birthplace,@project.birthplace %>
+        <%= text_field_tag :birthplace,@person.birthplace , disabled: true%>
         <%= label_tag :birthplace, 'Lugar de nacimiento' %>
       </div>
     </div>
     <div class="col s12 m4 l3">
       <div class="input-field">
-        <%= text_field_tag :state, @project.state %>
+        <%= text_field_tag :state, @person.state, disabled: true %>
         <%= label_tag :state, 'Estado' %>
       </div>
     </div>
     <div class="col s12 m4 l3">
       <div class="input-field">
-        <%= text_field_tag :city, @project.city %>
+        <%= text_field_tag :city, @person.city, disabled: true %>
         <%= label_tag :city, 'Ciudad' %>
       </div>
     </div>
     <div class="col s12 m4 l3">
       <div class="input-field">
-        <%= text_field_tag :nationality, @project.nationality %>
+        <%= text_field_tag :nationality, @person.nationality , disabled: true%>
         <%= label_tag :nationality, 'Nacionalidad' %>
       </div>
     </div>
@@ -79,31 +91,31 @@
     <div class="col s6 m4">
       <div class="input-field">
         <%= label_tag  :street, 'Calle' %>
-        <%= text_field_tag :street ,@project.addresses.first.street%>
+        <%= text_field_tag :street ,@person.addresses.first.street, disabled: true%>
       </div>
     </div>
     <div class="col s6 m2 l1">
       <div class="input-field">
         <%= label_tag  :internal_number,'# int' %>
-        <%=text_field_tag :internal_number,@project.addresses.first.internal_number %>
+        <%=text_field_tag :internal_number,@person.addresses.first.internal_number, disabled: true %>
       </div>
     </div>
     <div class="col s6 m2 l1">
       <div class="input-field">
         <%= label_tag  :external_number, '# ext' %>
-        <%= text_field_tag :external_number ,@project.addresses.first.external_number%>
+        <%= text_field_tag :external_number ,@person.addresses.first.external_number, disabled: true%>
       </div>
     </div>
     <div class="col s6 m4">
       <div class="input-field">
-        <%= label_tag  :colony, 'Colonia'%>
-        <%= text_field_tag :colony ,@project.addresses.first.colony %>
+        <%= label_tag  :colony, 'Colonia' %>
+        <%= text_field_tag :colony ,@person.addresses.first.colony, disabled: true %>
       </div>
     </div>
     <div class="col s6 m3 l2">
       <div class="input-field">
         <%= label_tag  :zip,'C.P.' %>
-        <%= text_field_tag :zip ,@project.addresses.first.zip%>
+        <%= text_field_tag :zip ,@person.addresses.first.zip, disabled: true%>
       </div>
     </div>
   </div>

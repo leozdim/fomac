@@ -25,7 +25,10 @@
     <%= form.label :field %>
     <%= form.text_field :field, id: :revision_field %>
   </div>
-
+  <div class="field" hidden>
+    <%= form.label :model %>
+    <%= form.text_field :model, id: :revision_model %>
+  </div>
   <div class="field" hidden>
     <%= form.label :status %>
     <%= form.text_field :status, id: :revision_status, :value=> "Invalido" %>
