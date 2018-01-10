@@ -76,6 +76,10 @@ Rails.application.configure do
     location: '/usr/sbin/sendmail',
     arguments: '-i'
   }
+  config.action_mailer.sendmail_settings = {
+    location: '/usr/sbin/sendmail',
+    arguments: '-i'
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
