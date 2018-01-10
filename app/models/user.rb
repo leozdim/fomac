@@ -32,6 +32,14 @@ class User < ApplicationRecord
     write_attribute :role, new_status.to_s
   end
 
+  def any_project?
+    projects.any?
+  end
+
+  def current_project
+    projects.first
+  end
+
   def full_name
     "#{last_name}#{second_last_name}#{first_name}"
   end
