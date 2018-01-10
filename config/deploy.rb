@@ -6,7 +6,6 @@ set :repo_url, "https://github.com/leozdim/fomac"
 
 # Default branch is :master
 set :branch, :master
-# set :bundle_flags, '--deployment'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/fomac/"
