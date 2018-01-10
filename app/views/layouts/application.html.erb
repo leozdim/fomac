@@ -18,11 +18,11 @@
         <div class="row">
           <div class="col s12 m12 l6 hide-on-med-and-down center margin-top-sm">
             <a href="http://prueba.icm.gob.mx/">
-              <img src="/assets/logo.jpg" class="responsive-img" alt="">
+            <%= image_tag "logo.jpg", class: 'responsive-img' %> 
             </a>
           </div>
           <div class="col s12 m12 l6 hide-on-large-only left margin-top-sm">
-            <img src="/assets/logo.jpg" class="responsive-img" alt="">
+          <%= image_tag "logo.jpg" %> 
           </div>
           <div class="col s12 m12 l6 hide-on-med-and-down">
             <div class="row no-bottom-margin margin-top-sm">
@@ -32,10 +32,18 @@
                 </div>
               </div>
               <div class="col s4 offset-s5 m4 offset-m5 l4 offset-l5 center">
-                <div class="col s3 m3 l3 no-padding"><a href="https://www.facebook.com/ICMchihuahua"><img src="/assets/buttons/facebook_button.jpg" alt=""></a></div>
-                <div class="col s3 m3 l3 no-padding"><a href="https://www.youtube.com/user/AudiovisualesICM"><img src="/assets/buttons/youtube_button.jpg" alt=""></a></div>
-                <div class="col s3 m3 l3 no-padding"><a href=""><img src="/assets/buttons/twitter_button.jpg" alt=""></a></div>
-                <div class="col s3 m3 l3 no-padding"><a href=""><img src="/assets/buttons/instagram_button.jpg" alt=""></a></div>
+              <div class="col s3 m3 l3 no-padding"><a href="https://www.facebook.com/ICMchihuahua">
+              <%= image_tag "buttons/facebook_button.jpg" %> 
+              </a></div>
+                <div class="col s3 m3 l3 no-padding"><a href="https://www.youtube.com/user/AudiovisualesICM">
+                <%= image_tag "buttons/youtube_button.jpg" %> 
+                </a></div>
+                <div class="col s3 m3 l3 no-padding"><a href="">
+                <%= image_tag "buttons/twitter_button.jpg" %> 
+                </a></div>
+                <div class="col s3 m3 l3 no-padding"><a href="">
+                <%= image_tag "buttons/instagram_button.jpg" %> 
+                </a></div>
               </div>
             </div>
             <div class="row no-bottom-margin">
@@ -46,7 +54,7 @@
                     <input id="s" name="s" type="text" class="validate">
                   </div>
                   <div class="col s3 m3 l3 padding-fix-search-button">
-                    <input id="searchsubmit" src="/assets/buttons/search_button.jpg" type="image">
+                    <input id="searchsubmit" src="<%= image_url  "/buttons/search_button.jpg" %>" type="image">
                   </div>
                 </form>
               </div>
@@ -132,14 +140,14 @@
       <%if current_user&.role==:admin %>
         <%= link_to(t(:proyects),projects_path, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
         <%= link_to(t(:users),users_path, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
-      <% end %>
+       <% end %> 
     </div>
 
 
   </section>
   <footer class="page-footer white ">
     <div class="col s12 m12 l12 center">
-      <img src="/assets/placeholders/logo-chihuahua.jpg" alt="" class="responsive-img">
+      <%= image_tag "placeholders/logo-chihuahua.jpg" , class: 'responsive-img' %> 
     </div>
   </footer>
 </section>

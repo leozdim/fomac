@@ -22,6 +22,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    final_path=after_sign_in_path_for current_user
+    return redirect_to final_path unless request.path== final_path
     @project = Project.new
   end
 
