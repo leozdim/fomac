@@ -13,7 +13,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'noreply@fomac.org'
+  config.mailer_sender = 'noreply@fomac.org' unless Rails.env.production?
+  config.mailer_sender = ENV["EMAIL_DEVISE"] if Rails.env.production?
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
