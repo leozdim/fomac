@@ -156,11 +156,6 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
 	margin-left:12%;
 }
 
-#eventos .custom-container{
-	margin-right:215px;
-	margin-left: 0px!important;
-}
-
 .padding-fix-search-button{
 	padding: 0px 0px 0px 5px!important;
 }
@@ -170,75 +165,6 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
     display: block!important;
 }
 
-#main-carousel .owl-prev,
-#main-carousel .owl-next {
-    position: absolute !important;
-    top: 44% !important;
-    margin-top: -10px !important;
-    height: 37px;
-    width:115px; 
-}
-
-#main-carousel .owl-prev {
-    left: 70px !important;
-    background: url("assets/img/assets/Arrow-Backward.png") no-repeat !important;
-}
-
-#main-carousel .owl-next {
-    right: 0 !important;
-    background: transparent url("assets/img/assets/Arrow-Forward.png") no-repeat !important;
-}
-
-#main-carousel.owl-theme .owl-nav [class*='owl-']{
-    margin: 0px 5px !important;
-}
-
-#main-carousel.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-    background: white!important;
-}
-
-#main-carousel.owl-theme .owl-dots .owl-dot span {
-    width: 20px!important;
-    height: 20px!important;
-    margin: 5px 7px;
-    display: block;
-    background: none!important;
-    -webkit-backface-visibility: visible;
-    transition: opacity 200ms ease;
-    border-radius: 30px;
-    border: 2px solid white!important;
-}
-
-#main-carousel.owl-theme .owl-dots {
-    position: absolute!important;
-	top: 85%!important;
-	left: 45%!important;
-}
-
-/*SECOND-CAROUSEL PROPERTIES*/
-
-#second-carousel .owl-prev,
-#second-carousel .owl-next {
-    position: absolute !important;
-    top: 38% !important;
-    margin-top: -10px !important;
-    height: 37px;
-    width:35px; 
-}
-
-#second-carousel .owl-prev {
-    left: -20px !important;
-    background: url("assets/img/assets/Arrow-Backward.png") no-repeat !important;
-}
-
-#second-carousel .owl-next {
-    right: -20px !important;
-    background: transparent url("assets/img/assets/Arrow-Forward.png") no-repeat !important;
-}
-
-#second-carousel.owl-theme .owl-nav [class*='owl-']{
-    margin: 0px 5px !important;
-}
 
 /*CUSTOM ELEMENTS*/
 .banner-box{
@@ -269,10 +195,6 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
 
 }
 
-#prensa a{
-	text-decoration: underline!important;
-}
-
 .note-img{
 	width: 100px;
 	height: 50px;
@@ -287,55 +209,8 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i{
 	height: 342px!important;
 }
 
-.background-img-teatro{
-	background: url(assets/img/placeholders/teatro_ciudad.jpg) no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 500px;
-	padding-top: 200px;
-}
-
-.background-img-cdc{
-	background: url(assets/img/placeholders/cdc.jpg) no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 500px;
-	padding-top: 200px;
-}
-
-.background-img-conservatorio{
-	background: url(assets/img/placeholders/conservatorio.JPG) no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 500px;
-	padding-top: 200px;
-}
-
-.background-img-mediateca{
-	background: url(assets/img/placeholders/mediateca.jpg) no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 500px;
-	padding-top: 200px;
-}
-
-.background-img-sebastian{
-	background: url(assets/img/placeholders/casaXIX.jpg) no-repeat;
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 500px;
-	padding-top: 200px;
-}
-
-
-
 .background-header{
-	background: url(/assets/escudo.jpg) no-repeat;
+	background: image-url('escudo.jpg') no-repeat;
 	background-position: 590px 2px;
 	width: 100%;
 	height:140px;
@@ -453,31 +328,6 @@ ul li .btn-floating:hover {
 		top: 70%!important;
 		left: 30%!important;
 	}
-}
-
-
-@media only screen and (max-width:370px){
-	#main-carousel.owl-theme .owl-dots {
-    	position: absolute!important;
-		top: 70%!important;
-		left: 25%!important;
-	}
-
-	#main-carousel .owl-prev {
-    	left: 5px !important;
-    	background: url("assets/img/assets/Arrow-Backward.png") no-repeat !important;
-	}
-
-
-	#main-carousel .owl-prev,
-	#main-carousel .owl-next {
-    	position: absolute !important;
-    	top: 42% !important;
-    	margin-top: -10px !important;
-    	height: 37px;
-    	width:35px; 
-	}
-	
 }
 
 blockquote{
@@ -735,27 +585,6 @@ b, strong {
 
 .input-field .active, .input-field .prefix.active,  .input-field .label-icon.active{
     color:#0085ae !important;
-}
-
-input:not([type]), input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="time"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="tel"], input[type="number"], input[type="search"], textarea.materialize-textarea {
-    border-bottom: 1px solid #595a5b !important;
-}
-
-input:focus:not([type]):not([readonly]), 
-input[type="text"]:focus:not([readonly]), 
-input[type="password"]:focus:not([readonly]), 
-input[type="email"]:focus:not([readonly]), 
-input[type="url"]:focus:not([readonly]), 
-input[type="time"]:focus:not([readonly]), 
-input[type="date"]:focus:not([readonly]), 
-input[type="datetime"]:focus:not([readonly]), 
-input[type="datetime-local"]:focus:not([readonly]), 
-input[type="tel"]:focus:not([readonly]), 
-input[type="number"]:focus:not([readonly]), 
-input[type="search"]:focus:not([readonly]), 
-textarea.materialize-textarea:focus:not([readonly]) {
-     border-bottom: 1px solid #0085ae !important;
-     box-shadow: 0 1px 0 0 #0085ae !important;
 }
 
 .dropdown-content li > a, .dropdown-content li > span{
