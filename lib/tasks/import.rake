@@ -12,13 +12,34 @@ namespace :import do
           project=create_project user, op
           participants=q.exec "select * from project_participants where project_id=#{op['project_id'].to_i}"
           participants.each do |p|
-            create_person project, p
+            person=create_person project, p
+            ppdo=q.exec "select * from project_participants_documents where 
+                    project_id=#{op['project_id'].to_i} and participant_id=#{p['participant_id']} "
+            ppdo.each{|p| create_person_documents  person, p}
           end
         end
       end
     end
   end
+end
 
+def create_person_documents person, op
+  pd=PersonDocument.new :person=>person,:request_letter=>old_doc_opener(op,'carta_solicitud'),
+    :birth=>old_doc_opener(op,'acta_de_nacimiento'),:address=>old_doc_opener(op,'comprobante_de_domicilio'),
+    :identification=>old_doc_opener(op,'identificacion_oficial'),:curp=>old_doc_opener(op,'CURP'),
+    :resume=>old_doc_opener(op,'curriculum'),:kardex=>old_doc_opener(op,'boleta_kardex'),
+    :agreement_letter=>old_doc_opener(op,'carta_compromiso'),:assign_letter=>old_doc_opener(op,'carta_asignacion')
+  pd.save!(validate:false)
+end
+
+def old_doc_opener  op,name
+  path="/home/damian/fomac/data/participantes/#{op['project_id']}_#{op['documents_id']}/#{op[name]}"
+  opener path 
+end
+
+def opener path
+  return File.open path  if File.exists? path  and !File.directory? path
+  return nil
 end
 
 def create_person project, od
