@@ -8,7 +8,11 @@ class Person < ApplicationRecord
   validates_presence_of :first_name, :last_name, :second_last_name, :birthdate,  
       :birthplace, :state, :city, :nationality, :level_study, :birthdate, :addresses
   def birthdate=(new_status)
-    date=Date.parse new_status.values.join("-")
+    if new_status.class==Date
+      date=new_status
+    else
+      date=Date.parse new_status.values.join("-")
+    end
     write_attribute :birthdate, date
   end
 end

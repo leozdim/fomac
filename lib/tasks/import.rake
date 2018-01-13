@@ -10,11 +10,31 @@ namespace :import do
         old_projects=q.exec "select * from project_registry where account_id=#{a['account_id'].to_i}"
         old_projects.each do |op|
           project=create_project user, op
+          participants=q.exec "select * from project_participants where project_id=#{op['project_id'].to_i}"
+          participants.each do |p|
+            create_person project, p
+          end
         end
       end
     end
   end
 
+end
+
+def create_person project, od
+  birthplace='NA'
+  birthplace||=od['lugar_de_nacimiento']
+  state='NA'
+  birthplace||=od['estado']
+  city='NA'
+  birthplace||=od['ciudad']
+  Person.create!(:project=>project, :first_name=>od['nombres'], 
+                 :last_name=>od['apellido_paterno'], :second_last_name=>od['apellido_materno'], 
+                 :birthdate=>od['fecha_de_nacimiento'].to_date, :home_phone_number=>od['telefono'], :cellphone=>od['celular'], 
+                 :birthplace=>birthplace, :state=>state, :city=>city, :nationality=>od['nacionalidad'], 
+                 :level_study=>od['grado_de_estudios'] , 
+                 :addresses_attributes=>
+  [:street=>od['calle'], :internal_number=>od['numero_interior'], :external_number=>od['numero'], :colony=>od['colonia'], :zip=>od['codigo_postal'] ])
 end
 
 def create_user a
@@ -23,6 +43,7 @@ def create_user a
   User.create!(:first_name=>full_name[0..1].join(' '),:last_name=>full_name[1],:second_last_name=>full_name[2],
                :role=>:creator, :email=>a['email'],:password=>password, :password_confirmation=>password, :account_active=>false )
 end
+
 def create_project user,op 
   category_id=1
   case op['categoria']
