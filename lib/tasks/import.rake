@@ -1,5 +1,5 @@
 namespace :import do
-  desc "TODO"
+  desc "Migrate the old dba"
   task db: :environment do
     ActiveRecord::Base.logger = Logger.new STDOUT
     ActiveRecord::Base.transaction do
@@ -18,11 +18,61 @@ namespace :import do
             ppdo.each{|p| create_person_documents  person, p}
             p_info=q.exec "select * from project_information where project_id=#{op['project_id'].to_i}"
             create_project_information project, p_info.first
+            p_retr=q.exec "select * from project_retribution where project_id=#{op['project_id'].to_i}"
+            create_retribution project,p_retr.first
+            ev=q.exec "select * from evidencia_artes_visuales where project_id=#{op['project_id'].to_i}"
+            create_visuals project, ev.first
           end
         end
       end
     end
   end
+end
+
+def create_visuals p,ev
+  return if ev.nil?
+  path="/home/damian/fomac/data/test/artes_visuales_#{ev['project_id']}/"
+  e=VisualEvidence.new :project=>p, :image=>multi_reader(path+'img'), :catalog=>multi_reader(path+'catalogo'), 
+    :note=>multi_reader(path+'notes'), :document=>multi_reader(path+'docs')
+  e.save! validate: false
+end
+
+def multi_reader path
+  res=[]
+  Dir.glob path+'/*' do |doc_path|
+    res.push opener doc_path
+  end
+  res
+end
+
+def create_retribution project, r 
+  case r['modalidad']
+  when 'Artistica'
+    m_id=1
+  when 'Difusion'
+    m_id=3
+  when 'Formativa'
+    m_id=2
+  end
+  case r['actividad_a_realizar']
+  when 'Conciertos'
+    a_id=2
+  when 'Conferencias'
+    a_id=6
+  when 'Cursos'
+    a_id=5
+  when 'Lecturas publicas'
+    a_id=8
+  when 'Mesas redondas'
+    a_id=7
+  when 'Presentaciones escénicas'
+    a_id=1
+  when 'Recitales individuales o grupales'
+    a_id=3
+  when 'Talleres'
+    a_id=4
+  end
+  Retribution.create! :project=>project, :modality_id=>m_id, :art_activity_id=>a_id, :description=>r['descripcion_actividad']
 end
 
 def create_project_information project, inf 
