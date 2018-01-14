@@ -16,11 +16,23 @@ namespace :import do
             ppdo=q.exec "select * from project_participants_documents where 
                     project_id=#{op['project_id'].to_i} and participant_id=#{p['participant_id']} "
             ppdo.each{|p| create_person_documents  person, p}
+            p_info=q.exec "select * from project_information where project_id=#{op['project_id'].to_i}"
+            create_project_information project, p_info.first
           end
         end
       end
     end
   end
+end
+
+def create_project_information project, inf 
+  cron=old_p_opener inf
+  i=Information.new :project=>project,:name=>inf['nombre'],:description=>inf['descripcion'],
+      :antecedent=>inf['antecedentes'],:justification=>inf['justificacion'],:general_objective=>inf['objetivo_general'],
+      :specific_objective=>inf['objetivos_especificos'],:goals=>inf['metas'],:beneficiary=>inf['beneficiarios'],
+      :context=>inf['contexto'],:bibliography=>inf['bibliografia'],
+      :activities=>cron,:spending=>cron,:funding=>cron
+  i.save! validate: false
 end
 
 def create_person_documents person, op
@@ -30,6 +42,11 @@ def create_person_documents person, op
     :resume=>old_doc_opener(op,'curriculum'),:kardex=>old_doc_opener(op,'boleta_kardex'),
     :agreement_letter=>old_doc_opener(op,'carta_compromiso'),:assign_letter=>old_doc_opener(op,'carta_asignacion')
   pd.save!(validate:false)
+end
+
+def old_p_opener inf
+  path="/home/damian/fomac/data/financiamiento_cronograma/#{inf['project_id']}/#{inf['proyecto_documentos']}"
+  opener path 
 end
 
 def old_doc_opener  op,name
