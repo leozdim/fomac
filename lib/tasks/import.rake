@@ -22,11 +22,53 @@ namespace :import do
             create_retribution project,p_retr.first
             ev=q.exec "select * from evidencia_artes_visuales where project_id=#{op['project_id'].to_i}"
             create_visuals project, ev.first
+            ev=q.exec "select * from evidencia_danza where project_id=#{op['project_id'].to_i}"
+            create_dance project, ev.first
+            ev=q.exec "select * from evidencia_musica where project_id=#{op['project_id'].to_i}"
+            create_music project, ev.first
+            ev=q.exec "select * from evidencia_teatro where project_id=#{op['project_id'].to_i}"
+            create_theater project, ev.first
+            ev=q.exec "select * from evidencia_letras where project_id=#{op['project_id'].to_i}"
+            create_letter project, ev.first
           end
         end
       end
     end
   end
+end
+
+def create_letter p,ev
+  return if ev.nil?
+  path="/home/damian/fomac/data/test/letras_#{ev['project_id']}/"
+  e=LetterEvidence.new :project=>p, 
+    :web=>ev['sitioweb'],:work=>opener(path+ev['texto_inedito'].to_s), :cover=>multi_reader(path+'portadas')
+  e.save! validate: false
+end
+
+def create_theater p,ev
+  return if ev.nil?
+  path="/home/damian/fomac/data/test/teatro_#{ev['project_id']}/"
+  e=TheaterEvidence.new :project=>p, :image=>multi_reader(path+'img'), :video=>ev['videomuestra'], 
+    :web=>ev['sitioweb']&.truncate(254),:note=>multi_reader(path+'notes'), :document=>multi_reader(path+'docs'),
+    :letter=>opener(path+ev['carta_de_autorizacion'].to_s),:script=>opener(path+ev['texto'].to_s)
+  e.save! validate: false
+end
+
+def create_music p,ev
+  return if ev.nil?
+  path="/home/damian/fomac/data/test/musica_#{ev['project_id']}/"
+  e=MusicEvidence.new :project=>p, :score=>multi_reader(path+'partituras'), :video=>ev['videomuestra'], 
+    :web=>ev['sitioweb'],:note=>multi_reader(path+'notes'), :document=>multi_reader(path+'docs'),
+    :audio=>ev['audiomuestra']&.gsub(/\s+/, " ")&.truncate(254)
+  e.save! validate: false
+end
+
+def create_dance p,ev
+  return if ev.nil?
+  path="/home/damian/fomac/data/test/danza_#{ev['project_id']}/"
+  e=DanceEvidence.new :project=>p, :image=>multi_reader(path+'img'), :video=>ev['videomuestra'], 
+    :web=>ev['sitioweb'],:note=>multi_reader(path+'notes'), :document=>multi_reader(path+'docs')
+  e.save! validate: false
 end
 
 def create_visuals p,ev
