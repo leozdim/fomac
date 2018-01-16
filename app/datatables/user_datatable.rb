@@ -1,6 +1,6 @@
 class UserDatatable < AjaxDatatablesRails::Base
 
-  def_delegators :@view, :link_to, :h, :mailto, :edit_user_path
+  def_delegators :@view, :link_to, :h, :mailto, :edit_user_path, :getUsers
 
 
   def view_columns
@@ -35,7 +35,7 @@ class UserDatatable < AjaxDatatablesRails::Base
   private
 
   def get_raw_records
-    User.all
+    @view.getUsers
     # insert query here
   end
 

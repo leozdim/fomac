@@ -46,7 +46,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
   end
 
 
-  SEPARATOR = Arel::Nodes.build_quoted(' ') # inside def throw error
+  SEPARATOR = Arel::Nodes.build_quoted('-') # inside def throw error
   def folio_cond
     ->(column) do
       fol = Arel::Nodes::NamedFunction.new(
