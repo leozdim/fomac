@@ -1,17 +1,22 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
+<div class="row">
+  <div class="col s6">
+    <span class="card-title">Usuarios</span>
+  </div>
+  <div class="col s6" align="right">
+    <%= link_to 'Registrar usuario', static_pages_home_path, :class=>'btn' %>
+  </div>
+</div>
 <table id="users-table", data-source="<%= users_path(format: :json) %>">
   <thead>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Second last name</th>
-    <th>Rol</th>
-    <th>Mostrar</th>
-    <th>Editar</th>
-  </tr>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Second last name</th>
+      <th>Rol</th>
+      <th>Mostrar</th>
+      <th>Editar</th>
+    </tr>
   </thead>
   <tbody>
   </tbody>
@@ -47,6 +52,3 @@
   </tbody>
 </table>
 -->
-<br>
-
-<%= link_to 'Nuevo usuario', static_pages_home_path %>
