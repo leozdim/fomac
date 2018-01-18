@@ -10,11 +10,11 @@
           <%= f.text_field :web , disabled: true%>
           <a class='dropdown-button btn' href='#' data-activates='webletter'>Validar Sitio web</a>
           <ul id='webletter' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webletter",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webletter",:status=>"Valido", :model=>"letter_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("webletter") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("webletter"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webletter",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webletter",:status=>"Invalido", :model=>"letter_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("webletter") == "Invalido"%>
@@ -37,11 +37,11 @@
           <%= link_to 'Descargar Texto',f.object.work.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='work'>Validar Texto</a>
           <ul id='work' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"work",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"work",:status=>"Valido", :model=>"letter_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("work") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("work"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"work",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"work",:status=>"Invalido", :model=>"letter_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("work") == "Invalido"%>
@@ -66,11 +66,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='cover'>Validar Portadas</a>
           <ul id='cover' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"cover",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"cover",:status=>"Valido", :model=>"letter_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("cover") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("cover"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"cover",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"cover",:status=>"Invalido", :model=>"letter_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("cover") == "Invalido"%>

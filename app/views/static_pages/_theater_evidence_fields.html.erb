@@ -62,11 +62,11 @@
           <%= link_to 'Descargar Carta', f.object.letter.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='lettertheather'>Validar Carta</a>
           <ul id='lettertheather' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"lettertheather",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"lettertheather",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("lettertheather") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("lettertheather"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"lettertheather",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"lettertheather",:status=>"Invalido", :model=>"theater_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("lettertheather") == "Invalido"%>
@@ -88,11 +88,11 @@
           <%= link_to 'Descargar Guion', f.object.script.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='scripttheather'>Validar Guion</a>
           <ul id='scripttheather' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scripttheather",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scripttheather",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("scripttheather") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("scripttheather"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scripttheather",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scripttheather",:status=>"Invalido", :model=>"theater_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("scripttheather") == "Invalido"%>
@@ -117,11 +117,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='imagetheat'>Validar Imágenes</a>
           <ul id='imagetheat' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagetheat",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagetheat",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("imagetheat") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("imagetheat"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagetheat",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagetheat",:status=>"Invalido", :model=>"theater_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("imagetheat") == "Invalido"%>
@@ -145,11 +145,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='notetheather'>Validar Notas de prensa</a>
           <ul id='notetheather' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notetheather",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notetheather",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("notetheather") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("notetheather"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notetheather",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notetheather",:status=>"Invalido", :model=>"theater_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("notetheather") == "Invalido"%>
@@ -172,11 +172,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='documenttheat'>Validar Invitaciones, constancios y/o reconocimientos</a>
           <ul id='documenttheat' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documenttheat",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documenttheat",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("documenttheat") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("documenttheat"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documenttheat",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documenttheat",:status=>"Invalido", :model=>"theater_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("documenttheat") == "Invalido"%>

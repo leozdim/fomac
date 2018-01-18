@@ -11,11 +11,11 @@
           <%= f.text_field :video, disabled:true%>
           <a class='dropdown-button btn' href='#' data-activates='videodance'>Validar Video de muestra</a>
           <ul id='videodance' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videodance",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videodance",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("videodance") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("videodance"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videodance",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videodance",:status=>"Invalido", :model=>"dance_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("videodance") == "Invalido"%>
@@ -36,11 +36,11 @@
           <%= f.text_field :web , disabled: true%>
           <a class='dropdown-button btn' href='#' data-activates='webdance'>Validar Sitio web</a>
           <ul id='webdance' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webdance",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webdance",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("webdance") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("webdance"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webdance",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webdance",:status=>"Invalido", :model=>"dance_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("webdance") == "Invalido"%>
@@ -62,11 +62,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='imagedance'>Validar Imágenes</a>
           <ul id='imagedance' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagedance",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagedance",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("imagedance") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("imagedance"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagedance",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"imagedance",:status=>"Invalido", :model=>"dance_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("imagedance") == "Invalido"%>
@@ -89,11 +89,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='notedance'>Validar Notas de prensa</a>
           <ul id='notedance' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notedance",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notedance",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("notedance") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("notedance"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notedance",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notedance",:status=>"Invalido", :model=>"dance_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("notedance") == "Invalido"%>
@@ -117,11 +117,11 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='documentdance'>Validar Invitaciones, constancios y/o reconocimientos</a>
           <ul id='documentdance' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentdance",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentdance",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("documentdance") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("documentdance"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentdance",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentdance",:status=>"Invalido", :model=>"dance_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("documentdance") == "Invalido"%>

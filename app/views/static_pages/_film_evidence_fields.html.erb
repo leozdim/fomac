@@ -1,6 +1,6 @@
 <div>
   <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
-    <span class="card-title" style="margin-top: 24px;">Evidencias Teatro</span>
+    <span class="card-title" style="margin-top: 24px;">Evidencias Cine y video</span>
     <ul class="collection">
 
       <li class="collection-item avatar">
@@ -10,11 +10,11 @@
           <%= f.text_field :video, disabled:true%>
           <a class='dropdown-button btn' href='#' data-activates='videofilm'>Validar Video de muestra</a>
           <ul id='videofilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("videofilm") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("videofilm"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("videofilm") == "Invalido"%>
@@ -36,11 +36,11 @@
           <%= f.text_field :demo, disabled:true%>
           <a class='dropdown-button btn' href='#' data-activates='demofilm'>Validar Demo reel</a>
           <ul id='demofilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("demofilm") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("demofilm"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("demofilm") == "Invalido"%>
@@ -61,11 +61,11 @@
           <%= f.text_field :web , disabled: true%>
           <a class='dropdown-button btn' href='#' data-activates='webfilm'>Validar Sitio web</a>
           <ul id='webfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("webfilm") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("webfilm"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("webfilm") == "Invalido"%>
@@ -92,11 +92,11 @@
            <%= link_to 'Descargar Sinopsis', f.object.synopsis.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='synopsis'>Validar Sinopsis</a>
           <ul id='synopsis' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("synopsis") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("synopsis"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("synopsis") == "Invalido"%>
@@ -119,11 +119,11 @@
           <%= link_to 'Descargar Guion', f.object.script.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='scriptfilm'>Validar Guion</a>
           <ul id='scriptfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("scriptfilm") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("scriptfilm"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("scriptfilm") == "Invalido"%>
@@ -147,11 +147,11 @@
           <%= link_to 'Descargar Plan', f.object.plan.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='plan'>Validar Plan</a>
           <ul id='plan' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("plan") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("plan"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("plan") == "Invalido"%>
@@ -173,11 +173,11 @@
           <%= link_to 'Descargar Carta', f.object.letter.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <a class='dropdown-button btn' href='#' data-activates='letterfilm'>Validar Carta</a>
           <ul id='letterfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("letterfilm") != ""%>
               <li><a href="<%=edit_revision_path(get_observation_id("letterfilm"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
           <%if get_status("letterfilm") == "Invalido"%>
