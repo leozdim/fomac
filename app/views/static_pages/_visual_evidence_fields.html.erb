@@ -1,6 +1,124 @@
 <div >
-  Visuales
-  <%#= f.hidden_field :id %>
+  <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
+    <span class="card-title" style="margin-top: 24px;">Evidencias Visuales</span>
+    <ul class="collection">
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Imágenes</span>
+        <div style="margin-top:16px">
+          <% f.object.image.each do |ob| %>
+            <%= link_to 'Descargar Imágenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='images'>Validar imágenes</a>
+          <ul id='images' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"images",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("images") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("images"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"images",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("images") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("images")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("images") %>
+        </div>
+      </li>
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Catálogo</span>
+        <div style="margin-top:16px">
+          <% f.object.image.each do |ob| %>
+            <%= link_to 'Descargar Catálogo', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='catalog'>Validar Catálogo</a>
+          <ul id='catalog' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"catalog",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("catalog") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("catalog"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"catalog",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("catalog") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("catalog")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("catalog") %>
+        </div>
+      </li>
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Notas de prensa</span>
+        <div style="margin-top:16px">
+          <% f.object.image.each do |ob| %>
+            <%= link_to 'Descargar Notas', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='note'>Validar Notas de prensa</a>
+          <ul id='note' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"note",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("note") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("note"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"note",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("note") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("note")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("note") %>
+        </div>
+      </li>
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Invitaciones, constancios y/o reconocimientos</span>
+        <div style="margin-top:16px">
+          <% f.object.image.each do |ob| %>
+            <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='document'>Validar Invitaciones, constancios y/o reconocimientos</a>
+          <ul id='document' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"document",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("document") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("document"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"document",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("document") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("document")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("document") %>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+  <!--
+
+
   <div class="file-field input-field">
     <div class="btn">
       <span>
@@ -9,7 +127,10 @@
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil,  class: 'file-path validate', placeholder: 'Imagenes' %>
+      <%= text_field_tag nil, f.object.images, class: 'file-path validate', placeholder: 'Imagenes' %>
+      <% f.object.image.each do |ob| %>
+         <%= link_to 'Descargar Imagenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+      <%end%>
     </div>
   </div>
   <div class="file-field input-field">
@@ -21,6 +142,7 @@
     </div>
     <div class="file-path-wrapper">
       <%= text_field_tag nil, f.object.catalogs, class: 'file-path validate', placeholder: 'Catálogo' %>
+      <%#=  link_to 'Descargar Catálogo', f.object.catalogs.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
     </div>
   </div>
   <div class="file-field input-field">
@@ -38,11 +160,11 @@
     <div class="btn">
       <span>
         Cargar
-        <%= f.file_field :document, multiple: true  %>
+        <%#= f.file_field :document, multiple: true  %>
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancios y/o reconocimientos' %>
+      <%#= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancios y/o reconocimientos' %>
     </div>
-  </div>
+  </div>-->
 </div>

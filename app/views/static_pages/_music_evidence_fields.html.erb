@@ -1,3 +1,180 @@
+<div>
+  <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
+    <span class="card-title" style="margin-top: 24px;">Evidencias Musica</span>
+    <ul class="collection">
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Video de muestra</span>
+        <div style="margin-top:16px">
+          <%= f.text_field :video, disabled:true%>
+          <a class='dropdown-button btn' href='#' data-activates='videomusic'>Validar Video de muestra</a>
+          <ul id='videomusic' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videomusic",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("videomusic") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("videomusic"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videomusic",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("videomusic") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("videomusic")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("videomusic") %>
+        </div>
+      </li>
+
+
+
+
+
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Audio de muestra</span>
+        <div style="margin-top:16px">
+          <%= f.text_field :audio, disabled:true%>
+          <a class='dropdown-button btn' href='#' data-activates='audio'>Validar audio de muestra</a>
+          <ul id='audio' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"audio",:status=>"Valido", :model=>"theater_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("audio") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("audio"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"audio",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("audio") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("audio")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("audio") %>
+        </div>
+      </li>
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Sitio web</span>
+        <div style="margin-top:16px">
+          <%= f.text_field :web , disabled: true%>
+          <a class='dropdown-button btn' href='#' data-activates='webmusic'>Validar Sitio web</a>
+          <ul id='webmusic' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webmusic",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("webmusic") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("webmusic"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webmusic",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("webmusic") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("webmusic")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("webmusic") %>
+        </div>
+      </li>
+
+
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Partituras</span>
+        <div style="margin-top:16px">
+          <% f.object.score.each do |ob| %>
+            <%= link_to 'Descargar Partitura', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='scoremusic'>Validar Partituras</a>
+          <ul id='scoremusic' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scoremusic",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("scoremusic") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("scoremusic"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scoremusic",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("scoremusic") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("scoremusic")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("scoremusic") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Notas de prensa</span>
+        <div style="margin-top:16px">
+          <% f.object.note.each do |ob| %>
+            <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='notemusic'>Validar Notas de prensa</a>
+          <ul id='notemusic' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notemusic",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("notemusic") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("notemusic"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"notemusic",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("notemusic") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("notemusic")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("notemusic") %>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle">folder</i>
+        <span class="title">Invitaciones, constancios y/o reconocimientos</span>
+        <div style="margin-top:16px">
+          <% f.object.document.each do |ob| %>
+            <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
+          <a class='dropdown-button btn' href='#' data-activates='documentmusic'>Validar Invitaciones, constancios y/o reconocimientos</a>
+          <ul id='documentmusic' class='dropdown-content'>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentmusic",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("documentmusic") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("documentmusic"))%>">Editar observacion</a></li>
+            <%else%>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"documentmusic",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+            <%end%>
+          </ul>
+          <%if get_status("documentmusic") == "Invalido"%>
+            <div class="input-field">
+              <textarea class="materialize-textarea" disabled><%=get_observation("documentmusic")%></textarea>
+            </div>
+          <%end%>
+        </div>
+        <div class="secondary-content">
+          <%= get_status("documentmusic") %>
+        </div>
+      </li>
+
+
+
+
+    </ul>
+  </div>
+</div>
+
+
+
+<!--
+
 <div >
   Musica
   <%= f.hidden_field :id %>
@@ -41,3 +218,4 @@
     </div>
   </div>
 </div>
+-->

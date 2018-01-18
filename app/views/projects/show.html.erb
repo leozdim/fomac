@@ -10,7 +10,6 @@
       <strong>Estatus:</strong> <%= @project.status %>
     </p>
     <%= link_to "Detalles", static_pages_project_path(project: @project) %>
-    <%= link_to "Validar Evidencia", static_pages_evidence_path(project: @project) %>
   </div>
   <div class="col s12 m6 l6">
     <span class="card-title">Información del creador</span>
@@ -262,7 +261,34 @@
 </div>
 
 
+
+<%= form_for(@project, url: project_evidence_path ) do |f| %>
+  <%= render 'errors' %>
+  <% @arts.each do |a| %>
+    <%= f.fields_for :visual_evidence  do |p| %>
+      <%= render 'static_pages/visual_evidence_fields', f: p %>
+    <% end if  VisualEvidence::ART_FORM_ID==a.id %>
+    <%= f.fields_for :dance_evidence  do |p| %>
+      <%= render 'static_pages/dance_evidence_fields', f: p %>
+    <% end if  DanceEvidence::ART_FORM_ID==a.id %>
+    <%= f.fields_for :music_evidence  do |p| %>
+      <%= render 'static_pages/music_evidence_fields', f: p %>
+    <% end if  MusicEvidence::ART_FORM_ID==a.id %>
+    <%= f.fields_for :theater_evidence  do |p| %>
+      <%= render 'static_pages/theater_evidence_fields', f: p %>
+    <% end if  TheaterEvidence::ART_FORM_ID==a.id %>
+    <%= f.fields_for :film_evidence  do |p| %>
+      <%= render 'static_pages/film_evidence_fields', f: p %>
+    <% end if  FilmEvidence::ART_FORM_ID==a.id %>
+    <%= f.fields_for :letter_evidence  do |p| %>
+      <%= render 'static_pages/letter_evidence_fields', f: p %>
+    <% end if  LetterEvidence::ART_FORM_ID==a.id %>
+  <% end %>
+  <%#= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
+<% end %>
+
+
+
 <%#= link_to 'Editar', edit_project_path(@project), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
 <%= link_to 'Regresar', projects_path, :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
-
 

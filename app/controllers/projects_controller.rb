@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @arts=@project.art_forms
+
   end
 
   # GET /projects/new
@@ -64,7 +66,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       if @project.update(project_params)
         if  @invalid_fields
-          @project.invalid_revisions_person_documents.update_all status: 'Pendiente'
+          @project.invalid_revisions_person_documents.update_all status: 'Revision'
         end
         redirect_control { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
       else
