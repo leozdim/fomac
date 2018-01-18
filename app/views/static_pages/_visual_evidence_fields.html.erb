@@ -34,7 +34,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Catálogo</span>
         <div style="margin-top:16px">
-          <% f.object.image.each do |ob| %>
+          <% f.object.catalog.each do |ob| %>
             <%= link_to 'Descargar Catálogo', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='catalog'>Validar Catálogo</a>
@@ -61,7 +61,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Notas de prensa</span>
         <div style="margin-top:16px">
-          <% f.object.image.each do |ob| %>
+          <% f.object.note.each do |ob| %>
             <%= link_to 'Descargar Notas', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='note'>Validar Notas de prensa</a>
@@ -88,7 +88,7 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Invitaciones, constancios y/o reconocimientos</span>
         <div style="margin-top:16px">
-          <% f.object.image.each do |ob| %>
+          <% f.object.document.each do |ob| %>
             <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='document'>Validar Invitaciones, constancios y/o reconocimientos</a>
