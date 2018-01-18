@@ -48,4 +48,28 @@ class StaticPagesController < ApplicationController
   end
 
 
+  def evidence
+    @information = Information.where(:project_id => params[:project]).first
+    @project = Project.where(:id=> params[:project]).first
+
+
+
+
+
+    @arts=@project.art_forms
+
+      @arts.each do |a|
+        @project.build_visual_evidence if @project.visual_evidence.blank? and VisualEvidence::ART_FORM_ID==a.id
+        @project.build_dance_evidence if @project.dance_evidence.blank? and DanceEvidence::ART_FORM_ID==a.id
+        @project.build_music_evidence if @project.music_evidence.blank? and MusicEvidence::ART_FORM_ID==a.id
+        @project.build_theater_evidence if @project.theater_evidence.blank? and TheaterEvidence::ART_FORM_ID==a.id
+        @project.build_film_evidence if @project.film_evidence.blank? and FilmEvidence::ART_FORM_ID==a.id
+        @project.build_letter_evidence if @project.letter_evidence.blank? and LetterEvidence::ART_FORM_ID==a.id
+
+      end
+
+
+  end
+
+
 end

@@ -22,7 +22,12 @@ class ApplicationController < ActionController::Base
           if p.is_valid?
             project_finish_path(p)
           else
-            add_documents_people_path p
+            if p.revisions_persondoc.blank?
+            #check revision to see where to link
+              project_information_path p
+            else
+              add_documents_people_path p
+            end
           end
         else
           nav_project

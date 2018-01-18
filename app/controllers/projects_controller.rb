@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       if @project.update(project_params)
         if  @invalid_fields
-          @project.invalid_revisions.update_all status: 'Revision'
+          @project.invalid_revisions_person_documents.update_all status: 'Pendiente'
         end
         redirect_control { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
       else

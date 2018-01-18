@@ -49,14 +49,26 @@ class Project < ApplicationRecord
     find_by id: id
   end
 
+  def revision_model
+    revisions.where(status: 'Invalido')
+  end
+
+  def revisions_persondoc
+    revisions.where(status: 'Invalido', model: 'person_documents')
+  end
+
   #CAUTION valid is a method of active record  
   def is_valid?
-    revisions.where(status: 'Valido').count == 9
+    revisions.where(status: 'Valido').count == 22
+  end
+
+  def invalid_revisions_person_documents
+    revisions.where(status: 'Invalido', model: 'person_documents')
   end
 
   def invalid_revisions
     revisions.where(status: 'Invalido')
-  end 
+  end
 
   def finish?
     if people.any? and person_document.any? and !information.blank? and !retribution.blank?
