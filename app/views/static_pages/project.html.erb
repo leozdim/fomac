@@ -1,313 +1,295 @@
 <style>
-  span.ayuda {
-    font-size: 0.8rem;
-    margin-top: -15px;
-    display: block;
-    margin-left: 1em;
-  }
-  .marge24{
-    margin-bottom: 24px;
-  }
+span.ayuda {
+  font-size: 0.8rem;
+  margin-top: -15px;
+  display: block;
+  margin-left: 1em;
+}
+.marge24{
+  margin-bottom: 24px;
+}
 </style>
 <span class="card-title">Información del proyecto</span>
-
 <%# <%= render 'docs_perproject_informationson_fields', f: p %>
-    <%#= p.hidden_field :id %>
-    <div class="input-field margen24">
-      <%= text_field_tag :name , @information.name, disabled: true%>
-      <%= label_tag 'Nombre del proyecto' %>
-
-      <div class="secondary-content">
-        <%= get_status("name") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_name'>Validar Nombre del proyecto</a>
-        <ul id='proyect_name' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"name",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("name") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("name"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"name",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("name") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("name")%></textarea>
-            <label for="textarea1">Observaciones de Nombre del proyecto</label>
-          </div>
-        <%end%>
-      </div>
-
-
-
-
-    </div>
-    <div class="input-field margen24">
-      <%= text_area_tag :description,@information.description, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :description, 'Descripción' %>
-      <div class="secondary-content">
-        <%= get_status("description") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_description'>Validar Descripción</a>
-        <ul id='proyect_description' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"description",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("description") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("description"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"description",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("description") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("description")%></textarea>
-            <label for="textarea1">Observaciones de Descripción</label>
-          </div>
-        <%end%>
-      </div>
-
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :antecedent,@information.antecedent, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :antecedent, 'Antecedentes' %>
-      <div class="secondary-content">
-        <%= get_status("antecedent") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_antecedent'>Validar Antecedentes</a>
-        <ul id='proyect_antecedent' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"antecedent",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("antecedent") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("antecedent"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"antecedent",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("antecedent") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("antecedent")%></textarea>
-            <label for="textarea1">Observaciones de Antecedentes</label>
-          </div>
-        <%end%>
-      </div>
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :justification, @information.justification, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :justification, 'Justificación' %>
-      <div class="secondary-content">
-        <%= get_status("antecedent") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_antecedent'>Validar Justificación</a>
-        <ul id='proyect_antecedent' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"justification",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("justification") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("justification"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"justification",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("justification") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("justification")%></textarea>
-            <label for="textarea1">Observaciones de Justificación</label>
-          </div>
-        <%end%>
-      </div>
-
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :general_objective,@information.general_objective, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :general_objective, 'Objetivo general' %>
-
-      <div class="secondary-content">
-        <%= get_status("general_objective") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_general_objective'>Validar Objetivo general</a>
-        <ul id='proyect_general_objective' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"general_objective",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("general_objective") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("general_objective"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"general_objective",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("general_objective") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("general_objective")%></textarea>
-            <label for="textarea1">Observaciones de Objetivo general</label>
-          </div>
-        <%end%>
-      </div>
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :specific_objective,@information.specific_objective, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :specific_objective, 'Objetivos específicos' %>
-      <div class="secondary-content">
-        <%= get_status("specific_objective") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_specific_objective'>Validar Objetivos específicos</a>
-        <ul id='proyect_specific_objective' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"specific_objective",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("specific_objective") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("specific_objective"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"specific_objective",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("specific_objective") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("specific_objective")%></textarea>
-            <label for="textarea1">Observaciones de Objetivos específicos</label>
-          </div>
-        <%end%>
-      </div>
-
-
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :goals, @information.goals,class:'materialize-textarea', disabled: true %>
-      <%= label_tag :goals, 'Metas o propósitos' %>
-      <div class="secondary-content">
-        <%= get_status("goals") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_goals'>Validar Metas o propósitos</a>
-        <ul id='proyect_goals' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"goals",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("goals") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("goals"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"goals",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("goals") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("goals")%></textarea>
-            <label for="textarea1">Observaciones de Metas o propósitos</label>
-          </div>
-        <%end%>
-      </div>
-
-
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :beneficiary,@information.beneficiary, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :beneficiary, 'Titulares de derecho' %>
-      <div class="secondary-content">
-        <%= get_status("beneficiary") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_beneficiary'>Validar Titulares de derecho</a>
-        <ul id='proyect_beneficiary' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"beneficiary",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("beneficiary") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("beneficiary"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"beneficiary",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("beneficiary") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("beneficiary")%></textarea>
-            <label for="textarea1">Observaciones de Titulares de derecho</label>
-          </div>
-        <%end%>
-      </div>
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :context, @information.context, class:'materialize-textarea' , disabled: true%>
-      <%= label_tag :context, 'Ubicación y contexto' %>
-      <div class="secondary-content">
-        <%= get_status("context") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_context'>Validar Ubicación y contexto</a>
-        <ul id='proyect_context' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"context",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("context") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("context"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"context",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("context") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("context")%></textarea>
-            <label for="textarea1">Observaciones de Ubicación y contexto</label>
-          </div>
-        <%end%>
-      </div>
-    </div>
-    <br>
-    <div class="input-field margen24">
-      <%= text_area_tag :bibliography, @information.bibliography, class:'materialize-textarea', disabled: true %>
-      <%= label_tag :bibliography, 'Bibliografía' %>
-      <div class="secondary-content">
-        <%= get_status("bibliography") %>
-      </div>
-      <div style="margin-top:16px">
-        <a class='dropdown-button btn' href='#' data-activates='proyect_bibliography'>Validar Bibliografía</a>
-        <ul id='proyect_bibliography' class='dropdown-content'>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"bibliography",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-          <%if get_observation_id("bibliography") != ""%>
-            <li><a href="<%=edit_revision_path(get_observation_id("bibliography"))%>">Editar observacion</a></li>
-          <%else%>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"bibliography",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
-          <%end%>
-        </ul>
-        <%if get_status("bibliography") == "Invalido"%>
-          <div class="input-field">
-            <textarea class="materialize-textarea"  disabled><%=get_observation("bibliography")%></textarea>
-            <label for="textarea1">Observaciones de Bibliografía</label>
-          </div>
-        <%end%>
-      </div>
-    </div>
-
+<%#= p.hidden_field :id %>
 <ul class="collection">
-
-
   <li class="collection-item avatar">
-    <i class="material-icons circle">folder</i>
-    <span class="title">Cronograma de actividades</span>
+    <i class="material-icons circle">lens</i>
+    <span class="title">Nombre del proyecto</span>
+    <p class="flow-text"><%=@information.name%></p>
     <div style="margin-top:16px">
-      <%=link_to 'Descargar Cronograma de actividades', @project.information.activities.url,:target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
-
-      <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
-      <a class='dropdown-button btn' href='#' data-activates='activities'>Validar Cronograma de actividades</a>
-      <ul id='activities' class='dropdown-content'>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-        <%if get_observation_id("activities") != ""%>
-          <li><a href="<%=edit_revision_path(get_observation_id("activities"))%>">Editar observacion</a></li>
+      <a class='dropdown-button btn' href='#' data-activates='proyect_name'>Validar Nombre del proyecto</a>
+      <ul id='proyect_name' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"name",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("name") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("name"))%>">Editar observacion</a></li>
         <%else%>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"name",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
         <%end%>
-
       </ul>
-
-      <%if get_status("activities") == "Invalido"%>
-        <div class="input-field">
-          <textarea class="materialize-textarea"  disabled><%=get_observation("activities")%></textarea>
-          <label for="textarea1">Observaciones de Cronograma de actividades</label>
-        </div>
+      <%if get_status("name") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("name")%></textarea>
+        <label for="textarea1">Observaciones del Nombre del proyecto</label>
+      </div>
       <%end%>
     </div>
     <div class="secondary-content">
       <%= get_status("activities") %>
     </div>
   </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Descripción</span>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_description'>Validar Descripción</a>
+      <ul id='proyect_description' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"description",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("description") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("description"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"description",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("description") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("description")%></textarea>
+        <label for="textarea1">Observaciones de Descripción</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("description") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Antecedentes</span>
+    <p class="flow-text"><%=@information.antecedent%></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_antecedent'>Validar Antecedentes</a>
+      <ul id='proyect_antecedent' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"antecedent",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("antecedent") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("antecedent"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"antecedent",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("antecedent") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("antecedent")%></textarea>
+        <label for="textarea1">Observaciones de Antecedentes</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("antecedent") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Justificación</span>
+    <p class="flow-text"><%=@information.justification %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_antecedent'>Validar Justificación</a>
+      <ul id='proyect_antecedent' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"justification",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("justification") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("justification"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"justification",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("justification") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("justification")%></textarea>
+        <label for="textarea1">Observaciones de Justificación</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("justification") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Objetivos generales</span>
+    <p class="flow-text"><%=@information.general_objective %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_general_objective'>Validar Objetivo general</a>
+      <ul id='proyect_general_objective' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"general_objective",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("general_objective") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("general_objective"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"general_objective",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("general_objective") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("general_objective")%></textarea>
+        <label for="textarea1">Observaciones de Objetivo general</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("general_objective") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Objetivos específicos</span>
+    <p class="flow-text"><%=@information.specific_objective %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_specific_objective'>Validar Objetivos específicos</a>
+      <ul id='proyect_specific_objective' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"specific_objective",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("specific_objective") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("specific_objective"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"specific_objective",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("specific_objective") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("specific_objective")%></textarea>
+        <label for="textarea1">Observaciones de Objetivos específicos</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("specific_objective") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Metas o propósitos</span>
+    <p class="flow-text"><%=@information.goals %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_goals'>Validar Metas o propósitos</a>
+      <ul id='proyect_goals' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"goals",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("goals") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("goals"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"goals",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("goals") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("goals")%></textarea>
+        <label for="textarea1">Observaciones de Metas o propósitos</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("goals") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Titulares de derecho</span>
+    <p class="flow-text"><%=@information.beneficiary %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_beneficiary'>Validar Titulares de derecho</a>
+      <ul id='proyect_beneficiary' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"beneficiary",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("beneficiary") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("beneficiary"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"beneficiary",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("beneficiary") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("beneficiary")%></textarea>
+        <label for="textarea1">Observaciones de Titulares de derecho</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("beneficiary") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Ubicación y contexto</span>
+    <p class="flow-text"><%=@information.context %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_context'>Validar Ubicación y contexto</a>
+      <ul id='proyect_context' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"context",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("context") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("context"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"context",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("context") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("context")%></textarea>
+        <label for="textarea1">Observaciones de Ubicación y contexto</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("context") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">lens</i>
+    <span class="title">Bibliografía</span>
+    <p class="flow-text"><%=@information.bibliography %></p>
+    <div style="margin-top:16px">
+      <a class='dropdown-button btn' href='#' data-activates='proyect_bibliography'>Validar Bibliografía</a>
+      <ul id='proyect_bibliography' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"bibliography",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("bibliography") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("bibliography"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"bibliography",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
+        <%end%>
+      </ul>
+      <%if get_status("bibliography") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("bibliography")%></textarea>
+        <label for="textarea1">Observaciones de Bibliografía</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("bibliography") %>
+    </div>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">folder</i>
+    <span class="title">Cronograma de actividades</span>
+    <div style="margin-top:16px">
+      <%=link_to 'Descargar Cronograma de actividades', @project.information.activities.url,:target => "_blank", :class => 'waves-effect waves-light btn', :style => 'color:white' %>
+      <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
+      <a class='dropdown-button btn' href='#' data-activates='activities'>Validar Cronograma de actividades</a>
+      <ul id='activities' class='dropdown-content'>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("activities") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("activities"))%>">Editar observacion</a></li>
+        <%else%>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <%end%>
 
+      </ul>
 
+      <%if get_status("activities") == "Invalido"%>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("activities")%></textarea>
+        <label for="textarea1">Observaciones de Cronograma de actividades</label>
+      </div>
+      <%end%>
+    </div>
+    <div class="secondary-content">
+      <%= get_status("activities") %>
+    </div>
+  </li>
   <li class="collection-item avatar">
     <i class="material-icons circle">folder</i>
     <span class="title">Desgloce de gastos</span>
@@ -319,26 +301,24 @@
       <ul id='spending' class='dropdown-content'>
         <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
         <%if get_observation_id("spending") != ""%>
-          <li><a href="<%=edit_revision_path(get_observation_id("spending"))%>">Editar observacion</a></li>
+        <li><a href="<%=edit_revision_path(get_observation_id("spending"))%>">Editar observacion</a></li>
         <%else%>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
         <%end%>
 
       </ul>
 
       <%if get_status("spending") == "Invalido"%>
-        <div class="input-field">
-          <textarea class="materialize-textarea"  disabled><%=get_observation("spending")%></textarea>
-          <label for="textarea1">Observaciones de Desgloce de gastos</label>
-        </div>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("spending")%></textarea>
+        <label for="textarea1">Observaciones de Desgloce de gastos</label>
+      </div>
       <%end%>
     </div>
     <div class="secondary-content">
       <%= get_status("spending") %>
     </div>
   </li>
-
-
   <li class="collection-item avatar">
     <i class="material-icons circle">folder</i>
     <span class="title">Fuentes de financiamiento</span>
@@ -350,27 +330,23 @@
       <ul id='funding' class='dropdown-content'>
         <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
         <%if get_observation_id("funding") != ""%>
-          <li><a href="<%=edit_revision_path(get_observation_id("funding"))%>">Editar observacion</a></li>
+        <li><a href="<%=edit_revision_path(get_observation_id("funding"))%>">Editar observacion</a></li>
         <%else%>
-          <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
         <%end%>
 
       </ul>
-
       <%if get_status("funding") == "Invalido"%>
-        <div class="input-field">
-          <textarea class="materialize-textarea"  disabled><%=get_observation("funding")%></textarea>
-          <label for="textarea1">Observaciones de Fuentes de financiamiento</label>
-        </div>
+      <div class="input-field">
+        <textarea class="materialize-textarea"  disabled><%=get_observation("funding")%></textarea>
+        <label for="textarea1">Observaciones de Fuentes de financiamiento</label>
+      </div>
       <%end%>
     </div>
     <div class="secondary-content">
       <%= get_status("funding") %>
     </div>
   </li>
-
-
-
-
 </ul>
+
 

@@ -1,57 +1,63 @@
 <%= form_for @user, :url => {:action => "savenew"} do |f| %>
-
-
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<span class="card-title">Registrar usuario</span>
+<div class="row">
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%= f.label :first_name, 'Nombre' %>
+      <%= f.text_field :first_name, id: :user_first_name, autofocus: true, :required => true %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, id: :user_first_name, autofocus: true %>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, id: :user_last_name %>
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%= f.label :last_name, 'Apellido paterno' %>
+      <%= f.text_field :last_name, id: :user_last_name, :required => true %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :second_last_name %>
-    <%= f.text_field :second_last_name, id: :user_second_last_name %>
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%= f.label :second_last_name, 'Apellido materno' %>
+      <%= f.text_field :second_last_name, id: :user_second_last_name, :required => true %>
+    </div>
   </div>
-
-  <div class="input-field">
-    <%= f.label :email, 'Correo electrónico' %>
-    <%= f.email_field :email %>
+</div>
+<div class="row">
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%= f.label :email, 'Correo electrónico' %>
+      <%= f.email_field :email, :required => true, :type => 'email' %>
+    </div>
   </div>
-
-
-  <div class="field">
-    <%= f.label :role %>
-    <%#= form.text_field :role, id: :user_role %>
-    <%= select_tag(:role, options_for_select([['Admin', 'Admin'], ['Juez', 'Judge']]))%>
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%= select_tag(:role, options_for_select([['Admin', 'Admin'], ['Juez', 'Judge']]))%>
+      <label>Tipo de usuario</label>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :account_active %>
-    <%#= form.text_field :role, id: :user_role %>
-    <%= f.select :account_active, [['Activo', true], ['Inactivo', false]]%>
+  <div class="col s12 m4">
+    <div class="input-field">
+      <%#= form.text_field :role, id: :user_role %>
+      <%= f.select :account_active, [['Activo', true], ['Inactivo', false]]%>
+      <label>Estatus</label>
+    </div>
   </div>
+</div>
 
   <!--div class="field">
     <%#= form.label :person_id_id %>
   <%#= form.text_field :person_id_id, id: :user_person_id_id %>
-  </div-->
+</div-->
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <%= f.submit class: 'btn waves-effect waves-light' %>
+</div>
 <% end %>
