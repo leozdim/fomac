@@ -89,7 +89,9 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Sinopsis</span>
         <div style="margin-top:16px">
-           <%= link_to 'Descargar Sinopsis', f.object.synopsis.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%unless f.object.synopsis.url.nil?%>
+            <%= link_to 'Descargar Sinopsis', f.object.synopsis.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
           <a class='dropdown-button btn' href='#' data-activates='synopsis'>Validar Sinopsis</a>
           <ul id='synopsis' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -116,7 +118,9 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Guion</span>
         <div style="margin-top:16px">
-          <%= link_to 'Descargar Guion', f.object.script.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%unless f.object.script.url.nil?%>
+           <%= link_to 'Descargar Guion', f.object.script.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
           <a class='dropdown-button btn' href='#' data-activates='scriptfilm'>Validar Guion</a>
           <ul id='scriptfilm' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -143,8 +147,9 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Plan</span>
         <div style="margin-top:16px">
-
-          <%= link_to 'Descargar Plan', f.object.plan.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%unless f.object.plan.url.nil?%>
+            <%= link_to 'Descargar Plan', f.object.plan.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
           <a class='dropdown-button btn' href='#' data-activates='plan'>Validar Plan</a>
           <ul id='plan' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
@@ -170,7 +175,9 @@
         <i class="material-icons circle">folder</i>
         <span class="title">Carta</span>
         <div style="margin-top:16px">
-          <%= link_to 'Descargar Carta', f.object.letter.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%unless f.object.letter.url.nil?%>
+            <%= link_to 'Descargar Carta', f.object.letter.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+          <%end%>
           <a class='dropdown-button btn' href='#' data-activates='letterfilm'>Validar Carta</a>
           <ul id='letterfilm' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>

@@ -302,7 +302,7 @@
       <% end if  TheaterEvidence::ART_FORM_ID==a.id %>
     <%end%>
     <%if @project.film_evidence.nil?%>
-      <%= f.fields_for :film_evidence,ArtForm.new  do |p| %>
+      <%= f.fields_for :film_evidence,FilmEvidence.new  do |p| %>
         <%= render 'static_pages/film_evidence_fields', f: p %>
       <% end if  FilmEvidence::ART_FORM_ID==a.id %>
     <%else%>
