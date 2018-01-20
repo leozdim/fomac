@@ -265,24 +265,61 @@
 <%= form_for(@project, url: project_evidence_path ) do |f| %>
   <%= render 'errors' %>
   <% @arts.each do |a| %>
-    <%= f.fields_for :visual_evidence  do |p| %>
-      <%= render 'static_pages/visual_evidence_fields', f: p %>
-    <% end if  VisualEvidence::ART_FORM_ID==a.id %>
-    <%= f.fields_for :dance_evidence  do |p| %>
-      <%= render 'static_pages/dance_evidence_fields', f: p %>
-    <% end if  DanceEvidence::ART_FORM_ID==a.id %>
-    <%= f.fields_for :music_evidence  do |p| %>
-      <%= render 'static_pages/music_evidence_fields', f: p %>
-    <% end if  MusicEvidence::ART_FORM_ID==a.id %>
-    <%= f.fields_for :theater_evidence  do |p| %>
-      <%= render 'static_pages/theater_evidence_fields', f: p %>
-    <% end if  TheaterEvidence::ART_FORM_ID==a.id %>
-    <%= f.fields_for :film_evidence  do |p| %>
-      <%= render 'static_pages/film_evidence_fields', f: p %>
-    <% end if  FilmEvidence::ART_FORM_ID==a.id %>
-    <%= f.fields_for :letter_evidence  do |p| %>
-      <%= render 'static_pages/letter_evidence_fields', f: p %>
-    <% end if  LetterEvidence::ART_FORM_ID==a.id %>
+    <%if @project.visual_evidence.nil?%>
+      <%= f.fields_for :visual_evidence ,VisualEvidence.new do |p| %>
+        <%= render 'static_pages/visual_evidence_fields', f: p %>
+      <% end if  VisualEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :visual_evidence do |p| %>
+        <%= render 'static_pages/visual_evidence_fields', f: p %>
+      <% end if  VisualEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+    <%if @project.dance_evidence.nil?%>
+      <%= f.fields_for :dance_evidence, DanceEvidence.new do |p| %>
+        <%= render 'static_pages/dance_evidence_fields', f: p %>
+      <% end if  DanceEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :dance_evidence  do |p| %>
+        <%= render 'static_pages/dance_evidence_fields', f: p %>
+      <% end if  DanceEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+    <%if @project.music_evidence.nil?%>
+      <%= f.fields_for :music_evidence , MusicEvidence.new do |p| %>
+        <%= render 'static_pages/music_evidence_fields', f: p %>
+      <% end if  MusicEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :music_evidence  do |p| %>
+        <%= render 'static_pages/music_evidence_fields', f: p %>
+      <% end if  MusicEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+    <%if @project.theater_evidence.nil?%>
+      <%= f.fields_for :theater_evidence,TheaterEvidence.new  do |p| %>
+        <%= render 'static_pages/theater_evidence_fields', f: p %>
+      <% end if  TheaterEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :theater_evidence  do |p| %>
+        <%= render 'static_pages/theater_evidence_fields', f: p %>
+      <% end if  TheaterEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+    <%if @project.film_evidence.nil?%>
+      <%= f.fields_for :film_evidence,FilmEvidence.new  do |p| %>
+        <%= render 'static_pages/film_evidence_fields', f: p %>
+      <% end if  FilmEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :film_evidence  do |p| %>
+        <%= render 'static_pages/film_evidence_fields', f: p %>
+      <% end if  FilmEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+    <%if @project.letter_evidence.nil?%>
+      <%= f.fields_for :letter_evidence,LetterEvidence.new  do |p| %>
+        <%= render 'static_pages/letter_evidence_fields', f: p %>
+      <% end if  LetterEvidence::ART_FORM_ID==a.id %>
+    <%else%>
+      <%= f.fields_for :letter_evidence  do |p| %>
+        <%= render 'static_pages/letter_evidence_fields', f: p %>
+      <% end if  LetterEvidence::ART_FORM_ID==a.id %>
+    <%end%>
+
   <% end %>
   <%#= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
 <% end %>

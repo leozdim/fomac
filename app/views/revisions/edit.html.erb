@@ -1,6 +1,6 @@
 <span class="card-title">Editar observaciones al proyecto:<br>
 	<strong>
-		<%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.folio %> <%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.information.name %>
+		<%= Project.where(id: Revision.where(id: params[:id]).first.project_id).first.folio %> <%=Project.where(id: params[:project_id]).first.blank? ? "":Project.where(id: params[:project_id]).first.information.name %>
 	</strong>
 </span>
 <%= render 'form_edit', revision: @revision %>
