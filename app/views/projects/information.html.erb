@@ -10,7 +10,7 @@ span.ayuda {
 }
 </style>
 <span class="card-title">Información del proyecto</span>
-<%= form_for(@project, url: project_information_path ) do |f| %>
+<%= form_for(@project, url: project_information_path , :data=> {validate: @invalid_fields}) do |f| %>
     <%= render 'errors' %>
 <%= f.fields_for :information  do |p| %>
 <%# <%= render 'docs_perproject_informationson_fields', f: p %>

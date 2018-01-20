@@ -22,11 +22,13 @@ class ApplicationController < ActionController::Base
           if p.is_valid?
             project_finish_path(p)
           else
-            if p.revisions_persondoc.blank?
-            #check revision to see where to link
+            if !p.revisions_information.blank?
+              #check revision to see where to link
               project_information_path p
-            else
+            elsif  !p.revisions_persondoc.blank?
               add_documents_people_path p
+            elsif  !p.revisions_film_evidence.blank? || !p.revisions_music_evidence.blank? ||!p.revisions_dance_evidence.blank?  ||!p.revisions_letter_evidence.blank?  || !p.revisions_theater_evidence.blank? || !p.revisions_visual_evidence.blank?
+              project_evidence_path p
             end
           end
         else

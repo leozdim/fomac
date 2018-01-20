@@ -76,18 +76,21 @@ class ProjectsController < ApplicationController
   end
 
   def information
+
+    document_valid
     if request.patch?
-      respond_to do |format|
-        if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto se guardo con èxito' }
-        else
-          format.html { render :information }
+      if @project.update(project_params)
+        if  @invalid_fields
+          @project.invalid_revisions_information.update_all status: 'Revision'
         end
+        redirect_control { redirect_to project_retribution_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+      else
+        render :information
       end
     else
       @project.build_information if @project.information.blank?
     end
-  end 
+  end
 
   def retribution 
     if request.patch?
@@ -109,15 +112,19 @@ class ProjectsController < ApplicationController
   end
 
   def evidence
+    document_valid
     @arts=@project.art_forms
     if request.patch?
-      respond_to do |format|
-        if @project.update(project_params)
-          format.html { redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
-        else
-          format.html { render :evidence }
+      if @project.update(project_params)
+        if  @invalid_fields
+          @project.invalid_revisions_film_evidence.update_all status: 'Revision'
         end
+        redirect_control { redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
+      else
+        render :evidence
       end
+
+
     else
       @arts.each do |a|
         @project.build_visual_evidence if @project.visual_evidence.blank? and VisualEvidence::ART_FORM_ID==a.id

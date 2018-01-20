@@ -57,13 +57,57 @@ class Project < ApplicationRecord
     revisions.where(status: 'Invalido', model: 'person_documents')
   end
 
+  def revisions_film_evidence
+    revisions.where(status: 'Invalido', model: 'film_evidence')
+  end
+  def revisions_visual_evidence
+    revisions.where(status: 'Invalido', model: 'visual_evidence')
+  end
+  def revisions_dance_evidence
+    revisions.where(status: 'Invalido', model: 'dance_evidence')
+  end
+  def revisions_letter_evidence
+    revisions.where(status: 'Invalido', model: 'letter_evidence')
+  end
+  def revisions_theater_evidence
+    revisions.where(status: 'Invalido', model: 'theater_evidence')
+  end
+  def revisions_music_evidence
+    revisions.where(status: 'Invalido', model: 'music_evidence')
+  end
+
+  def revisions_information
+    revisions.where(status: 'Invalido', model: 'information')
+  end
+
+  def getfields
+    information = 13
+    documents = 9
+    #dance_evidence=
+    #film_evidence=
+    #letter_evidence=
+    #music_evidence=
+    #theater_evidence=
+    #visual_evidence=
+
+  end
+
   #CAUTION valid is a method of active record  
   def is_valid?
-    revisions.where(status: 'Valido').count == 22
+    #revisions.where(status: 'Valido').count == 13
+     return true
   end
 
   def invalid_revisions_person_documents
     revisions.where(status: 'Invalido', model: 'person_documents')
+  end
+
+  def invalid_revisions_film_evidence
+    revisions.where(status: 'Invalido', model: 'film_evidence')
+  end
+
+  def invalid_revisions_information
+    revisions.where(status: 'Invalido', model: 'information')
   end
 
   def invalid_revisions
