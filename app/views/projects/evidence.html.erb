@@ -1,4 +1,4 @@
-<%= form_for(@project, url: project_evidence_path ) do |f| %>
+<%= form_for(@project, url: project_evidence_path , :data=> {validate: @invalid_fields}) do |f| %>
   <%= render 'errors' %>
   <% @arts.each do |a| %>
     <%= f.fields_for :visual_evidence  do |p| %>

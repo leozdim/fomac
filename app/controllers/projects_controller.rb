@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   end
 
   def add_documents_people
-    document_valid 
+    check_revisions 'person_documents'
     if request.patch?
       if @project.update(project_params)
         if  @invalid_fields
@@ -110,6 +110,9 @@ class ProjectsController < ApplicationController
 
   def evidence
     @arts=@project.art_forms
+    check_revisions [ 'visual_evidence','dance_evidence',
+                      'music_evidence','theater_evidence',
+                      'film_evidence','letter_evidence' ]
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
