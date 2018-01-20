@@ -39,10 +39,17 @@ $(document).on('turbolinks:load', ->
       $('form:last input[type=text],form:last input[type=file], form:last textarea, form:last select').attr('disabled',true)
       for v in validate 
         do -> 
-          target=$("form:last [id*=#{v[0]}]")
+          maybe=$("form:last [id*=#{v[2]}]")
+          target=null
+          maybe.each (y,x)-> 
+            target=$(x) if $(x).prop('id').includes v[0]
+          return if target==null
           target.attr('disabled',false)
-          unless v[1].nil?
+          unless v[1]==null
             if target.prop('type')=='file'
               target.parents('div.file-field').after('<div class="chip" >Observaciòn: '+v[1]+'</div>')
+            else
+              target.after('<div class="chip" >Observaciòn: '+v[1]+'</div>')
+              
 )
 
