@@ -28,9 +28,11 @@ $(document).on('turbolinks:load', ->
       ajax: $('#projects-table').data('source')
       pagingType: 'full_numbers'
       columns: [
+        {data: 'id'}
         {data: 'folio'}
         {data: 'user'}
         {data: 'category'}
+        {data: 'name'}
         {data: 'show'}
         {data: 'status'}
       ]
