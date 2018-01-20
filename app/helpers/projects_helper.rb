@@ -16,8 +16,8 @@ module ProjectsHelper
   end
 
 
-  def document_valid
-    @invalid_fields=@project.invalid_revisions.pluck(:field,:observations)
+  def check_revisions models
+    @invalid_fields=@project.invalid_revisions.where(:model=>models).pluck(:field,:observations)
     flash[:notice]='Algunos documentos son invalidos '  unless @invalid_fields.empty?
   end
 

@@ -35,6 +35,54 @@ namespace :import do
       end
     end
   end
+
+  desc "fix teh fucking project arts"
+  task fix: :environment do 
+    User.all.each do |u|
+      q=OldDb
+      record=q.exec "SELECT * FROM fomac.accounts a left join fomac.project_collective_disciplines pcd on pcd.colectivo_id=a.account_id
+                      left join fomac.project_registry pr on pr.account_id=a.account_id where email='#{u.email}';"
+      record.each do |op|
+        p=u.projects.first
+        if op['disciplina']!='Interdisciplinara'
+          art_form=nil
+          case op['disciplina']
+          when 'Artes visuales'
+            art_form=ArtForm.find 1
+          when 'Cine y video'
+            art_form=ArtForm.find 5
+          when 'Danza'
+            art_form=ArtForm.find 2
+          when 'Letras'
+            art_form=ArtForm.find 6
+          when 'Música'
+            art_form=ArtForm.find 3
+          when 'Teatro'
+            art_form=ArtForm.find 4
+          end
+          if art_form.nil?
+            p.art_forms=[] 
+          else 
+            p.art_forms=[art_form] 
+          end
+          p.save
+        else
+          art_forms=[]
+          art_forms.push ArtForm.find 1 unless p.visual_evidence.nil?
+          art_forms.push ArtForm.find 5 unless p.film_evidence.nil?
+          art_forms.push ArtForm.find 2 unless p.dance_evidence.nil?
+          art_forms.push ArtForm.find 6 unless p.letter_evidence.nil?
+          art_forms.push ArtForm.find 3 unless p.music_evidence.nil?
+          art_forms.push ArtForm.find 4 unless p.theater_evidence.nil?
+          p.art_forms=art_forms
+          p.save
+        end
+
+      end
+
+
+    end
+  end
 end
 
 def create_letter p,ev
@@ -120,10 +168,10 @@ end
 def create_project_information project, inf 
   cron=old_p_opener inf
   i=Information.new :project=>project,:name=>inf['nombre'],:description=>inf['descripcion'],
-      :antecedent=>inf['antecedentes'],:justification=>inf['justificacion'],:general_objective=>inf['objetivo_general'],
-      :specific_objective=>inf['objetivos_especificos'],:goals=>inf['metas'],:beneficiary=>inf['beneficiarios'],
-      :context=>inf['contexto'],:bibliography=>inf['bibliografia'],
-      :activities=>cron,:spending=>cron,:funding=>cron
+    :antecedent=>inf['antecedentes'],:justification=>inf['justificacion'],:general_objective=>inf['objetivo_general'],
+    :specific_objective=>inf['objetivos_especificos'],:goals=>inf['metas'],:beneficiary=>inf['beneficiarios'],
+    :context=>inf['contexto'],:bibliography=>inf['bibliografia'],
+    :activities=>cron,:spending=>cron,:funding=>cron
   i.save! validate: false
 end
 
