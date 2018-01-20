@@ -107,8 +107,10 @@ class Project < ApplicationRecord
     revisions.where(status: 'Invalido', model: 'person_documents')
   end
 
-  def invalid_revisions_film_evidence
-    revisions.where(status: 'Invalido', model: 'film_evidence')
+  def invalid_revisions_evidence
+    revisions.where(status: 'Invalido', :model=>[ 'visual_evidence','dance_evidence',
+                                                  'music_evidence','theater_evidence',
+                                                  'film_evidence','letter_evidence' ])
   end
 
   def invalid_revisions_information

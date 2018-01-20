@@ -87,7 +87,7 @@ class ProjectsController < ApplicationController
             flag = 1
           end
         end
-        redirect_control { redirect_to flag ==0 ? project_retribution_path(@project) :project_evidence_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+        redirect_control { redirect_to  project_retribution_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
       else
         render :information
       end
@@ -123,14 +123,12 @@ class ProjectsController < ApplicationController
     if request.patch?
       if @project.update(project_params)
         if  @invalid_fields
-          @project.invalid_revisions_film_evidence.update_all status: 'Revision'
+          @project.invalid_revisions_evidence.update_all status: 'Revision'
         end
         redirect_control { redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
       else
         render :evidence
       end
-
-
     else
       @arts.each do |a|
         @project.build_visual_evidence if @project.visual_evidence.blank? and VisualEvidence::ART_FORM_ID==a.id

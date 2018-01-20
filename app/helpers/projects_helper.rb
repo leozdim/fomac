@@ -23,11 +23,18 @@ module ProjectsHelper
 
 
   def redirect_control 
-    if @project.finish? and @project.invalid_revisions.empty? 
-      redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'   
+    if @project.finish? and @project.invalid_revisions.empty?
+        redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'
     else
-      yield
+      if  @project.finish? and !@project.invalid_revisions_person_documents.empty?
+        redirect_to add_documents_people_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'
+      elsif @project.finish? and !@project.invalid_revisions_information.empty?
+        redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'
+      elsif @project.finish?
+        redirect_to project_evidence_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'
+      else
+        yield
+      end
     end
   end
-
 end
