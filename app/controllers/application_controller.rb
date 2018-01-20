@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
       if current_user.projects.any?
         # change this to hte active projects
         p=current_user.projects.first
-        if p.finish?
-          if p.is_valid?
+        if true #p.finish?
+          if p.is_valid? #or in revision all :D or all pending
             project_finish_path(p)
           else
             if !p.revisions_information.blank?

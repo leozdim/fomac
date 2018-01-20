@@ -76,14 +76,18 @@ class ProjectsController < ApplicationController
   end
 
   def information
-
-    document_valid
+    flag = 0
+    check_revisions'information'
     if request.patch?
       if @project.update(project_params)
+        flag = 0
         if  @invalid_fields
           @project.invalid_revisions_information.update_all status: 'Revision'
+          if !@invalid_fields.blank?
+            flag = 1
+          end
         end
-        redirect_control { redirect_to project_retribution_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+        redirect_control { redirect_to flag ==0 ? project_retribution_path(@project) :project_evidence_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
       else
         render :information
       end
@@ -112,7 +116,6 @@ class ProjectsController < ApplicationController
   end
 
   def evidence
-    document_valid
     @arts=@project.art_forms
     check_revisions [ 'visual_evidence','dance_evidence',
                       'music_evidence','theater_evidence',

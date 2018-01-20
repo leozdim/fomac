@@ -80,22 +80,27 @@ class Project < ApplicationRecord
     revisions.where(status: 'Invalido', model: 'information')
   end
 
-  def getfields
-    information = 13
-    documents = 9
-    #dance_evidence=
-    #film_evidence=
-    #letter_evidence=
-    #music_evidence=
-    #theater_evidence=
-    #visual_evidence=
-
+  def getfieldscount
+    sum = 22
+    dance_= 5
+    film = 8
+    letter= 3
+    music= 6
+    theater= 7
+    visual= 4
+    sum +=  !visual_evidence.blank? ? visual: 0
+    sum +=  !film_evidence.blank? ? film: 0
+    sum +=  !dance_evidence.blank? ? dance_: 0
+    sum +=  !letter_evidence.blank? ? letter: 0
+    sum +=  !music_evidence.blank? ? music: 0
+    sum +=  !theater_evidence.blank? ? theater: 0
+    return sum
   end
 
   #CAUTION valid is a method of active record  
   def is_valid?
-    #revisions.where(status: 'Valido').count == 13
-     return true
+    revisions.where(status: 'Valido').count == getfieldscount
+    # return false
   end
 
   def invalid_revisions_person_documents
