@@ -40,6 +40,9 @@ es:
         models:
             project: Proyecto
         attributes:
+            user:
+                taken: El campo Categoria
+                password_confirmation: La confirmacion de la contraseña
             project:
                 category: El campo Categoria
                 art_forms: El campo Modalidad
@@ -129,6 +132,9 @@ es:
             messages: 
                 blank: es obligatorio
                 required : es obligatorio
+                confirmation: no coincide
+                too_short: es muy corta
+                taken: ya fue usado
     date:
         order: ["day", "year",  "month"]
         month_names: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", 
