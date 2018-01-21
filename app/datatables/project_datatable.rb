@@ -9,9 +9,12 @@ class ProjectDatatable < AjaxDatatablesRails::Base
     @view_columns ||= {
       # id: { source: "User.id", cond: :eq },
       # name: { source: "User.name", cond: :like }
+      id:         { source: "Project.id",cond: :like,searchable: true, orderable: true},
+      artform:     { source: "ArtForm.name",cond: :like ,searchable: true, orderable: true},
       folio:      { source: "fol",  cond: folio_cond ,searchable: true, orderable: true},
       user:       { source: "User.first_name",  cond: :like,searchable: true},
       category:   { source: "Category.name" ,   cond: :like,searchable: true},
+      name:       { source: "Information.name" ,   cond: :like,searchable: true},
       #show:       { source: "Project.category.name" },
       #edit:       { source: "Project.status"},
     }
@@ -22,9 +25,11 @@ class ProjectDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       {
+          id:   record.project_id,
         folio:  record[:fol],
         user:   record.user.first_name,
         category: record.category.name,
+          name: Information.find_by_project_id(record.project_id).name,
         show:  link_to( 'Mostrar', Project.find(record.project_id), :class=>'waves-effect waves-light btn',:style=>'color:white'),
         status:  document_validation(record.id)
         #edit: link_to("Editar", @view.edit_project_path(record)),
@@ -64,7 +69,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
     #Project.references(:user).all
 
     #Project.includes(:user, :category,:art_form).all.references(:user, :category)
-    Project.select('* , concat(categories.key,"-",art_forms.name,"-",projects.id) as fol').joins(:user, :category, :art_forms)
+    Project.select('* , concat(categories.key,"-",art_forms.name,"-",projects.id) as fol').joins(:user, :category, :art_forms,:information)
 
   end
 

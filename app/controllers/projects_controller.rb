@@ -76,18 +76,25 @@ class ProjectsController < ApplicationController
   end
 
   def information
+    flag = 0
+    check_revisions'information'
     if request.patch?
-      respond_to do |format|
-        if @project.update(project_params)
-          format.html { redirect_to project_retribution_path(@project), notice: 'La Información del proyecto se guardo con èxito' }
-        else
-          format.html { render :information }
+      if @project.update(project_params)
+        flag = 0
+        if  @invalid_fields
+          @project.invalid_revisions_information.update_all status: 'Revision'
+          if !@invalid_fields.blank?
+            flag = 1
+          end
         end
+        redirect_control { redirect_to  project_retribution_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+      else
+        render :information
       end
     else
       @project.build_information if @project.information.blank?
     end
-  end 
+  end
 
   def retribution 
     if request.patch?
@@ -114,12 +121,13 @@ class ProjectsController < ApplicationController
                       'music_evidence','theater_evidence',
                       'film_evidence','letter_evidence' ]
     if request.patch?
-      respond_to do |format|
-        if @project.update(project_params)
-          format.html { redirect_to project_finish_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
-        else
-          format.html { render :evidence }
+      if @project.update(project_params)
+        if  @invalid_fields
+          @project.invalid_revisions_evidence.update_all status: 'Revision'
         end
+        redirect_control { redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
+      else
+        render :evidence
       end
     else
       @arts.each do |a|

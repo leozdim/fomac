@@ -57,13 +57,64 @@ class Project < ApplicationRecord
     revisions.where(status: 'Invalido', model: 'person_documents')
   end
 
+  def revisions_film_evidence
+    revisions.where(status: 'Invalido', model: 'film_evidence')
+  end
+  def revisions_visual_evidence
+    revisions.where(status: 'Invalido', model: 'visual_evidence')
+  end
+  def revisions_dance_evidence
+    revisions.where(status: 'Invalido', model: 'dance_evidence')
+  end
+  def revisions_letter_evidence
+    revisions.where(status: 'Invalido', model: 'letter_evidence')
+  end
+  def revisions_theater_evidence
+    revisions.where(status: 'Invalido', model: 'theater_evidence')
+  end
+  def revisions_music_evidence
+    revisions.where(status: 'Invalido', model: 'music_evidence')
+  end
+
+  def revisions_information
+    revisions.where(status: 'Invalido', model: 'information')
+  end
+
+  def getfieldscount
+    sum = 22
+    dance_= 5
+    film = 8
+    letter= 3
+    music= 6
+    theater= 7
+    visual= 4
+    sum +=  !visual_evidence.blank? ? visual: 0
+    sum +=  !film_evidence.blank? ? film: 0
+    sum +=  !dance_evidence.blank? ? dance_: 0
+    sum +=  !letter_evidence.blank? ? letter: 0
+    sum +=  !music_evidence.blank? ? music: 0
+    sum +=  !theater_evidence.blank? ? theater: 0
+    return sum
+  end
+
   #CAUTION valid is a method of active record  
   def is_valid?
-    revisions.where(status: 'Valido').count == 22
+    revisions.where(status: 'Valido').count == getfieldscount
+    # return false
   end
 
   def invalid_revisions_person_documents
     revisions.where(status: 'Invalido', model: 'person_documents')
+  end
+
+  def invalid_revisions_evidence
+    revisions.where(status: 'Invalido', :model=>[ 'visual_evidence','dance_evidence',
+                                                  'music_evidence','theater_evidence',
+                                                  'film_evidence','letter_evidence' ])
+  end
+
+  def invalid_revisions_information
+    revisions.where(status: 'Invalido', model: 'information')
   end
 
   def invalid_revisions
