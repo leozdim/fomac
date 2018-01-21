@@ -9,7 +9,7 @@
       <strong>Categoría:</strong> <%= @project.category.name %><br>
       <strong>Estatus:</strong> <%= @project.status %>
     </p>
-    <%= link_to "Detalles", static_pages_project_path(project: @project) %>
+    <%= link_to "Detalles", static_pages_project_path(project: @project) if @information.blank? %>
   </div>
   <div class="col s12 m6 l6">
     <span class="card-title">Información del creador</span>
