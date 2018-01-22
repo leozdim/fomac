@@ -138,5 +138,5 @@ es:
     date:
         order: ["day", "year",  "month"]
         month_names: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", 
-            "Agosto", "Septiembre", "Octubre", "Nobiembre", "Diciembre"]
+            "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
