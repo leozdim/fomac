@@ -270,24 +270,24 @@ span.ayuda {
       <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
       <a class='dropdown-button btn' href='#' data-activates='activities'>Validar Cronograma de actividades</a>
       <ul id='activities' class='dropdown-content'>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-        <%if get_observation_id("activities","person_documents") != ""%>
-        <li><a href="<%=edit_revision_path(get_observation_id("activities","person_documents"))%>">Editar observacion</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("activities","information") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("activities","information"))%>">Editar observacion</a></li>
         <%else%>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"activities",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
         <%end%>
 
       </ul>
 
-      <%if get_status("activities","person_documents") == "Invalido"%>
+      <%if get_status("activities","information") == "Invalido"%>
       <div class="input-field">
-        <textarea class="materialize-textarea"  disabled><%=get_observation("activities","person_documents")%></textarea>
+        <textarea class="materialize-textarea"  disabled><%=get_observation("activities","information")%></textarea>
         <label for="textarea1">Observaciones de Cronograma de actividades</label>
       </div>
       <%end%>
     </div>
     <div class="secondary-content">
-      <%= get_status("activities","person_documents") %>
+      <%= get_status("activities","information") %>
     </div>
   </li>
   <li class="collection-item avatar">
@@ -299,24 +299,24 @@ span.ayuda {
       <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
       <a class='dropdown-button btn' href='#' data-activates='spending'>Validar Desgloce de gastos</a>
       <ul id='spending' class='dropdown-content'>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-        <%if get_observation_id("spending","person_documents") != ""%>
-        <li><a href="<%=edit_revision_path(get_observation_id("spending","person_documents"))%>">Editar observacion</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("spending","information") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("spending","information"))%>">Editar observacion</a></li>
         <%else%>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"spending",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
         <%end%>
 
       </ul>
 
-      <%if get_status("spending","person_documents") == "Invalido"%>
+      <%if get_status("spending","information") == "Invalido"%>
       <div class="input-field">
-        <textarea class="materialize-textarea"  disabled><%=get_observation("spending","person_documents")%></textarea>
+        <textarea class="materialize-textarea"  disabled><%=get_observation("spending","information")%></textarea>
         <label for="textarea1">Observaciones de Desgloce de gastos</label>
       </div>
       <%end%>
     </div>
     <div class="secondary-content">
-      <%= get_status("spending","person_documents") %>
+      <%= get_status("spending","information") %>
     </div>
   </li>
   <li class="collection-item avatar">
@@ -328,23 +328,23 @@ span.ayuda {
       <!--%= select_tag "lala",options_for_select([[get_status("request_letter"), 1]]) %-->
       <a class='dropdown-button btn' href='#' data-activates='funding'>Validar Fuentes de financiamiento</a>
       <ul id='funding' class='dropdown-content'>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-        <%if get_observation_id("funding","person_documents") != ""%>
-        <li><a href="<%=edit_revision_path(get_observation_id("funding","person_documents"))%>">Editar observacion</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Valido", :model=>"information")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+        <%if get_observation_id("funding","information") != ""%>
+        <li><a href="<%=edit_revision_path(get_observation_id("funding","information"))%>">Editar observacion</a></li>
         <%else%>
-        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
+        <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"funding",:status=>"Invalido", :model=>"information")%>">Agregar observaciones</a></li>
         <%end%>
 
       </ul>
-      <%if get_status("funding","person_documents") == "Invalido"%>
+      <%if get_status("funding","information") == "Invalido"%>
       <div class="input-field">
-        <textarea class="materialize-textarea"  disabled><%=get_observation("funding","person_documents")%></textarea>
+        <textarea class="materialize-textarea"  disabled><%=get_observation("funding","information")%></textarea>
         <label for="textarea1">Observaciones de Fuentes de financiamiento</label>
       </div>
       <%end%>
     </div>
     <div class="secondary-content">
-      <%= get_status("funding","person_documents") %>
+      <%= get_status("funding","information") %>
     </div>
   </li>
 </ul>
