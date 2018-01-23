@@ -37,23 +37,23 @@
           <a class='dropdown-button btn' href='#' data-activates='Semblanza'>Validar semblanza</a>
           <ul id='Semblanza' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("request_letter") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("request_letter"))%>">Editar observacion</a></li>
+            <%if get_observation_id("request_letter","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("request_letter","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"request_letter",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
 
           </ul>
 
-          <%if get_status("request_letter") == "Invalido"%>
+          <%if get_status("request_letter","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea"  disabled><%=get_observation("request_letter")%></textarea>
+              <textarea class="materialize-textarea"  disabled><%=get_observation("request_letter","person_documents")%></textarea>
               <label for="textarea1">Observaciones de semblanza</label>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("request_letter") %>
+          <%= get_status("request_letter","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -64,21 +64,21 @@
           <a class='dropdown-button btn' href='#' data-activates='birth'>Validar acta de nacimiento</a>
           <ul id='birth' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("birth") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("birth"))%>">Editar observacion</a></li>
+            <%if get_observation_id("birth","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("birth","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"birth",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("birth") == "Invalido"%>
+          <%if get_status("birth","person_documents") == "Invalido"%>
             <div class="intput-field">
-              <textarea class="materialize-textarea" id="birth" disabled ><%=get_observation("birth")%></textarea>
+              <textarea class="materialize-textarea" id="birth" disabled ><%=get_observation("birth","person_documents")%></textarea>
               <label for="textarea" id="birth" >Observaciones del acta de nacimiento</label>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("birth") %>
+          <%= get_status("birth","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -89,22 +89,22 @@
           <a class='dropdown-button btn' href='#' data-activates='address'>Validar comprobante de domicilio</a>
           <ul id='address' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("address") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("address"))%>">Editar observacion</a></li>
+            <%if get_observation_id("address","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("address","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"address",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
 
-          <%if get_status("address") == "Invalido"%>
+          <%if get_status("address","person_documents") == "Invalido"%>
           <div class="input-field">
-            <textarea class="materialize-textarea" disabled><%=get_observation("address")%></textarea>
+            <textarea class="materialize-textarea" disabled><%=get_observation("address","person_documents")%></textarea>
             <label for="textarea" id="address" >Observaciones del acta de nacimiento</label>
           </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("address") %>
+          <%= get_status("address","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -115,23 +115,23 @@
           <a class='dropdown-button btn' href='#' data-activates='identification'>Validar identificación</a>
           <ul id='identification' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("identification") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("identification"))%>">Editar observacion</a></li>
+            <%if get_observation_id("identification","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("identification","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"identification",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
 
           </ul>
 
-          <%if get_status("identification") == "Invalido"%>
+          <%if get_status("identification","person_documents") == "Invalido"%>
           <div class="input-field">
-            <textarea class="materialize-textarea" disabled><%=get_observation("identification")%></textarea>
+            <textarea class="materialize-textarea" disabled><%=get_observation("identification","person_documents")%></textarea>
             <label for="textarea" id="identification">Observaciones de la identificación</label>
           </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("identification") %>
+          <%= get_status("identification","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -142,20 +142,20 @@
           <a class='dropdown-button btn' href='#' data-activates='curp'>Validar CURP</a>
           <ul id='curp' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("curp") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("curp"))%>">Editar observacion</a></li>
+            <%if get_observation_id("curp","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("curp","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"curp",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("curp") == "Invalido"%>
+          <%if get_status("curp","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("curp")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("curp","person_documents")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%=get_status("curp")%>
+          <%=get_status("curp","person_documents")%>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -166,20 +166,20 @@
           <a class='dropdown-button btn' href='#' data-activates='resume'>Validar currículum</a>
           <ul id='resume' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("resume") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("resume"))%>">Editar observacion</a></li>
+            <%if get_observation_id("resume","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("resume","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"resume",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("resume") == "Invalido"%>
+          <%if get_status("resume","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("resume")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("resume","person_documents")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("resume") %>
+          <%= get_status("resume","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -190,21 +190,21 @@
           <a class='dropdown-button btn' href='#' data-activates='agreement_letter'>Validar concentimiento</a>
           <ul id='agreement_letter' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("agreement_letter") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("agreement_letter"))%>">Editar observacion</a></li>
+            <%if get_observation_id("agreement_letter","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("agreement_letter","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
 
-          <%if get_status("agreement_letter") == "Invalido"%>
+          <%if get_status("agreement_letter","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("agreement_letter")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("agreement_letter","person_documents")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("agreement_letter") %>
+          <%= get_status("agreement_letter","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -215,20 +215,20 @@
           <a class='dropdown-button btn' href='#' data-activates='kardex'>Validar kardex</a>
           <ul id='kardex' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("kardex") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("kardex"))%>">Editar observacion</a></li>
+            <%if get_observation_id("kardex","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("kardex","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"kardex",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("kardex") == "Invalido"%>
+          <%if get_status("kardex","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("kardex")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("kardex","person_documents")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("kardex") %>
+          <%= get_status("kardex","person_documents") %>
         </div>
       </li>
       <li class="collection-item avatar">
@@ -239,20 +239,20 @@
           <a class='dropdown-button btn' href='#' data-activates='assign_letter'>Validar carta de asignación</a>
           <ul id='assign_letter' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Valido", :model=>"person_documents")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("assign_letter") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("assign_letter"))%>">Editar observacion</a></li>
+            <%if get_observation_id("assign_letter","person_documents") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("assign_letter","person_documents"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"assign_letter",:status=>"Invalido", :model=>"person_documents")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("assign_letter") == "Invalido"%>
+          <%if get_status("assign_letter","person_documents") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("assign_letter")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("assign_letter","person_documents")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("assign_letter") %>
+          <%= get_status("assign_letter","person_documents") %>
         </div>
       </li>
     </ul>
