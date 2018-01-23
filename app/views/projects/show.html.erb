@@ -184,10 +184,10 @@
       </li>
       <li class="collection-item avatar">
         <i class="material-icons circle">folder</i>
-        <span class="title">Carta de concentimiento</span>
+        <span class="title">Carta de consentimiento</span>
         <div style="margin-top:16px">
-          <%=  link_to 'Descargar carta de concentimiento', @project.person_document.first.agreement_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
-          <a class='dropdown-button btn' href='#' data-activates='agreement_letter'>Validar concentimiento</a>
+          <%=  link_to 'Descargar carta de consentimiento', @project.person_document.first.agreement_letter.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+          <a class='dropdown-button btn' href='#' data-activates='agreement_letter'>Validar consentimiento</a>
           <ul id='agreement_letter' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"agreement_letter",:status=>"Valido", :model=>"person_document")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("agreement_letter","person_document") != ""%>
