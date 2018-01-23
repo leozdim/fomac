@@ -19,14 +19,6 @@ module ProjectsHelper
   def check_revisions models
     @invalid_fields=@project.invalid_revisions.where(:model=>models).pluck(:field,:observations,:model)
     # salvador put some trash in the field name
-    @invalid_fields.map! do |x| 
-      x[0].gsub!(/dance|letter|music|visual|film|theater/,'')
-      x
-    end
-    @invalid_fields.map! do |x|
-      x[0].gsub!(/images/,'image')
-      x
-    end
     flash[:notice]='Algunos documentos son inválidos, favor de llenar los campos faltantes ademas de acatar las observaciones'  unless @invalid_fields.empty?
   end
 
