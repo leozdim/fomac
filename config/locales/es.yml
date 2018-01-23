@@ -129,7 +129,14 @@ es:
                 work: El documento Texto de muestra
                 cover: El documento Portadas de libros
         errors:
-            messages: 
+            models:
+                user:
+                    attributes:
+                        reset_password_token:
+                            invalid: ",No puedes acceder a esta página si no es a través de un enlace para resetear tu contraseña. 
+                            Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa."
+                            blank: ",No puedes acceder a esta página si no es a través de un enlace para resetear tu contraseña.
+                            Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa.            messages:" 
                 blank: es obligatorio
                 required : es obligatorio
                 confirmation: no coincide
