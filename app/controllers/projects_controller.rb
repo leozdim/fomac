@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   end
 
   def add_documents_people
-    check_revisions 'person_documents'
+    check_revisions 'person_document'
     if request.patch?
       if @project.update(project_params)
         if  @invalid_fields
