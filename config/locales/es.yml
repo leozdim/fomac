@@ -136,7 +136,8 @@ es:
                             invalid: ",No puedes acceder a esta página si no es a través de un enlace para resetear tu contraseña. 
                             Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa."
                             blank: ",No puedes acceder a esta página si no es a través de un enlace para resetear tu contraseña.
-                            Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa.            messages:" 
+                            Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa."            
+            messages:
                 blank: es obligatorio
                 required : es obligatorio
                 confirmation: no coincide
