@@ -12,21 +12,21 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='images'>Validar imágenes</a>
           <ul id='images' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"images",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("images","visual_evidence") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("images","visual_evidence"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"image",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("image","visual_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("image","visual_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"images",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"image",:status=>"Invalido", :model=>"visual_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("images","visual_evidence") == "Invalido"%>
+          <%if get_status("image","visual_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("images","visual_evidence")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("image","visual_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("images","visual_evidence") %>
+          <%= get_status("image","visual_evidence") %>
         </div>
       </li>
 
