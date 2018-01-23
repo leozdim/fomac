@@ -54,7 +54,7 @@ class Project < ApplicationRecord
   end
 
   def revisions_persondoc
-    revisions.where(status: 'Invalido', model: 'person_documents')
+    revisions.where(status: 'Invalido', model: 'person_document')
   end
 
   def revisions_film_evidence
@@ -104,7 +104,7 @@ class Project < ApplicationRecord
   end
 
   def invalid_revisions_person_documents
-    revisions.where(status: 'Invalido', model: 'person_documents')
+    revisions.where(status: 'Invalido', model: 'person_document')
   end
 
   def invalid_revisions_evidence
