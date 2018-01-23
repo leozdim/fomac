@@ -27,7 +27,7 @@ module ProjectsHelper
       x[0].gsub!(/images/,'image')
       x
     end
-    flash[:notice]='Algunos documentos son invalidos '  unless @invalid_fields.empty?
+    flash[:notice]='Algunos documentos son inválidos, favor de llenar los campos faltantes ademas de acatar las observaciones'  unless @invalid_fields.empty?
   end
 
 

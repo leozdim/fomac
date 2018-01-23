@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <% flash.each do |message_type, message| %>
-  <%= javascript_tag "$(document).ready(function(){ Materialize.toast('#{message}', 4000)})" %>
+  <%= javascript_tag "$(document).ready(function(){ Materialize.toast('#{message}' )})" %>
   <% end %>
   <style>
   a:visited {

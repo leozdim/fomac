@@ -52,6 +52,8 @@ $(document).on('turbolinks:load', ->
               target.parents('div.file-field').after('<div class="chip" >Observaciòn: '+v[1]+'</div>')
             else
               target.after('<div class="chip" >Observaciòn: '+v[1]+'</div>')
-              
+      $("input,textarea").each ->
+        if $(this).val()==""
+          $(this).attr('disabled',false)
 )
 
