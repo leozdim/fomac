@@ -10,21 +10,21 @@
           <%= f.text_field :video, disabled:true%>
           <a class='dropdown-button btn' href='#' data-activates='videofilm'>Validar Video de muestra</a>
           <ul id='videofilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("videofilm") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("videofilm"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"video",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("video","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("video","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"videofilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"video",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("videofilm") == "Invalido"%>
+          <%if get_status("video","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("videofilm")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("video","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("videofilm") %>
+          <%= get_status("video","film_evidence") %>
         </div>
       </li>
 
@@ -36,21 +36,21 @@
           <%= f.text_field :demo, disabled:true%>
           <a class='dropdown-button btn' href='#' data-activates='demofilm'>Validar Demo reel</a>
           <ul id='demofilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("demofilm") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("demofilm"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demo",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("demo","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("demo","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demofilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"demo",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("demofilm") == "Invalido"%>
+          <%if get_status("demo","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("demofilm")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("demo","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("demofilm") %>
+          <%= get_status("demo","film_evidence") %>
         </div>
       </li>
 
@@ -61,21 +61,21 @@
           <%= f.text_field :web , disabled: true%>
           <a class='dropdown-button btn' href='#' data-activates='webfilm'>Validar Sitio web</a>
           <ul id='webfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("webfilm") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("webfilm"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"web",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("web","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("web","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"webfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"web",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("webfilm") == "Invalido"%>
+          <%if get_status("web","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("webfilm")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("web","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("webfilm") %>
+          <%= get_status("web","film_evidence") %>
         </div>
       </li>
 
@@ -95,20 +95,20 @@
           <a class='dropdown-button btn' href='#' data-activates='synopsis'>Validar Sinopsis</a>
           <ul id='synopsis' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("synopsis") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("synopsis"))%>">Editar observacion</a></li>
+            <%if get_observation_id("synopsis","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("synopsis","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"synopsis",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("synopsis") == "Invalido"%>
+          <%if get_status("synopsis","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("synopsis")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("synopsis","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("synopsis") %>
+          <%= get_status("synopsis","film_evidence") %>
         </div>
       </li>
 
@@ -123,21 +123,21 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='scriptfilm'>Validar Guion</a>
           <ul id='scriptfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("scriptfilm") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("scriptfilm"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"script",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("script","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("script","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"scriptfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"script",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("scriptfilm") == "Invalido"%>
+          <%if get_status("script","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("scriptfilm")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("script","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("scriptfilm") %>
+          <%= get_status("script","film_evidence") %>
         </div>
       </li>
 
@@ -153,20 +153,20 @@
           <a class='dropdown-button btn' href='#' data-activates='plan'>Validar Plan</a>
           <ul id='plan' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("plan") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("plan"))%>">Editar observacion</a></li>
+            <%if get_observation_id("plan","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("plan","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
               <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"plan",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("plan") == "Invalido"%>
+          <%if get_status("plan","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("plan")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("plan","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("plan") %>
+          <%= get_status("plan","film_evidence") %>
         </div>
       </li>
 
@@ -180,21 +180,21 @@
           <%end%>
           <a class='dropdown-button btn' href='#' data-activates='letterfilm'>Validar Carta</a>
           <ul id='letterfilm' class='dropdown-content'>
-            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
-            <%if get_observation_id("letterfilm") != ""%>
-              <li><a href="<%=edit_revision_path(get_observation_id("letterfilm"))%>">Editar observacion</a></li>
+            <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letter",:status=>"Valido", :model=>"film_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
+            <%if get_observation_id("letter","film_evidence") != ""%>
+              <li><a href="<%=edit_revision_path(get_observation_id("letter","film_evidence"))%>">Editar observacion</a></li>
             <%else%>
-              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letterfilm",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
+              <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"letter",:status=>"Invalido", :model=>"film_evidence")%>">Agregar observaciones</a></li>
             <%end%>
           </ul>
-          <%if get_status("letterfilm") == "Invalido"%>
+          <%if get_status("letter","film_evidence") == "Invalido"%>
             <div class="input-field">
-              <textarea class="materialize-textarea" disabled><%=get_observation("letterfilm")%></textarea>
+              <textarea class="materialize-textarea" disabled><%=get_observation("letter","film_evidence")%></textarea>
             </div>
           <%end%>
         </div>
         <div class="secondary-content">
-          <%= get_status("letterfilm") %>
+          <%= get_status("letter","film_evidence") %>
         </div>
       </li>
 
