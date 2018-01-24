@@ -19,6 +19,13 @@
   height: 5px;
   background-color: green;
 }
+
+.field_with_errors {
+  padding: inherit;
+  background-color: #ee6e73;
+  display: inherit;
+}
+
 a {
   color: black !important
 }

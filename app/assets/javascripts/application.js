@@ -21,5 +21,6 @@
 $(document).on('turbolinks:load', function() {
   $('select').material_select();
   $('div.birthdate .select-wrapper ').addClass('col sm4 m4')
+  $(' .file-field.input-field .field_with_errors').parents('.file-field.input-field').addClass('field_with_errors');
 });
 
