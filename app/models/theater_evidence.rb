@@ -8,7 +8,7 @@ class TheaterEvidence < ApplicationRecord
   serialize :document, JSON
   mount_uploaders :image, DocumentsUploader
   serialize :image, JSON
-  validates_presence_of :video, :web , :script, :letter, :image, :note, :document
+  # validates_presence_of :video, :web , :script, :letter, :image, :note, :document
   ART_FORM_ID=4
 
   def images

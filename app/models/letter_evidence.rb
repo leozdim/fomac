@@ -4,7 +4,7 @@ class LetterEvidence < ApplicationRecord
   mount_uploader :work, DocumentsUploader
   mount_uploaders :cover, DocumentsUploader
   serialize :cover, JSON
-  validates_presence_of  :web , :work, :cover
+  # validates_presence_of  :web , :work, :cover
   ART_FORM_ID=6
 
   def covers

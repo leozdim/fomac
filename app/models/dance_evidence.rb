@@ -6,7 +6,7 @@ class DanceEvidence < ApplicationRecord
   serialize :note, JSON
   mount_uploaders :document, DocumentsUploader
   serialize :document, JSON
-  validates_presence_of :video, :web , :image, :note, :document
+  # validates_presence_of :video, :web , :image, :note, :document
   ART_FORM_ID=2
 
   def images
