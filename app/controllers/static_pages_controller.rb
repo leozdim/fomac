@@ -22,7 +22,7 @@ class StaticPagesController < ApplicationController
   end
 
   def savenew
-    @user = User.new(params.require(:user).permit(:first_name, :last_name, :second_last_name,:email,  :person_id))
+    @user = User.new(params.require(:user).permit(:first_name, :last_name, :second_last_name,:email,:account_active,  :person_id))
     @user.password = "123456"
     @user.role = params[:role]
     respond_to do |format|

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :evaluations
+  resources :project_assignments
   resources :revisions
   get 'revisions/observation'
   get 'revisions/validate' , to: 'revisions#validate'

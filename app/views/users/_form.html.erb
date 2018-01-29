@@ -45,7 +45,8 @@
   <div class="col s12 m4">
     <div class="input-field">
       <%#= form.text_field :role, id: :user_role, :required => true %>
-      <%= form.select :account_active, [['Active', true], ['Inactive', false]]%>
+      <%#= select_tag(:account_active, options_for_select([['Active', 1], ['Inactive', 0]]))%>
+      <%= form.select :account_active, [['Active', 1], ['Inactive', 0]]%>
       <label>Estatus</label>
     </div>
   </div>

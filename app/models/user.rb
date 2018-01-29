@@ -44,6 +44,10 @@ class User < ApplicationRecord
     "#{last_name}#{second_last_name}#{first_name}"
   end
 
+  def full_name_space
+    "#{last_name} #{second_last_name} #{first_name}"
+  end
+
 
   def active_for_authentication?
     # Uncomment the below debug statement to view the properties of the returned self model values.

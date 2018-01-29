@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project assignment</th>
+      <th>Justification text</th>
+      <th>Justification value</th>
+      <th>Clarity text</th>
+      <th>Clarity value</th>
+      <th>Timeframe text</th>
+      <th>Timeframe value</th>
+      <th>Schema text</th>
+      <th>Schema value</th>
+      <th>Excellence text</th>
+      <th>Excellence value</th>
+      <th>Creativity text</th>
+      <th>Creativity value</th>
+      <th>Originality text</th>
+      <th>Originality value</th>
+      <th>Innovation text</th>
+      <th>Innovation value</th>
+      <th>Innovation text</th>
+      <th>Innovation value</th>
+      <th>Feasibility text</th>
+      <th>Feasibility value</th>
+      <th>Impact text</th>
+      <th>Impact value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evaluations.each do |evaluation| %>
+      <tr>
+        <td><%= evaluation.project_assignment %></td>
+        <td><%= evaluation.justification_text %></td>
+        <td><%= evaluation.justification_value %></td>
+        <td><%= evaluation.clarity_text %></td>
+        <td><%= evaluation.clarity_value %></td>
+        <td><%= evaluation.timeframe_text %></td>
+        <td><%= evaluation.timeframe_value %></td>
+        <td><%= evaluation.schema_text %></td>
+        <td><%= evaluation.schema_value %></td>
+        <td><%= evaluation.excellence_text %></td>
+        <td><%= evaluation.excellence_value %></td>
+        <td><%= evaluation.creativity_text %></td>
+        <td><%= evaluation.creativity_value %></td>
+        <td><%= evaluation.originality_text %></td>
+        <td><%= evaluation.originality_value %></td>
+        <td><%= evaluation.innovation_text %></td>
+        <td><%= evaluation.innovation_value %></td>
+        <td><%= evaluation.innovation_text %></td>
+        <td><%= evaluation.innovation_value %></td>
+        <td><%= evaluation.feasibility_text %></td>
+        <td><%= evaluation.feasibility_value %></td>
+        <td><%= evaluation.impact_text %></td>
+        <td><%= evaluation.impact_value %></td>
+        <td><%= link_to 'Show', evaluation %></td>
+        <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
+        <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Evaluation', new_evaluation_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109045740) do
+ActiveRecord::Schema.define(version: 20180129050141) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 20180109045740) do
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
   end
 
+  create_table "art_forms_projects_old", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "project_id", null: false
+    t.bigint "art_form_id", null: false
+  end
+
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "key", null: false
@@ -66,6 +71,33 @@ ActiveRecord::Schema.define(version: 20180109045740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_dance_evidences_on_project_id"
+  end
+
+  create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "project_assignment_id"
+    t.string "justification_text"
+    t.integer "justification_value"
+    t.string "clarity_text"
+    t.integer "clarity_value"
+    t.string "timeframe_text"
+    t.integer "timeframe_value"
+    t.string "schema_text"
+    t.integer "schema_value"
+    t.string "excellence_text"
+    t.integer "excellence_value"
+    t.string "creativity_text"
+    t.integer "creativity_value"
+    t.string "originality_text"
+    t.integer "originality_value"
+    t.string "innovation_text"
+    t.integer "innovation_value"
+    t.string "feasibility_text"
+    t.integer "feasibility_value"
+    t.string "impact_text"
+    t.integer "impact_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_assignment_id"], name: "index_evaluations_on_project_assignment_id"
   end
 
   create_table "film_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -166,6 +198,15 @@ ActiveRecord::Schema.define(version: 20180109045740) do
     t.index ["person_id"], name: "person_index"
   end
 
+  create_table "project_assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_assignments_on_project_id"
+    t.index ["user_id"], name: "index_project_assignments_on_user_id"
+  end
+
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "folio"
     t.bigint "user_id"
@@ -258,12 +299,15 @@ ActiveRecord::Schema.define(version: 20180109045740) do
   add_foreign_key "addresses", "people"
   add_foreign_key "art_activities", "modalities"
   add_foreign_key "dance_evidences", "projects"
+  add_foreign_key "evaluations", "project_assignments"
   add_foreign_key "film_evidences", "projects"
   add_foreign_key "information", "projects"
   add_foreign_key "letter_evidences", "projects"
   add_foreign_key "music_evidences", "projects"
   add_foreign_key "people", "projects"
   add_foreign_key "person_documents", "people"
+  add_foreign_key "project_assignments", "projects"
+  add_foreign_key "project_assignments", "users"
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
   add_foreign_key "retributions", "art_activities"

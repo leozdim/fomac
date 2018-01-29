@@ -27,6 +27,11 @@ class Ability
         can :create, Person
       when :reviewer
       when :judge
+        can :read,:all
+        can  :update,:all
+        can :modify, :all
+        can :manage,  :all
+        return
       end
       can :manage, User, id: user.id
       can :download, Project

@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @judge = get_judge(@project.id)
     @arts=@project.art_forms
 
   end

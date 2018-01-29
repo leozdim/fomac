@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   protected  
   def after_sign_in_path_for(resource)
-    if current_user.role == :admin
+    if current_user.role == :admin or current_user.role == :judge
       projects_path
     else
       if current_user.projects.any?

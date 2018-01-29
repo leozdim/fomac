@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_assignment: one
+  justification_text: MyString
+  justification_value: 1
+  clarity_text: MyString
+  clarity_value: 1
+  timeframe_text: MyString
+  timeframe_value: 1
+  schema_text: MyString
+  schema_value: 1
+  excellence_text: MyString
+  excellence_value: 1
+  creativity_text: MyString
+  creativity_value: 1
+  originality_text: MyString
+  originality_value: 1
+  innovation_text: MyString
+  innovation_value: 1
+  innovation_text: MyString
+  innovation_value: 1
+  feasibility_text: MyString
+  feasibility_value: 1
+  impact_text: MyString
+  impact_value: 1
+
+two:
+  project_assignment: two
+  justification_text: MyString
+  justification_value: 1
+  clarity_text: MyString
+  clarity_value: 1
+  timeframe_text: MyString
+  timeframe_value: 1
+  schema_text: MyString
+  schema_value: 1
+  excellence_text: MyString
+  excellence_value: 1
+  creativity_text: MyString
+  creativity_value: 1
+  originality_text: MyString
+  originality_value: 1
+  innovation_text: MyString
+  innovation_value: 1
+  innovation_text: MyString
+  innovation_value: 1
+  feasibility_text: MyString
+  feasibility_value: 1
+  impact_text: MyString
+  impact_value: 1

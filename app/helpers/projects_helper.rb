@@ -10,6 +10,20 @@ module ProjectsHelper
     test.blank? ? "" : test.id
   end
 
+  def get_project_ids
+    if current_user.role == :judge
+      ids = Project.where(id: ProjectAssignment.where(user_id: current_user.id).pluck(:project_id)).pluck(:id)
+    else
+      ids = Project.all.pluck(:id)
+    end
+      ids
+  end
+
+
+  def get_judge(projectId)
+    judge = ProjectAssignment.where(project_id: projectId).first
+  end
+
   def get_observation(field, model)
     test = Revision.where(user_id: @project.user.id, project_id: @project.id, field: field, model: model).order(:created_at).first
     test.blank? ? " " : test.observations

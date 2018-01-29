@@ -20,12 +20,28 @@
         <strong>Fecha de nacimiento:</strong>
         <%= (!@project.people.first.blank? ? @project.people.first.birthdate : "" )%>
       </p>
-
       <%= link_to "Detalle", static_pages_creator_path(project: @project) %>
     </div>
   </div>
   <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
+
+
+
+    <%if current_user&.role==:admin%>
+
+      <%if  @judge.blank? %>
+        <%=link_to 'Asignar Juez',  new_project_assignment_path(:project_id => @project.id), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%else%>
+        <span class="title">Juez:</span>
+        <strong><%= User.where(id: @judge.user_id).first.full_name_space %></strong><br>
+        <%=link_to 'Editar Juez',  edit_project_assignment_path(@judge), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%end%>
+    <%end%>
+    <%if current_user&.role==:judge && !@judge.blank? && @judge.user_id == current_user.id%>
+      <%=link_to 'Evaluar proyecto', new_evaluation_path(:project_assignment_id => @judge.id ) , :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+    <%end%>
     <span class="card-title" style="margin-top: 24px;">Documentos</span>
+
     <% unless @project.person_document.blank? %>
     <ul class="collection">
       <li class="collection-item avatar">

@@ -1,6 +1,6 @@
 class ProjectDatatable < AjaxDatatablesRails::Base
 
-  def_delegators :@view, :link_to, :h, :mailto, :edit_project_path
+  def_delegators :@view, :link_to, :h, :mailto, :edit_project_path, :get_project_ids
 
 
   def view_columns
@@ -69,7 +69,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
     #Project.references(:user).all
 
     #Project.includes(:user, :category,:art_form).all.references(:user, :category)
-    Project.select('* , concat(categories.key,"-",art_forms.name,"-",projects.id) as fol').joins(:user, :category, :art_forms,:information)
+    Project.select('* , concat(categories.key,"-",art_forms.name,"-",projects.id) as fol').joins(:user, :category, :art_forms,:information).where(id: get_project_ids)
 
   end
 
