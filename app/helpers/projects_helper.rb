@@ -19,6 +19,9 @@ module ProjectsHelper
       ids
   end
 
+  def get_evaluation(id)
+    Evaluation.where(project_assignment_id: ProjectAssignment.where(project_id: id).first.id).first
+  end
 
   def get_judge(projectId)
     judge = ProjectAssignment.where(project_id: projectId).first

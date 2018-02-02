@@ -37,8 +37,13 @@
         <%=link_to 'Editar Juez',  edit_project_assignment_path(@judge), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
       <%end%>
     <%end%>
+
     <%if current_user&.role==:judge && !@judge.blank? && @judge.user_id == current_user.id%>
-      <%=link_to 'Evaluar proyecto', new_evaluation_path(:project_assignment_id => @judge.id ) , :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%if get_evaluation(@project.id).blank? %>
+        <%=link_to 'Evaluar proyecto', new_evaluation_path(:project_assignment_id => @judge.id ) , :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%else%>
+        <%=link_to 'Editar Evaluación de proyecto', edit_evaluation_path(get_evaluation(@project.id)) , :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%end%>
     <%end%>
     <span class="card-title" style="margin-top: 24px;">Documentos</span>
 
