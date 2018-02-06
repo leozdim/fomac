@@ -9,7 +9,7 @@
       <strong>Categoría:</strong> <%= @project.category.name %><br>
       <strong>Estatus:</strong> <%= @project.status %>
     </p>
-    <%= link_to "Detalles", static_pages_project_path(project: @project) if @information.blank? %>
+    <%= link_to "Información del proyecto", static_pages_project_path(project: @project), :class => 'btn waves-effect waves-light blue', :style => 'color:white;' if @information.blank? %>
   </div>
   <div class="col s12 m6 l6">
     <span class="card-title">Información del creador</span>
@@ -20,15 +20,14 @@
         <strong>Fecha de nacimiento:</strong>
         <%= (!@project.people.first.blank? ? @project.people.first.birthdate : "" )%>
       </p>
-      <%= link_to "Detalle", static_pages_creator_path(project: @project) %>
+      <%= link_to "Información del creador", static_pages_creator_path(project: @project),:class => 'btn waves-effect waves-light blue', :style => 'color:white;' %>
     </div>
   </div>
-  <div class="col s12" style="border-top: 1px solid rgba(160,160,160,0.2); margin-top: 24px;">
+  <div class="col s12" style="margin-top: 24px;">
 
 
 
     <%if current_user&.role==:admin%>
-
       <%if  @judge.blank? %>
         <%=link_to 'Asignar Juez',  new_project_assignment_path(:project_id => @project.id), :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
       <%else%>

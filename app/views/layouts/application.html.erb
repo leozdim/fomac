@@ -15,6 +15,9 @@
   a:hover {
     background-color: #E0E0E0;
   }
+  p.flow-text{
+    line-height: 105%
+  }
 </style>
 </head>
 
@@ -142,10 +145,10 @@
     <div class="fixed-action-btn">
       <%#= link_to(t(:proyect),project_path(@project.id), class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in? && current_user&.role==:creator %>
       <%if current_user&.role==:admin or current_user&.role==:judge%>
-        <%= link_to(t(:proyectos),projects_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
+      <%= link_to(t(:proyectos),projects_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
       <% end %>
       <%if current_user&.role==:admin%>
-        <%= link_to(t(:usuarios),users_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
+      <%= link_to(t(:usuarios),users_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
       <% end %>
       <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
 
