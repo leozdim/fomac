@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get 'static_pages/creator'
   get 'static_pages/project'
+  get 'static_pages/project_scores'
+  get 'static_pages/privacy'
   get 'static_pages/evidence'
   post 'static_pages/savenew'
 

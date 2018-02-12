@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   load_and_authorize_resource :class => User
-
+  include ProjectsHelper
 
   def home
     @user = User.new
@@ -47,14 +47,20 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def project_scores
+
+    @projects = Project.where(:id => ProjectAssignment.select(:project_id).map(&:project_id))
+
+  end
+
+  def privacy
+
+  end
+
 
   def evidence
     @information = Information.where(:project_id => params[:project]).first
     @project = Project.where(:id=> params[:project]).first
-
-
-
-
 
     @arts=@project.art_forms
 

@@ -19,6 +19,17 @@ module ProjectsHelper
       ids
   end
 
+
+  def get_score(id)
+    eva =  Evaluation.where(project_assignment_id: ProjectAssignment.where(project_id: id).first.id).first
+    if !eva.blank?
+      result = (eva.clarity_value+eva.creativity_value+eva.excellence_value+eva.feasibility_value+eva.impact_value+eva.innovation_value+eva.justification_value+eva.originality_value+eva.schema_value+eva.timeframe_value)
+    else
+      result =  0
+    end
+    result != 0 ? result/10.0: result
+  end
+
   def get_evaluation(id)
     Evaluation.where(project_assignment_id: ProjectAssignment.where(project_id: id).first.id).first
   end

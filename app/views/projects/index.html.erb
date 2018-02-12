@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 <span class="card-title">Proyectos registrados</span>
+<%= link_to("Proyectos evaluados",static_pages_project_scores_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
+
 <table id="projects-table" class="responsive-table" data-source="<%= projects_path(format: :json) %>">
   <thead>
     <tr>
