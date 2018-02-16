@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :selected_projects
   resources :evaluations
   resources :project_assignments
   resources :revisions

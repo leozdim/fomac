@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129050141) do
+ActiveRecord::Schema.define(version: 20180216052502) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
@@ -243,6 +243,13 @@ ActiveRecord::Schema.define(version: 20180129050141) do
     t.index ["user_id"], name: "index_revisions_on_user_id"
   end
 
+  create_table "selected_projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_selected_projects_on_project_id"
+  end
+
   create_table "theater_evidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "project_id"
     t.string "web"
@@ -315,6 +322,7 @@ ActiveRecord::Schema.define(version: 20180129050141) do
   add_foreign_key "retributions", "projects"
   add_foreign_key "revisions", "projects"
   add_foreign_key "revisions", "users"
+  add_foreign_key "selected_projects", "projects"
   add_foreign_key "theater_evidences", "projects"
   add_foreign_key "users", "people"
   add_foreign_key "visual_evidences", "projects"
