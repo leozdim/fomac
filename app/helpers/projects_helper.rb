@@ -23,7 +23,7 @@ module ProjectsHelper
   def get_score(id)
     eva =  Evaluation.where(project_assignment_id: ProjectAssignment.where(project_id: id).first.id).first
     if !eva.blank?
-      result = (eva.clarity_value+eva.creativity_value+eva.excellence_value+eva.feasibility_value+eva.impact_value+eva.innovation_value+eva.justification_value+eva.originality_value+eva.schema_value+eva.timeframe_value)
+      result = (eva.clarity_value.to_i+eva.creativity_value.to_i+eva.excellence_value.to_i+eva.feasibility_value.to_i+eva.impact_value.to_i+eva.innovation_value.to_i+eva.justification_value.to_i+eva.originality_value.to_i+eva.schema_value.to_i+eva.timeframe_value.to_i)
     else
       result =  0
     end
