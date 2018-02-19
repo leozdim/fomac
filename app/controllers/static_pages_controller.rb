@@ -54,9 +54,9 @@ class StaticPagesController < ApplicationController
 
     @projects.each do |p|
       if get_score(p.id) != 0
-        @test.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>true})
+        @test.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>false})
       else
-        @zero.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>true})
+        @zero.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>false})
       end
     end
     @test.sort_by{|e| e[:pro]}
