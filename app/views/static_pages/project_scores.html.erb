@@ -19,7 +19,6 @@
         <td><%= project[:pro].category.name %></td>
         <td><%= Information.find_by_project_id(project[:pro].id).name%></td>
         <td><%= project[:score] %></td>
-
         <td>
           <p>
               <%= check_box_tag "check",true,project[:selected],:id =>"nonz"+i.to_s %>
@@ -32,24 +31,6 @@
         <td><%#= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
-    <%  @zero.sort_by{|e| e[:pro]}.each_with_index do |project,ind| %>
-    <tr>
-      <td><%= project[:pro].folio %></td>
-      <td><%= project[:pro].user.first_name %></td>
-      <td><%= project[:pro].category.name %></td>
-      <td><%= Information.find_by_project_id(project[:pro].id).name%></td>
-      <td><%= project[:score] %></td>
-      <td>
-        <p>
-          <%= check_box_tag "check",true,project[:selected],:id =>"zero"+ind.to_s %>
-         <label for=<%="zero"+ ind.to_s%>></label>
-        </p>
-      </td>
 
-      <!--<td><%#= link_to 'Show', project %></td>
-        <td><%#= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%#= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-    </tr>
-  <% end %>
   </tbody>
 </table>

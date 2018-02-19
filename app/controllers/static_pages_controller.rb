@@ -53,11 +53,7 @@ class StaticPagesController < ApplicationController
     @projects = Project.where(:id => ProjectAssignment.select(:project_id).map(&:project_id))
 
     @projects.each do |p|
-      if get_score(p.id) != 0
         @test.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>false})
-      else
-        @zero.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>false})
-      end
     end
     @test.sort_by{|e| e[:pro]}
 
