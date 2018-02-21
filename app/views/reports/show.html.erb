@@ -1,0 +1,154 @@
+<p id="notice"><%= notice %></p>
+
+<div class="field" >
+  <%= label_tag "Folio"%>
+  <%= text_field_tag "folio",@report.project.folio , :disabled => true%>
+</div>
+
+<div class="field" >
+  <%= label_tag "Nombre"%>
+  <%= text_field_tag "name",@report.project.information.name , :disabled => true%>
+</div>
+
+<div class="field" >
+  <%= label_tag "Objetivo"%>
+  <%= text_field_tag "name",@report.project.information.general_objective , :disabled => true%>
+</div>
+
+<div class="field">
+  <%= label_tag :year %>
+  <%= text_field_tag "year",@report.year , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Periodo que se informa" %>
+  <%= text_field_tag "period",@report.period , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Número del informe" %>
+  <%= text_field_tag "period",@report.number , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag"Explicación cuantitativa del cumplimiento del objetivo  (Qué se ha logrado)" %>
+  <%= text_field_tag "cuantitative",@report.cuantitative , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag"Explicación cualitativa del cumplimiento del objetivo (Qué se ha logrado)" %>
+  <%= text_field_tag "qualitative",@report.qualitative , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag"Nombre de la actividad" %>
+  <%= text_field_tag "activity",@report.activity , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Fecha programada para su realización" %>
+  <%= date_select "programed_date",@report.programed_date , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Fecha de realización" %>
+  <%= date_select "real",@report.real , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Lugar o espacio" %>
+  <%= text_field_tag "place",@report.place , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Número de beneficiarios" %>
+  <%= text_field_tag "number_people",@report.number_people , :disabled => true%>
+
+</div>
+
+<div class="field">
+  <%= label_tag "Cantidad recibida hasta la fecha del informe" %>
+  <%= text_field_tag "money_received",@report.money_received , :disabled => true%>
+
+</div>
+
+
+
+
+
+
+
+
+<%if !@docs.blank?%>
+  <div >
+    <div class="file-field input-field">
+      <div class="btn">
+      <span>
+        Fotos
+     </span>
+      </div>
+      <div class="file-path-wrapper">
+        <% @docs.photos.each do |ob| %>
+          <%= link_to 'Descargar Imágenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+        <%end%>       </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+      <span>
+        Videos
+      </span>
+      </div>
+      <div class="file-path-wrapper">
+        <% @docs.video.each do |ob| %>
+          <%= link_to 'Descargar video', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+        <%end%>
+      </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+      <span>
+        Facturas/comprobantes pago
+      </span>
+      </div>
+      <div class="file-path-wrapper">
+        <% @docs.payslips.each do |ob| %>
+          <%= link_to 'Descargar video', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+        <%end%>       </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+      <span>
+        Notas de prensa
+      </span>
+      </div>
+      <div class="file-path-wrapper">
+        <% @docs.press.each do |ob| %>
+          <%= link_to 'Descargar video', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+        <%end%>        </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+      <span>
+        Publicidad
+      </span>
+      </div>
+      <div class="file-path-wrapper">
+        <% @docs.publicity.each do |ob| %>
+          <%= link_to 'Descargar video', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+        <%end%>         </div>
+    </div>
+  </div>
+<%end%>
+
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', static_pages_reports_by_project_path(@report.project.id) %>

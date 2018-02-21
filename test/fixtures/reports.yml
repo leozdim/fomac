@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  year: MyString
+  period: MyString
+  number: MyString
+  cuantitative: MyString
+  qualitative: MyString
+  activity: MyString
+  programed_date: 2018-02-21
+  real: 2018-02-21
+  place: MyString
+  number_people: MyString
+  money_received: MyString
+
+two:
+  project: two
+  year: MyString
+  period: MyString
+  number: MyString
+  cuantitative: MyString
+  qualitative: MyString
+  activity: MyString
+  programed_date: 2018-02-21
+  real: 2018-02-21
+  place: MyString
+  number_people: MyString
+  money_received: MyString

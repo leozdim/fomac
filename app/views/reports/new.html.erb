@@ -1,0 +1,5 @@
+<h1>Nuevo Reporte</h1>
+
+<%= render 'form', report: @report %>
+
+<%= link_to 'Back', static_pages_reports_by_project_path(@report.project.id) %>

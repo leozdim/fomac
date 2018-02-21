@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   resources :evaluations
   resources :project_assignments
   resources :revisions
+  resources :reports
+
   get 'revisions/observation'
   get 'revisions/validate' , to: 'revisions#validate'
+  get 'static_pages/reports_by_project' , to: 'static_pages#reports_by_project',as: :static_pages_reports_by_project
+  get 'static_pages/reports_by_project_id' , to: 'static_pages#reports_by_project_id',as: :stsatic_pages_reports_id_by_project
+
   get 'static_pages/home'
   get 'static_pages/creator'
   get 'static_pages/project'
@@ -12,6 +17,8 @@ Rails.application.routes.draw do
   get 'static_pages/privacy'
   get 'static_pages/evidence'
   post 'static_pages/savenew'
+  get 'static_pages/save_selected', to: 'static_pages#save_selected',as: :static_pages_save_selected
+
 
   resources :projects
   match 'projects/:id/add_people', to: 'projects#add_people', as: :add_project_people , via: :all

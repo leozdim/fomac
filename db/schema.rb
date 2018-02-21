@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216052502) do
+ActiveRecord::Schema.define(version: 20180221111101) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
@@ -45,11 +45,6 @@ ActiveRecord::Schema.define(version: 20180216052502) do
     t.bigint "project_id", null: false
     t.bigint "art_form_id", null: false
     t.index ["project_id", "art_form_id"], name: "index_art_forms_projects_on_project_id_and_art_form_id"
-  end
-
-  create_table "art_forms_projects_old", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "project_id", null: false
-    t.bigint "art_form_id", null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -214,8 +209,39 @@ ActiveRecord::Schema.define(version: 20180216052502) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "selected", default: false
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "report_docs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "report_id"
+    t.string "photos"
+    t.string "video"
+    t.string "payslips"
+    t.string "press"
+    t.string "publicity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_docs_on_report_id"
+  end
+
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "project_id"
+    t.string "year"
+    t.string "period"
+    t.string "number"
+    t.string "cuantitative"
+    t.string "qualitative"
+    t.string "activity"
+    t.date "programed_date"
+    t.date "real"
+    t.string "place"
+    t.string "number_people"
+    t.string "money_received"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_reports_on_project_id"
   end
 
   create_table "retributions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -317,6 +343,8 @@ ActiveRecord::Schema.define(version: 20180216052502) do
   add_foreign_key "project_assignments", "users"
   add_foreign_key "projects", "categories"
   add_foreign_key "projects", "users"
+  add_foreign_key "report_docs", "reports"
+  add_foreign_key "reports", "projects"
   add_foreign_key "retributions", "art_activities"
   add_foreign_key "retributions", "modalities"
   add_foreign_key "retributions", "projects"

@@ -139,7 +139,7 @@
             <%= yield %>
           </div>
         </div>
-        <%= render 'layouts/creator_navigation' if current_user&.role==:creator and !@project&.finish? %>
+        <%= render 'layouts/creator_navigation' if current_user&.role==:creator and !@project&.finish? and (@project.blank? ? false: !@project.selected) %>
       </div>
     </div>
     <div class="fixed-action-btn">

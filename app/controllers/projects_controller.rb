@@ -188,10 +188,13 @@ class ProjectsController < ApplicationController
 
   def download
     if current_user.role==:creator
-      access=params[:class].camelize.constantize.joins(:project).where('projects.user_id'=>current_user.id, :id=>params[:id]).count
-      if access==0
-        raise CanCan::AccessDenied.new("No tienes acceso")
+      if params[:class] != "report_doc"
+        access=params[:class].camelize.constantize.joins(:project).where('projects.user_id'=>current_user.id, :id=>params[:id]).count
+        if access==0
+          raise CanCan::AccessDenied.new("No tienes acceso")
+        end
       end
+
     end
     path = "#{Rails.root}/uploads/#{params[:class]}/#{params[:as]}/#{params[:id]}/#{params[:basename]}.#{params[:extension]}"
     if  File.exist?(path)
@@ -209,7 +212,7 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params 
-    params.require(:project).permit( :category_id ,:people_attributes=>
+    params.require(:project).permit( :selected,:category_id ,:people_attributes=>
                                     [ :id,:first_name, :last_name, :second_last_name, :birthdate, :home_phone_number, :cellphone, :birthplace, :state, :city, :nationality, :level_study, :birthdate, 
                                       :addresses_attributes=>
                                     [ :id , :street, :internal_number, :external_number, :colony, :zip ],

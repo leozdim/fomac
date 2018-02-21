@@ -1,3 +1,5 @@
+
+
 <table>
   <thead>
     <tr>
@@ -7,24 +9,29 @@
       <th>Nombre</th>
       <th colspan="3">Puntaje</th>
       <th>Seleccionado</th>
+      <th>Reportes</th>
+
 
     </tr>
   </thead>
 
   <tbody>
-    <%  @test.sort_by{|e| -e[:score]}.each_with_index do |project,i| %>
+    <%  @test.each_with_index do |project,i| %>
       <tr>
         <td><%= project[:pro].folio %></td>
         <td><%= project[:pro].user.first_name %></td>
         <td><%= project[:pro].category.name %></td>
         <td><%= Information.find_by_project_id(project[:pro].id).name%></td>
         <td><%= project[:score] %></td>
+        <td><%= link_to 'Seleccionar', static_pages_save_selected_path(:te=> project[:pro].id),:id=>"nonz"+i.to_s , :class => 'btn waves-effect waves-light'%></td>
+
         <td>
           <p>
-              <%= check_box_tag "check",true,project[:selected],:id =>"nonz"+i.to_s %>
+              <%= check_box_tag "check",true,project[:pro].selected,:id =>"nonz"+i.to_s %>
               <label for=<%="nonz"+ i.to_s%>></label>
           </p>
         </td>
+        <td><%= link_to 'Reportes', static_pages_reports_by_project_path(id: project[:pro].id), :class => 'btn waves-effect waves-light'%></td>
 
         <!--<td><%#= link_to 'Show', project %></td>
         <td><%#= link_to 'Edit', edit_project_path(project) %></td>

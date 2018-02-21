@@ -49,20 +49,43 @@ class StaticPagesController < ApplicationController
 
   def project_scores
     @test = []
-    @zero = []
     @projects = Project.where(:id => ProjectAssignment.select(:project_id).map(&:project_id))
 
     @projects.each do |p|
-        @test.push({:score =>get_score(p.id).to_f,:pro => p,:selected=>false})
+        @test.push({:score =>get_score(p.id).to_f,:pro => p})
     end
-    @test.sort_by{|e| e[:pro]}
+    @test.sort_by{|e| e[:score]}
 
+  end
+
+  def save_selected
+    @project = Project.find_by(id: params[:te])
+    @project.selected = !@project.selected
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to static_pages_project_scores_path}
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :home }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def privacy
 
   end
 
+  def reports_by_project_id
+    @reports = Report.where(project_id: params[:id])
+
+  end
+
+
+  def reports_by_project
+    @reports = Report.where(project_id: current_user.projects.first.blank? ? params[:id]:current_user.projects.first.id)
+
+  end
 
   def evidence
     @information = Information.where(:project_id => params[:project]).first

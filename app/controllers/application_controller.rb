@@ -20,7 +20,11 @@ class ApplicationController < ActionController::Base
         p=current_user.projects.first
         if p.finish?
           if p.is_valid?  || p.invalid_revisions.blank?#or in revision all :D or all pending
-            project_finish_path(p)
+            if p.selected
+              static_pages_reports_by_project_path(p.id)
+            else
+              project_finish_path(p)
+            end
           else
             if !p.revisions_information.blank?
               #check revision to see where to link

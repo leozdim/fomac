@@ -25,6 +25,7 @@ class Ability
         can :create, Project
         can :update, Person, :project_id=>projects
         can :create, Person
+        can :manage, Report
       when :reviewer
       when :judge
         can :read,:all
@@ -35,6 +36,8 @@ class Ability
       end
       can :manage, User, id: user.id
       can :download, Project
+      can :download, Report
+
 
 
     #

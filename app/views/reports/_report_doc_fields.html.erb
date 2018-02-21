@@ -1,0 +1,35 @@
+<div >
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :score, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.scores, class: 'file-path validate', placeholder: 'Partituras' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :note, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.notes, class: 'file-path validate', placeholder: 'Notas de prensa' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>
+        Cargar
+        <%= f.file_field :document, multiple: true  %>
+      </span>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancios y/o reconocimientos' %>
+    </div>
+  </div>
+</div>

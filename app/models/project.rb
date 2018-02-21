@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   has_one :film_evidence
   has_one :letter_evidence
   has_many :revisions
+  has_many :reports
   accepts_nested_attributes_for :people
   accepts_nested_attributes_for :information
   accepts_nested_attributes_for :retribution
