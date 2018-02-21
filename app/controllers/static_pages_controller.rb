@@ -54,7 +54,7 @@ class StaticPagesController < ApplicationController
     @projects.each do |p|
         @test.push({:score =>get_score(p.id).to_f,:pro => p})
     end
-    @test.sort_by{|e| e[:score]}
+    @test.sort_by{|e| e[:pro]}
 
   end
 
