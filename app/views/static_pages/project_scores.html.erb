@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <%  @test.each_with_index do |project,i| %>
+    <%  @test.sort_by{|e| -e[:score]}.each_with_index do |project,i| %>
       <tr>
         <td><%= project[:pro].folio %></td>
         <td><%= project[:pro].user.first_name %></td>
