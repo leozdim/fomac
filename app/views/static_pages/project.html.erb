@@ -347,6 +347,26 @@ span.ayuda {
       <%= get_status("funding","information") %>
     </div>
   </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">folder</i>
+    <span class="title">Retribución</span>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <%= select_tag  :modality_id,   options_from_collection_for_select(Modality.all.order(:name), :id, :name, @project.retribution.modality_id),
+                     { :prompt=> 'Seleccione' , :disabled => true}  %>
+        <%= label_tag :modality_id, 'Modalidad' %>
+      </div>
+      <div class="input-field col s12 m6">
+        <%= select_tag :art_activity_id,  options_from_collection_for_select(ArtActivity.all.order(:name), :id, :name, @project.retribution.art_activity_id),
+                     { :prompt=> 'Seleccione' , :disabled => true}  %>
+        <%= label_tag :art_activity_id, 'Actividad' %>
+      </div>
+      <div class="input-field col s12">
+        <%= label_tag :description, 'Descripción' %>
+        <%= text_area_tag :description,@project.retribution.description, :class=>"materialize-textarea" , :disabled => true%>
+      </div>
+    </div>
+  </li>
 </ul>
 
 
