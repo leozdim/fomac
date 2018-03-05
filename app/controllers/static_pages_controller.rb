@@ -83,7 +83,12 @@ class StaticPagesController < ApplicationController
 
 
   def reports_by_project
-    @reports = Report.where(project_id: current_user.projects.first.blank? ? params[:id]:current_user.projects.first.id)
+    if current_user.role == :admin
+      @reports = Report.where(project_id: params[:id])
+    else
+      @reports = Report.where(project_id: current_user.projects.first.blank? ? params[:id]:current_user.projects.first.id)
+    end
+    #@reports = Report.where(project_id: current_user.projects.first.blank? ? params[:id]:current_user.projects.first.id)
 
   end
 
