@@ -1,36 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reportes</h1>
+<span class="card-title">Reportes</span>
 
 <table>
   <thead>
-  <tr>
-    <th>Project</th>
-    <th>Year</th>
-    <th>Period</th>
-    <th>Number</th>
-    <th colspan="3"></th>
-  </tr>
+    <tr>
+      <th>Projecto</th>
+      <th>Año</th>
+      <th>Periodo</th>
+      <th>Núm reporte.</th>
+      <th colspan="3"></th>
+    </tr>
   </thead>
 
   <tbody>
-  <%if !@reports.blank?%>
+    <%if !@reports.blank?%>
     <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.project.information.name %></td>
-        <td><%= report.year %></td>
-        <td><%= report.period %></td>
-        <td><%= report.number %></td>
-        <td><%= link_to 'Ver', report %></td>
-        <td><%= link_to 'Editar', edit_report_path(report) %></td>
-      </tr>
+    <tr>
+      <td><%= report.project.information.name %></td>
+      <td><%= report.year %></td>
+      <td><%= report.period %></td>
+      <td><%= report.number %></td>
+      <td><%= link_to 'Ver', report %></td>
+      <td><%= link_to 'Editar', edit_report_path(report) %></td>
+    </tr>
     <% end %>
-  <% end %>
+    <% end %>
   </tbody>
 </table>
 
 <br>
 
 <% if current_user&.role==:creator %>
-  <%=link_to 'Nuevo Reporte', new_report_path %>
+<%=link_to 'Nuevo Reporte', new_report_path, class: 'waves-effect waves-light btn', style:"color:white!important"%>
 <%end%>

@@ -8,9 +8,9 @@
         <span class="title">Imágenes</span>
         <div style="margin-top:16px">
           <% f.object.image.each do |ob| %>
-            <%= link_to 'Descargar Imágenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+            <%= link_to 'Descargar Imágenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;'%>
           <%end%>
-          <a class='dropdown-button btn' href='#' data-activates='images'>Validar imágenes</a>
+          <a class='dropdown-button btn' href='#' style="color:white!important;" data-activates='images'>Validar imágenes</a>
           <ul id='images' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"image",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("image","visual_evidence") != ""%>
@@ -35,9 +35,9 @@
         <span class="title">Catálogo</span>
         <div style="margin-top:16px">
           <% f.object.catalog.each do |ob| %>
-            <%= link_to 'Descargar Catálogo', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+            <%= link_to 'Descargar Catálogo', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;'%>
           <%end%>
-          <a class='dropdown-button btn' href='#' data-activates='catalog'>Validar Catálogo</a>
+          <a class='dropdown-button btn' href='#' style="color:white!important;" data-activates='catalog'>Validar Catálogo</a>
           <ul id='catalog' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"catalog",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("catalog","visual_evidence") != ""%>
@@ -62,9 +62,9 @@
         <span class="title">Notas de prensa</span>
         <div style="margin-top:16px">
           <% f.object.note.each do |ob| %>
-            <%= link_to 'Descargar Notas', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+            <%= link_to 'Descargar Notas', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;'%>
           <%end%>
-          <a class='dropdown-button btn' href='#' data-activates='note'>Validar Notas de prensa</a>
+          <a class='dropdown-button btn' href='#' style="color:white!important;" data-activates='note'>Validar Notas de prensa</a>
           <ul id='note' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"note",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("note","visual_evidence") != ""%>
@@ -89,9 +89,9 @@
         <span class="title">Invitaciones, constancios y/o reconocimientos</span>
         <div style="margin-top:16px">
           <% f.object.document.each do |ob| %>
-            <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+            <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;'%>
           <%end%>
-          <a class='dropdown-button btn' href='#' data-activates='document'>Validar Invitaciones, constancios y/o reconocimientos</a>
+          <a class='dropdown-button btn' href='#' style="color:white!important;" data-activates='document'>Validar Invitaciones, constancios y/o reconocimientos</a>
           <ul id='document' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"document",:status=>"Valido", :model=>"visual_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("document","visual_evidence") != ""%>
@@ -129,7 +129,7 @@
     <div class="file-path-wrapper">
       <%= text_field_tag nil, f.object.images, class: 'file-path validate', placeholder: 'Imagenes' %>
       <% f.object.image.each do |ob| %>
-         <%= link_to 'Descargar Imagenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
+         <%= link_to 'Descargar Imagenes', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;'%>
       <%end%>
     </div>
   </div>
@@ -142,7 +142,7 @@
     </div>
     <div class="file-path-wrapper">
       <%= text_field_tag nil, f.object.catalogs, class: 'file-path validate', placeholder: 'Catálogo' %>
-      <%#=  link_to 'Descargar Catálogo', f.object.catalogs.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;' %>
+      <%#=  link_to 'Descargar Catálogo', f.object.catalogs.url, :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white!important;' %>
     </div>
   </div>
   <div class="file-field input-field">

@@ -38,7 +38,7 @@
             <div class="row no-bottom-margin margin-top-sm">
               <div class="row no-bottom-margin font-size-xsm">
                 <div class="col s4 offset-s5 m4 offset-m5 l4 offset-l5 center">
-                  siguenos
+                  Síguenos
                 </div>
               </div>
               <div class="col s4 offset-s5 m4 offset-m5 l4 offset-l5 center">
@@ -145,19 +145,19 @@
     <div class="fixed-action-btn">
       <%#= link_to(t(:proyect),project_path(@project.id), class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in? && current_user&.role==:creator %>
       <%if current_user&.role==:admin or current_user&.role==:judge%>
-      <%= link_to(t(:proyectos),projects_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
+      <%= link_to(t(:proyectos),projects_path, class: 'btn waves-effect waves-light blue', :style=>"color:white!important") if user_signed_in?  %>
       <% end %>
       <%if current_user&.role==:admin%>
-      <%= link_to(t(:usuarios),users_path, class: 'btn waves-effect waves-light blue', :style=>"color:white") if user_signed_in?  %>
+      <%= link_to(t(:usuarios),users_path, class: 'btn waves-effect waves-light blue', :style=>"color:white!important") if user_signed_in?  %>
       <% end %>
-      <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white") if user_signed_in?  %>
+      <%= link_to('Cerrar sesión',destroy_user_session_path, method: :delete, class: 'btn waves-effect waves-light red lighten-1', :style=>"color:white!important") if user_signed_in?  %>
 
     </div>
   </section>
   <footer class="page-footer white ">
     <div class="col s12 m12 l12 center">
-      <%= image_tag "placeholders/logo-chihuahua.jpg" , class: 'responsive-img' %>
-      <%= link_to("Aviso de Privacidad",static_pages_privacy_path, class: ' waves-effect waves-light blue', :style=>"color:white")%>
+      <%= image_tag "placeholders/logo-chihuahua.jpg" , class: 'responsive-img' %><br>
+      <%= link_to("Aviso de Privacidad",static_pages_privacy_path)%>
     </div>
   </footer>
 </section>

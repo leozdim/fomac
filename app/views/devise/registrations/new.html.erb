@@ -1,25 +1,29 @@
 <span class="card-title">Registro</span>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
-
-<div class="input-field">
-  <%= f.label :email, 'Correo electrónico' %>
-  <%= f.email_field :email, autofocus: true %>
+<div class="row">
+  <div class="col s12 m12 l4">
+    <div class="input-field">
+      <%= f.label :email, 'Correo electrónico' %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="input-field">
+      <%= f.label :password, 'Contraseña' %>
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+      <small>(<%= @minimum_password_length %> caracteres mínimo)</small>
+      <% end %>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="input-field">
+      <%= f.label :password_confirmation, 'Confirme la contraseña' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  </div>
 </div>
-
-<div class="input-field">
-  <%= f.label :password, 'Contraseña' %>
-  <%= f.password_field :password, autocomplete: "off" %>
-  <% if @minimum_password_length %>
-  <small>(<%= @minimum_password_length %> caracteres mínimo)</small>
-  <% end %>
-</div>
-
-<div class="input-field">
-  <%= f.label :password_confirmation, 'Confirme la contraseña' %>
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
-
 
 <div class="actions">
   <%= f.submit "Registrarse", :class => "waves-effect waves-light btn" %>

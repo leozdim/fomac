@@ -1,157 +1,143 @@
 <%= form_with(model: report, local: true) do |form| %>
-  <% if report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-      <% report.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field" hidden>
-    <%= form.label :project_id %>
-    <%= form.text_field :project_id, id: :report_project_id %>
-  </div>
-  <div class="field" >
+<% if report.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+  <ul>
+    <% report.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field" hidden>
+  <%= form.label :project_id %>
+  <%= form.text_field :project_id, id: :report_project_id %>
+</div>
+<div class="row">
+  <div class="col s6 input-field" >
     <%= form.label "Folio"%>
     <%= text_field_tag "folio",@proj.folio , :disabled => true%>
   </div>
-
-  <div class="field" >
+  <div class="col s6 input-field">
     <%= form.label "Nombre"%>
     <%= text_field_tag "name",@proj.information.name , :disabled => true%>
   </div>
-
-  <div class="field" >
+  <div class="input-field col s12">
+    <textarea id="textarea1" class="materialize-textarea" disabled>
+      <%= @proj.information.general_objective %>
+    </textarea>
     <%= form.label "Objetivo"%>
-    <%= text_field_tag "name",@proj.information.general_objective , :disabled => true%>
   </div>
-
-  <div class="field">
-    <%= form.label :year %>
+  <div class="input-field col s4">
+    <%= form.label 'Año del reporte' %>
     <%= form.text_field :year, id: :report_year %>
   </div>
-
-  <div class="field">
+  <div class="input-field col s4">
     <%= form.label "Periodo que se informa" %>
     <%= form.text_field :period, id: :report_period %>
   </div>
 
-  <div class="field">
+  <div class="input-field col s4">
     <%= form.label "Número del informe" %>
     <%= form.text_field :number, id: :report_number %>
   </div>
-
-  <div class="field">
+  <div class="input-field col s12">
+    <%= form.text_area :cuantitative, id: :report_cuantitative, class:"materialize-textarea" %>
     <%= form.label "Explicación cuantitativa del cumplimiento del objetivo  (Qué se ha logrado)" %>
-    <%= form.text_area :cuantitative, id: :report_cuantitative %>
   </div>
-
-  <div class="field">
+  <div class="input-field col s12">
+    <%= form.text_area :qualitative, id: :report_qualitative, class:"materialize-textarea" %>
     <%= form.label "Explicación cualitativa del cumplimiento del objetivo (Qué se ha logrado)" %>
-    <%= form.text_area :qualitative, id: :report_qualitative %>
   </div>
-
-  <div class="field">
+  <div class="input-field col s12">
     <%= form.label "Nombre de la actividad" %>
     <%= form.text_field :activity, id: :report_activity %>
   </div>
-
-  <div class="field">
+  <div class="field col s12">
     <%= form.label "Fecha programada para su realización" %>
     <%= form.date_select :programed_date, id: :report_programed_date %>
   </div>
-
-  <div class="field">
+  <div class="field col s12">
     <%= form.label "Fecha de realización" %>
     <%= form.date_select :real, id: :report_real %>
   </div>
-
-  <div class="field">
-    <%= form.label "Lugar o espacio" %>
-    <%= form.text_field :place, id: :report_place %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Número de beneficiarios" %>
-    <%= form.text_field :number_people, id: :report_number_people %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Cantidad recibida hasta la fecha del informe" %>
-    <%= form.text_field :money_received, id: :report_money_received %>
-  </div>
-
-
-
-  <%= form.fields_for :report_doc do |f| %>
-    <div >
-    <div class="file-field input-field">
-      <div class="btn">
+</div>
+<div class="input-field">
+  <%= form.label "Lugar o espacio" %>
+  <%= form.text_field :place, id: :report_place %>
+</div>
+<div class="input-field">
+  <%= form.label "Número de beneficiarios" %>
+  <%= form.text_field :number_people, id: :report_number_people %>
+</div>
+<div class="input-field">
+  <%= form.label "Importe económico recibido hasta la fecha del informe" %>
+  <%= form.text_field :money_received, id: :report_money_received %>
+</div>
+<%= form.fields_for :report_doc do |f| %>
+<div >
+  <div class="file-field input-field">
+    <div class="btn">
       <span>
         Fotos
         <%= f.file_field :photos, multiple: true  %>
       </span>
-      </div>
-      <div class="file-path-wrapper">
-        <%= text_field_tag nil, f.object.photoss, class: 'file-path validate', placeholder: 'Fotos' %>
-      </div>
     </div>
-    <div class="file-field input-field">
-      <div class="btn">
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.photoss, class: 'file-path validate', placeholder: 'Fotos' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
       <span>
         Cargar
         <%= f.file_field :video, multiple: true  %>
       </span>
-      </div>
-      <div class="file-path-wrapper">
-        <%= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos' %>
-      </div>
     </div>
-    <div class="file-field input-field">
-      <div class="btn">
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
       <span>
         Cargar
         <%= f.file_field :payslips, multiple: true  %>
       </span>
-      </div>
-      <div class="file-path-wrapper">
-        <%= text_field_tag nil, f.object.payslipss, class: 'file-path validate', placeholder: 'Facturas/comprobantes pago' %>
-      </div>
     </div>
-    <div class="file-field input-field">
-      <div class="btn">
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.payslipss, class: 'file-path validate', placeholder: 'Facturas/comprobantes pago' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
       <span>
         Cargar
         <%= f.file_field :press, multiple: true  %>
       </span>
-      </div>
-      <div class="file-path-wrapper">
-        <%= text_field_tag nil, f.object.presss, class: 'file-path validate', placeholder: 'Notas de prensa' %>
-      </div>
     </div>
-    <div class="file-field input-field">
-      <div class="btn">
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.presss, class: 'file-path validate', placeholder: 'Notas de prensa' %>
+    </div>
+  </div>
+  <div class="file-field input-field">
+    <div class="btn">
       <span>
         Cargar
         <%= f.file_field :publicity, multiple: true  %>
       </span>
-      </div>
-      <div class="file-path-wrapper">
-        <%= text_field_tag nil, f.object.publicitys, class: 'file-path validate', placeholder: 'Publicidad' %>
-      </div>
+    </div>
+    <div class="file-path-wrapper">
+      <%= text_field_tag nil, f.object.publicitys, class: 'file-path validate', placeholder: 'Publicidad' %>
     </div>
   </div>
+</div>
 
-  <% end %>
+<% end %>
 
 
 
-  <div class="actions">
-    <%= form.submit "Guardar Reporte"%>
-  </div>
+<div class="actions">
+  <%= form.submit "Guardar Reporte", class:'btn waves-effect waves-light'  %>
+</div>
 <% end %>
