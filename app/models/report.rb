@@ -3,5 +3,7 @@ class Report < ApplicationRecord
   has_one :report_doc
 
   accepts_nested_attributes_for :report_doc
+  validates_presence_of :report_doc
+  validates_associated :report_doc
 
 end

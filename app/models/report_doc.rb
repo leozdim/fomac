@@ -14,6 +14,12 @@ class ReportDoc < ApplicationRecord
   mount_uploaders :publicity, DocumentsUploader
   serialize :publicity, JSON
 
+
+
+
+
+  validates_presence_of :photos, :payslips , :video
+
   def photoss
     photos.map{|x| x.file.filename}.join ','
   end

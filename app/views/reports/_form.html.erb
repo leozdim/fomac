@@ -84,46 +84,46 @@
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.photoss, class: 'file-path validate', placeholder: 'Fotos' %>
+      <%= text_field_tag nil, f.object.photoss, class: 'file-path validate', placeholder: 'Fotos' , :required=> true %>
     </div>
   </div>
   <div class="file-field input-field">
     <div class="btn">
       <span>
-        Cargar
+        Videos
         <%= f.file_field :video, multiple: true  %>
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos' %>
+      <%= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos'  , :required=> true%>
     </div>
   </div>
   <div class="file-field input-field">
     <div class="btn">
       <span>
-        Cargar
+        Facturas/comprobantes pago
         <%= f.file_field :payslips, multiple: true  %>
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.payslipss, class: 'file-path validate', placeholder: 'Facturas/comprobantes pago' %>
+      <%= text_field_tag nil, f.object.payslipss, class: 'file-path validate', placeholder: 'Facturas/comprobantes pago'  , :required=> true%>
     </div>
   </div>
   <div class="file-field input-field">
     <div class="btn">
       <span>
-        Cargar
+        Notas de prensa
         <%= f.file_field :press, multiple: true  %>
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.presss, class: 'file-path validate', placeholder: 'Notas de prensa' %>
+      <%= text_field_tag nil, f.object.presss, class: 'file-path validate', placeholder: 'Notas de prensa'  %>
     </div>
   </div>
   <div class="file-field input-field">
     <div class="btn">
       <span>
-        Cargar
+        Publicidad
         <%= f.file_field :publicity, multiple: true  %>
       </span>
     </div>
