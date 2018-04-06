@@ -30,49 +30,49 @@
   </div>
   <div class="input-field col s4">
     <%= form.label 'Año del reporte' %>
-    <%= form.text_field :year, id: :report_year %>
+    <%= form.text_field :year, id: :report_year , :required=> true%>
   </div>
   <div class="input-field col s4">
     <%= form.label "Periodo que se informa" %>
-    <%= form.text_field :period, id: :report_period %>
+    <%= form.text_field :period, id: :report_period , :required=> true%>
   </div>
 
   <div class="input-field col s4">
     <%= form.label "Número del informe" %>
-    <%= form.text_field :number, id: :report_number %>
+    <%= form.text_field :number, id: :report_number , :required=> true%>
   </div>
   <div class="input-field col s12">
-    <%= form.text_area :cuantitative, id: :report_cuantitative, class:"materialize-textarea" %>
+    <%= form.text_area :cuantitative, id: :report_cuantitative, class:"materialize-textarea" , :required=> true%>
     <%= form.label "Explicación cuantitativa del cumplimiento del objetivo  (Qué se ha logrado)" %>
   </div>
   <div class="input-field col s12">
-    <%= form.text_area :qualitative, id: :report_qualitative, class:"materialize-textarea" %>
+    <%= form.text_area :qualitative, id: :report_qualitative, class:"materialize-textarea" , :required=> true%>
     <%= form.label "Explicación cualitativa del cumplimiento del objetivo (Qué se ha logrado)" %>
   </div>
   <div class="input-field col s12">
     <%= form.label "Nombre de la actividad" %>
-    <%= form.text_field :activity, id: :report_activity %>
+    <%= form.text_field :activity, id: :report_activity, :required=> true %>
   </div>
   <div class="field col s12">
     <%= form.label "Fecha programada para su realización" %>
-    <%= form.date_select :programed_date, id: :report_programed_date %>
+    <%= form.date_select :programed_date, id: :report_programed_date, :required=> true %>
   </div>
   <div class="field col s12">
     <%= form.label "Fecha de realización" %>
-    <%= form.date_select :real, id: :report_real %>
+    <%= form.date_select :real, id: :report_real , :required=> true%>
   </div>
 </div>
 <div class="input-field">
   <%= form.label "Lugar o espacio" %>
-  <%= form.text_field :place, id: :report_place %>
+  <%= form.text_field :place, id: :report_place , :required=> true%>
 </div>
 <div class="input-field">
   <%= form.label "Número de beneficiarios" %>
-  <%= form.text_field :number_people, id: :report_number_people %>
+  <%= form.text_field :number_people, id: :report_number_people, :required=> true %>
 </div>
 <div class="input-field">
   <%= form.label "Importe económico recibido hasta la fecha del informe" %>
-  <%= form.text_field :money_received, id: :report_money_received %>
+  <%= form.text_field :money_received, id: :report_money_received , :required=> true%>
 </div>
 <%= form.fields_for :report_doc do |f| %>
 <div >
@@ -88,15 +88,18 @@
     </div>
   </div>
   <div class="file-field input-field">
-    <div class="btn">
+    <!--div class="btn">
       <span>
         Videos
-        <%= f.file_field :video, multiple: true  %>
+        <%#= f.text_field_tag :video, multiple: true  %>
       </span>
-    </div>
-    <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos'  , :required=> true%>
-    </div>
+    </div-->
+    <!--div class="file-path-wrapper">
+      <%#= text_field_tag nil, f.object.videos, class: 'file-path validate', placeholder: 'videos'  , :required=> true%>
+    </div-->
+    <%= label_tag "Video" %>
+    <%= f.text_field  :video, id: :report_video , :required=> true%>
+
   </div>
   <div class="file-field input-field">
     <div class="btn">

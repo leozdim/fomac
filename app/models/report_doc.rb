@@ -5,8 +5,8 @@ class ReportDoc < ApplicationRecord
 
   mount_uploaders  :photos, DocumentsUploader
   serialize :photos, JSON
-  mount_uploaders  :video, DocumentsUploader
-  serialize :video, JSON
+#  mount_uploaders  :video, DocumentsUploader
+#  serialize :video, JSON
   mount_uploaders  :payslips, DocumentsUploader
   serialize :payslips, JSON
   mount_uploaders  :press, DocumentsUploader
@@ -24,9 +24,9 @@ class ReportDoc < ApplicationRecord
     photos.map{|x| x.file.filename}.join ','
   end
 
-  def videos
-    video.map{|x| x.file.filename}.join ','
-  end
+  #def videos
+  # video.map{|x| x.file.filename}.join ','
+  #end
 
   def payslipss
     payslips.map{|x| x.file.filename}.join ','

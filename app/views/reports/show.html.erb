@@ -102,16 +102,16 @@
         <%end%>       </div>
     </div>
     <div class="file-field input-field">
-      <div class="btn">
+      <!--div class="btn">
       <span>
         Videos
       </span>
+      </div-->
+      <div class="field">
+        <%= label_tag "Video" %>
+        <%= text_field_tag "video", @docs.video , :disabled => true%>
       </div>
-      <div class="file-path-wrapper">
-        <% @docs.video.each do |ob| %>
-          <%= link_to 'Descargar video', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
-        <%end%>
-      </div>
+
     </div>
     <div class="file-field input-field">
       <div class="btn">
