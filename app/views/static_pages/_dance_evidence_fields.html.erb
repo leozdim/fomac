@@ -110,12 +110,12 @@
 
       <li class="collection-item avatar">
         <i class="material-icons circle">folder</i>
-        <span class="title">Invitaciones, constancios y/o reconocimientos</span>
+        <span class="title">Invitaciones, constancias y/o reconocimientos</span>
         <div style="margin-top:16px">
           <% f.object.document.each do |ob| %>
             <%= link_to 'Descargar', ob.url , :target=>"_blank", :class => 'waves-effect waves-light btn', :style => 'color:white;'%>
           <%end%>
-          <a class='dropdown-button btn' href='#' data-activates='documentdance'>Validar Invitaciones, constancios y/o reconocimientos</a>
+          <a class='dropdown-button btn' href='#' data-activates='documentdance'>Validar Invitaciones, constancias y/o reconocimientos</a>
           <ul id='documentdance' class='dropdown-content'>
             <li><a href="<%=new_revision_path(:project_id => @project.id, :user_id=> @project.user.id,:field=>"document",:status=>"Valido", :model=>"dance_evidence")%>"data-confirm="¿Estás seguro?">Validar</a></li>
             <%if get_observation_id("document","dance_evidence") != ""%>
@@ -182,7 +182,7 @@
       </span>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancios y/o reconocimientos' %>
+      <%= text_field_tag nil, f.object.documents, class: 'file-path validate', placeholder: 'Invitaciones, constancias y/o reconocimientos' %>
     </div>
   </div>
 </div>

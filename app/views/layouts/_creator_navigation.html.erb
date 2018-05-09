@@ -1,95 +1,39 @@
 <div class="col s12">
-  <ul class="steps-box">
+ <ul class="pagination">
+  <li class="waves-effect <%= @proy_ready %> <%= @anexo_ready %> <%= url_for(:only_path => true) == nav_project ? "btn" : "" %>">
     <%= link_to nav_project do %>
-    <li class="steps  is-mini is-circle-entering is-line-entering is-title-entering <%= @proy_ready %>" >
-      <div class="steps-point">
-        <div class="steps-circle">1</div>
-        <div class="steps-title">Registro</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Primer Paso</div>
-          <div class="tooltip-title">Registro del proyecto</div>
-          <div class="tooltip-description">En esta paso registrarás la categoría y disciplina en la que deseas participar</div>
-        </div>
-      </div>
-    </li>
+    1.Registro
     <% end %>
+  </li>
+  <li class="waves-effect <%= @part_ready %> <%= @anexo_ready %> <%= url_for(:only_path => true) == nav_participant ? "btn" : "" %>" >
     <%= link_to nav_participant do %>
-    <li class="steps  is-mini is-circle-entering is-line-entering is-title-entering <%= @part_ready %>" >
-      <div class="steps-point">
-        <div class="steps-circle">2</div>
-        <div class="steps-title">Participantes</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Segundo Paso</div>
-          <div class="tooltip-title">Registra a los participante(s)</div>
-          <div class="tooltip-description">Aquí registra al/los participante(s)</div>
-        </div>
-      </div>
-    </li>
+    2.Participantes
     <% end %>
+  </li>
+  <li class="waves-effect <%= @anexo_ready %> <%= url_for(:only_path => true) == nav_anexo ? "btn" : "" %>" >
     <%= link_to nav_anexo do %>
-    <li class="steps  is-circle-entering is-line-entering is-title-entering <%= @anexo_ready %>" >
-      <div class="steps-point">
-        <div class="steps-circle">3</div>
-        <div class="steps-title">Anexos</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Tercer Paso</div>
-          <div class="tooltip-title">Descarga de anexos</div>
-          <div class="tooltip-description">Descarga la documentación necesaria para pasos futuros</div>
-        </div>
-      </div>
-    </li>
+    3.Anexos
     <% end %>
+  </li>
+  <li class="waves-effect <%= @doc_ready %> <%= url_for(:only_path => true) == nav_documents ? "btn" : "" %>" >
     <%= link_to nav_documents do %>
-    <li class="steps is-current  is-circle-entering is-line-entering is-title-entering <%= @doc_ready %>" >
-      <div class="steps-point">
-        <div class="steps-circle">4</div>
-        <div class="steps-title">Documentos</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Cuarto Paso</div>
-          <div class="tooltip-title">Documentación de los participante(s)</div>
-          <div class="tooltip-description">Sube la documentación solicitada</div>
-        </div>
-      </div>
-    </li>
+    4.Documentos
     <% end %>
+  </li>
+  <li class="waves-effect <%= @info_ready %> <%= url_for(:only_path => true) == nav_information ? "btn" : "" %>" >
     <%= link_to nav_information do %>
-    <li class="steps  is-circle-entering is-title-entering is-line-entering <%= @info_ready %>" >
-      <div class="steps-point">
-        <div class="steps-circle">5</div>
-        <div class="steps-title">Proyecto</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Quinto Paso</div>
-          <div class="tooltip-title">Descripción del proyecto</div>
-          <div class="tooltip-description">Describir los datos generales del proyecto</div>
-        </div>
-      </div>
-    </li>
+    5.Proyecto
     <% end %>
+  </li>
+  <li class="waves-effect <%= @retri_ready %> <%= url_for(:only_path => true) == nav_retribution ? "btn" : "" %>" >
     <%= link_to nav_retribution do %>
-    <li class="steps  is-mini is-circle-entering is-title-entering is-line-entering <%= @retri_ready %> " >
-      <div class="steps-point">
-        <div class="steps-circle">6</div>
-        <div class="steps-title">Retribución</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Sexto Paso</div>
-          <div class="tooltip-title">Retribución social</div>
-          <div class="tooltip-description">Describir cómo van a retribuir a la sociedad la ayuda otorgada</div>
-        </div>
-      </div>
-    </li>
+    6.Retribución
     <% end %>
+  </li>
+  <li class="waves-effect <%= @evi_ready %> <%= url_for(:only_path => true) == nav_evidence ? "btn" : "" %>">
     <%= link_to nav_evidence do %>
-    <li class="steps is-mini is-circle-entering is-title-entering is-line-entering <%= @evi_ready %>">
-      <div class="steps-point" >
-        <div class="steps-circle">7</div>
-        <div class="steps-title">Evidencias</div>
-        <div class="steps-tooltip">
-          <div class="tooltip-step">Séptimo Paso</div>
-          <div class="tooltip-title">Evidencias y documentación del proyecto</div>
-          <div class="tooltip-description">Sube evidencias de trabajos de tu autoría</div>
-        </div>
-      </div>
-    </li>
+    7.Evidencias
     <% end %>
-  </ul>
+  </li>
+</ul>
 </div>
