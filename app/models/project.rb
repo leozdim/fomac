@@ -128,17 +128,41 @@ class Project < ApplicationRecord
       art_forms.each do |a|
         case a.id 
         when 1
-          evi=!visual_evidence.blank?
+          if visual_evidence.blank?
+            evi=false
+          else
+            evi=!visual_evidence.id.blank?
+          end
         when 2
-          evi=!dance_evidence.blank?
+          if dance_evidence.blank?
+            evi=false
+          else
+            evi=!dance_evidence.id.blank?
+          end
         when 3
-          evi=!music_evidence.blank?
+          if music_evidence.blank?
+            evi=false
+          else
+            evi=!music_evidence.id.blank?
+          end
         when 4
-          evi=!theater_evidence.blank?
+          if theater_evidence.blank?
+            evi=false
+          else
+            evi=!theater_evidence.id.blank?
+          end
         when 5
-          evi=!film_evidence.blank?
+          if film_evidence.blank?
+            evi=false
+          else
+            evi=!film_evidence.id.blank?
+          end
         when 6
-          evi=!letter_evidence.blank?
+          if letter_evidence.blank?
+            evi=false
+          else
+            evi=!letter_evidence.id.blank?
+          end
         end
       end
       return evi

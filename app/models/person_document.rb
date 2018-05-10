@@ -1,6 +1,8 @@
 class PersonDocument < ApplicationRecord
   belongs_to :person
   has_one :project , through: :person
+  validates_presence_of :request_letter, :birth, :address, :identification, :curp, :resume,
+    :kardex , :agreement_letter 
   mount_uploader :request_letter, DocumentsUploader
   mount_uploader :birth, DocumentsUploader
   mount_uploader :address, DocumentsUploader

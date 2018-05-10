@@ -5,8 +5,8 @@ class Person < ApplicationRecord
   accepts_nested_attributes_for :addresses
   has_one :person_document
   accepts_nested_attributes_for :person_document,allow_destroy: true
-  # validates_presence_of :first_name, :last_name, :second_last_name, :birthdate,  
-      # :birthplace, :state, :city, :nationality, :level_study, :birthdate, :addresses
+  validates_presence_of :first_name, :last_name, :second_last_name, :birthdate,  
+      :state, :city, :nationality, :level_study, :birthdate, :addresses
   def birthdate=(new_status)
     if new_status.class==Date
       date=new_status

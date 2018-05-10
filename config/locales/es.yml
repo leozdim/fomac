@@ -67,6 +67,8 @@ es:
                 curp: El documento CURP 
                 resume: El documento Curriculum
                 address: El documento Comprobante de domicilio
+                kardex: El documento Kardex
+                agreement_letter: El documento Carta de consentimiento
             information:
                 name: El campo Nombre del proyecto
                 description: El campo Descripciòn

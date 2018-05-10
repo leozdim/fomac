@@ -74,31 +74,31 @@ span.ayuda {
 <br>
 <div class="file-field input-field">
     <div class="btn">
-        <span>Cronograma de actividades</span>
+        <span>Subir archivo de Excel</span>
         <%= p.file_field :activities %>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, p.object.activities_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+      <%= text_field_tag nil, p.object.activities_identifier, class: 'file-path validate', placeholder: 'Cronograma de actividades, desgloce de gastos  y Fuentes de financiamiento' %>
     </div>
 </div>
-<div class="file-field input-field">
+<!--div class="file-field input-field">
     <div class="btn">
         <span>Desgloce de gastos</span>
-        <%= p.file_field :spending %>
+        <%#= p.file_field :spending %>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, p.object.spending_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+      <%#= text_field_tag nil, p.object.spending_identifier, class: 'file-path validate', placeholder: 'subir archivo de Excel' %>
     </div>
 </div>
 <div class="file-field input-field">
     <div class="btn">
         <span>Fuentes de financiamiento</span>
-        <%= p.file_field :funding %>
+        <%#= p.file_field :funding %>
     </div>
     <div class="file-path-wrapper">
-      <%= text_field_tag nil, p.object.funding_identifier, class: 'file-path validate', placeholder: 'Guion' %>
+      <%#= text_field_tag nil, p.object.funding_identifier, class: 'file-path validate', placeholder: 'subir archivo de Excel' %>
     </div>
-</div>
+</div-->
 <% end %>
 <%= f.submit 'Actualizar información', :class => 'btn waves-effect waves-light' %>
 <% end %>
