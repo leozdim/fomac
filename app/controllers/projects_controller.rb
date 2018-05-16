@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
   def finish 
     unless @project.finish?
-      redirect_to edit_project_path(@project), notice: 'Aùn no terminas de dar de alta el proyeto'
+      redirect_to edit_project_path(@project), notice: 'Aún no terminas de dar de alta el proyeto'
     else
       ProjectMailer.finish(@project).deliver_later
     end
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to add_anexo_people_path(@project), notice: 'Lo(s) participante(s) del proyecto se guardo con èxito'  }
+          format.html { redirect_to add_anexo_people_path(@project), notice: 'Lo(s) participante(s) del proyecto se guardo con éxito'  }
         else
           format.html { render :add_people }
         end
@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
         if  @invalid_fields
           @project.invalid_revisions_person_documents.update_all status: 'Revision'
         end
-        redirect_control { redirect_to project_information_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+        redirect_control { redirect_to project_information_path(@project), notice: 'La documentación del proyecto se guardo con éxito'  }
       else
         render :add_documents_people 
       end
@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
             flag = 1
           end
         end
-        redirect_control { redirect_to  project_retribution_path(@project), notice: 'La documentaciòn del proyecto se guardo con èxito'  }
+        redirect_control { redirect_to  project_retribution_path(@project), notice: 'La documentación del proyecto se guardo con éxito'  }
       else
         render :information
       end
@@ -101,7 +101,7 @@ class ProjectsController < ApplicationController
     if request.patch?
       respond_to do |format|
         if @project.update(project_params)
-          format.html { redirect_to project_evidence_path(@project), notice: 'La retribuciòn del proyecto se guardo con èxito' }
+          format.html { redirect_to project_evidence_path(@project), notice: 'La retribución del proyecto se guardo con éxito' }
         else
           format.html { render :retribution }
         end
@@ -126,7 +126,7 @@ class ProjectsController < ApplicationController
         if  @invalid_fields
           @project.invalid_revisions_evidence.update_all status: 'Revision'
         end
-        redirect_control { redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con èxito'  }
+        redirect_control { redirect_to project_information_path(@project), notice: 'La evidencia del proyecto se guardo con éxito'  }
       else
         render :evidence
       end
@@ -150,7 +150,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito'  }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con éxito'  }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -167,7 +167,7 @@ class ProjectsController < ApplicationController
     @project.art_forms=ArtForm.find params[:project][:art_forms].reject!(&:blank?)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con èxito' }
+        format.html { redirect_to add_project_people_path(@project), notice: 'El proyecto se guardo con éxito' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -181,7 +181,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'La Información del proyecto fue guarda con èxito'  }
+      format.html { redirect_to projects_url, notice: 'La Información del proyecto fue guarda con éxito'  }
       format.json { head :no_content }
     end
   end
