@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :evaluations
   resources :project_assignments
   resources :revisions
-  resources :reports
+  resources :reports, only: [:new, :create, :show, :edit, :update, :destroy]
 
   get 'revisions/observation'
   get 'revisions/validate' , to: 'revisions#validate'

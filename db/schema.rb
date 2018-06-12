@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221111101) do
+ActiveRecord::Schema.define(version: 20180611164515) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "person_id"
@@ -216,11 +216,11 @@ ActiveRecord::Schema.define(version: 20180221111101) do
 
   create_table "report_docs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "report_id"
-    t.string "photos"
-    t.string "video"
-    t.string "payslips"
-    t.string "press"
-    t.string "publicity"
+    t.text "photos"
+    t.text "video"
+    t.text "payslips"
+    t.text "press"
+    t.text "publicity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_report_docs_on_report_id"

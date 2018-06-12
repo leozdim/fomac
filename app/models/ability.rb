@@ -25,7 +25,7 @@ class Ability
         can :create, Project
         can :update, Person, :project_id=>projects
         can :create, Person
-        can :manage, Report
+        can :create, Report
       when :reviewer
       when :judge
         can :read,:all
