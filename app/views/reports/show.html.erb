@@ -53,13 +53,13 @@
 
 <div class="field">
   <%= label_tag "Fecha programada para su realización" %>
-  <%= date_select "programed_date",@report.programed_date , :disabled => true%>
+  <%= date_field_tag "programed_date",@report.programed_date , :disabled => true%>
 
 </div>
 
 <div class="field">
   <%= label_tag "Fecha de realización" %>
-  <%= date_select "real",@report.real , :disabled => true%>
+  <%= date_field_tag "real",@report.real , :disabled => true%>
 
 </div>
 
